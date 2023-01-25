@@ -230,6 +230,19 @@
 			<artifactId>spring-security-web</artifactId>
 			<version>5.1.2.RELEASE</version>
 		</dependency>
+<!--firestore-->
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>8.1.0</version>
+		</dependency>
+<!--fileUpload-->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.3</version>
+		</dependency>
+
 	</dependencies>
     <build>
         <plugins>

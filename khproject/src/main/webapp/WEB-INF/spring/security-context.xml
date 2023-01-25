@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+    <!-- bean 설정 -->
+    <bean class="kh.java.project.config.handler.LoginSuccessHandler" id="loginSuccessHandler"/>
+    <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="encoder"/>
+    <!-- http 설정 -->
+    <security:http>
+        <security:csrf disabled="true"/>
+        <security:intercept-url method="GET" pattern="/all" access="permitAll()"/>
+        <security:intercept-url method="GET" pattern="/member" access="isAuthenticated()"/>
+        <security:intercept-url method="GET" pattern="/admin" access="isAuthenticated()"/>
+        <security:access-denied-handler error-page="/accessError"/>
+        <security:form-login login-page="/login"
+                             authentication-success-handler-ref="loginSuccessHandler"
+                             username-parameter="id"
+        />
+        <security:logout logout-url="/logout" invalidate-session="true"/>
+        <!--        <security:session-management invalid-session-url="/user/login">-->
+        <!--            <security:concurrency-control max-sessions="1"-->
+        <!--                                          expired-url="/user/login"-->
+        <!--                                          error-if-maximum-exceeded="true"/>-->
+        <!--        </security:session-management>-->
+    </security:http>
+
+    <!-- 인증 담당 -->
+    <security:authentication-manager>
+        <!-- 인증 권한 관련 -->
+        <security:authentication-provider>
+            <!--            user-service-ref="userDetail" -->
+            <security:password-encoder ref="encoder"/>
+            <security:jdbc-user-service
+                    data-source-ref="dataSource"
+                    users-by-username-query="select id, password, ENABLE from users where id=?"
+                    authorities-by-username-query="select u.id, u.password, a.authority from users u
+                                                    right join all_AUTHORITIES a on u.id = a.id where u.id = ?"
+            />
+        </security:authentication-provider>
+    </security:authentication-manager>
+</beans>

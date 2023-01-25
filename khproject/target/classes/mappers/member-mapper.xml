@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper>
-  <cache-ref namespace=""/>
+<mapper namespace="kh.java.project.member.mapper.MemberMapper">
+  <select id="findById" resultType="kh.java.project.member.entity.Users">
+    select id, PASSWORD, name, email
+    from USERS
+    where ID=#{id}
+  </select>
+  <insert id="createUser">
+    insert into users (ID, PASSWORD, NAME, EMAIL)
+    values (#{id}, #{password}, #{name}, #{email})
+  </insert>
+  <select id="findAuthoritiesAuth" resultType="String">
+    select AUTHORITY
+    from AUTHORITIES
+    where id = #{id} and P_NAME = #{pName}
+  </select>
+  <select id="findAuthoritiesAll" resultType="kh.java.project.member.entity.Authorities">
+    select id, p_name, authority
+    from AUTHORITIES
+    where id = #{id}
+  </select>
 </mapper>

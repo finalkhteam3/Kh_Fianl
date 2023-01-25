@@ -22,10 +22,15 @@
 		<property name="dataSource" ref="dataSource"/>
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>
 	</bean>
-<!--	&lt;!&ndash; 4. Mapper 어노테이션 설정 &ndash;&gt;-->
-<!--	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
-<!--		<property name="basePackage" value=""/>-->
-<!--	</bean>-->
+	<!-- 4. Mapper 어노테이션 설정 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="kh.java.project.member"/>
+<!--		<property name="basePackage" value="kh.java.project.member kh.java.project.projects"/>-->
+	</bean>
 	<!--  @Transactional  -->
+	<bean id="transactionManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
 	<tx:annotation-driven/>
 </beans>
