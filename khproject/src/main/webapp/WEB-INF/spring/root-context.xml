@@ -9,7 +9,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- 0. properties파일 -->
-	<context:property-placeholder location="classpath:datasource.properties"/>
+	<context:property-placeholder location="classpath:properties/datasource.properties"/>
 	<!-- 1. DataSource -->
 	<bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource">
 		<property name="driverClassName" value="${db.driver}"/>

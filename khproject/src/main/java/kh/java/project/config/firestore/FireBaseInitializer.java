@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @Slf4j
 @Service
-@PropertySource({"classpath:firestore.properties"})
+@PropertySource({"classpath:properties/firestore.properties"})
 public class FireBaseInitializer {
 
     @Value("${fs.json}")

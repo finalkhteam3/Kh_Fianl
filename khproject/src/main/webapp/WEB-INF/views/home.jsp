@@ -17,9 +17,9 @@
         error(`${param.error}`);
     </script>
 </c:if>
-<jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/component/header.jsp"/>
-<jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/component/nav.jsp"/>
-<jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/component/main.jsp"/>
-<jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/component/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/component/header.jsp"/>
+<jsp:include page="/WEB-INF/views/component/nav.jsp"/>
+<jsp:include page="/WEB-INF/views/component/main.jsp"/>
+<jsp:include page="/WEB-INF/views/component/footer.jsp"/>
 </body>
 </html>

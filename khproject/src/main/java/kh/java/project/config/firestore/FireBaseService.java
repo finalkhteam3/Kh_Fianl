@@ -14,7 +14,7 @@ import java.io.InputStream;
 import java.util.UUID;
 
 @Service
-@PropertySource({"classpath:firestore.properties"})
+@PropertySource({"classpath:properties/firestore.properties"})
 public class FireBaseService {
 
     @Value("${fs.bucketName}")
