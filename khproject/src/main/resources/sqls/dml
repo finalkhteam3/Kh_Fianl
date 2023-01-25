@@ -1,0 +1,2 @@
+INSERT INTO all_authorities values('tuu523', 'ROLE_ADMIN');
+INSERT INTO AUTHORITIES values('tuu523', 'test', 'ROLE_MEMBER');

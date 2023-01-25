@@ -1,0 +1,18 @@
+CREATE TABLE users(
+	id varchar(30) primary key,
+	password varchar(100) NOT null,
+	name varchar(30) NOT NULL,
+	enable char(1) DEFAULT '1',
+	email varchar(50) NOT null
+);
+
+CREATE TABLE authorities(
+	id varchar(30) NOT NULL,
+	p_name varchar(50) NOT NULL,
+	authority varchar(50) DEFAULT 'ROLE_MEMBER'
+);
+
+CREATE TABLE all_authorities(
+	id varchar(30) NOT NULL,
+	authority varchar(50) DEFAULT 'ROLE_MEMBER'
+);

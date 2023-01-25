@@ -1,5 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -11,13 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
-<html>
-<head>
-    <title>Title</title>
-</head>
 <body>
-<jsp:include page=".././component/header.jsp"/>
-<jsp:include page=".././component/nav.jsp"/>
 <h3>all</h3>
 <sec:authorize access="isAuthenticated()">
     <sec:authentication property="principal.username" var="uId"/>
@@ -44,4 +38,3 @@
 </c:if>
 <jsp:include page=".././component/footer.jsp"/>
 </body>
-</html>

@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/user/join" method="post">
+<form action="${pageContext.request.contextPath}/join" method="post">
     <input type="text" name="id" placeholder="아이디">
     <input type="password" name="password" placeholder="비번">
     <input type="text" name="name" placeholder="이름">

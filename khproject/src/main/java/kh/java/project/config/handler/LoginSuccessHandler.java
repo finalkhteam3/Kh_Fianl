@@ -32,20 +32,11 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         clearSession(httpServletRequest);
         SavedRequest savedRequest = requestCache.getRequest(httpServletRequest, httpServletResponse);
         String prevPage = (String) httpServletRequest.getSession().getAttribute("prevPage");
+        System.out.println("prevPage = " + prevPage);
         List<Authorities> authoritiesAll = mapper.findAuthoritiesAll(authentication.getName());
         httpServletRequest.getSession().setAttribute("Auth", authoritiesAll);
-        if (prevPage != null)
-            httpServletRequest.getSession().removeAttribute("prevPage");
         // 기본 URI
         String uri = "/";
-        if (savedRequest != null) {
-            uri = savedRequest.getRedirectUrl();
-        } else if (prevPage != null && !prevPage.equals("")) {
-            if (prevPage.contains("/user/join"))
-                uri = "/";
-            else
-                uri = prevPage;
-        }
         redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, uri);
     }
 
