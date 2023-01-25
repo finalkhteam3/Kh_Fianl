@@ -16,6 +16,8 @@
     <title>Title</title>
 </head>
 <body>
+<jsp:include page=".././component/header.jsp"/>
+<jsp:include page=".././component/nav.jsp"/>
 <h3>all</h3>
 <sec:authorize access="isAuthenticated()">
     <sec:authentication property="principal.username" var="uId"/>
@@ -40,5 +42,6 @@
         <button>로그아웃</button>
     </form>
 </c:if>
+<jsp:include page=".././component/footer.jsp"/>
 </body>
 </html>
