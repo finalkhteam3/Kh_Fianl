@@ -32,3 +32,4 @@ build/
 khproject/target/
 .idea/
 *.json
+.DS_STORE
