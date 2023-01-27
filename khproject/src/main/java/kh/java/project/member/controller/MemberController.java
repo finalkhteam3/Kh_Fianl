@@ -2,9 +2,10 @@ package kh.java.project.member.controller;
 
 import kh.java.project.member.dto.request.MemberRequest;
 import kh.java.project.member.service.MemberService;
+import kh.java.project.member.service.MemberServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,4 +57,12 @@ public class MemberController {
         return "/member/login";
     }
 
+//    @Scheduled(cron = "* * * * * *")
+//    public void testScheduled() {
+//        try {
+//            System.out.println("aaa");
+//        } catch (Exception e) {
+//            log.warn(e.getMessage());
+//        }
+//    }
 }
