@@ -71,7 +71,7 @@
         inter = event.value;
     }
     const clickButton = () => {
-        $("#test").load("/card");
+        $("#test").load("${pageContext.request.contextPath}/card");
         history.pushState(null, null, "?card=" + "1")
     }
 

@@ -14,11 +14,11 @@
     };
 
     const clickLink = (str) => {
-        $("#main").load("/"+str);
+        $("#main").load("${pageContext.request.contextPath}/"+str);
         history.pushState(null, null, "?page=" + str)
     }
     const clickBoardLink = (str) => {
-        $("#main").load("/boards/"+str);
+        $("#main").load("${pageContext.request.contextPath}/boards/"+str);
         history.pushState(null, null, "/boards/?issue=" + str)
     }
 </script>
