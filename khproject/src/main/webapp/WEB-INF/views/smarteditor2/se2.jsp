@@ -22,7 +22,16 @@
 
 	<script type="text/javascript">
 		
+	/* document.domain = "main.co.kr"; */
 	$(function(){
+		
+		window.addEventListener('message', function(e) {
+			  console.log(e.data); // { hello: 'parent' }
+			  var item = localStorage.getItem('dummy');
+			  console.log(item); // zerocho
+			  document.getElementById('iframe').contentWindow.postMessage(item, '*');
+			});
+		
 		var oEditors = [];
 		
 		nhn.husky.EZCreator.createInIFrame({
