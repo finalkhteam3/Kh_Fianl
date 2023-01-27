@@ -26,4 +26,10 @@ public class MemberService {
             e.printStackTrace();
         }
     }
+
+    public MemberRequest memberTest(MemberRequest memberRequest) {
+        return memberRequest;
+    }
+
+
 }

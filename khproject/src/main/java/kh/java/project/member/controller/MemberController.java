@@ -4,20 +4,19 @@ import kh.java.project.member.dto.request.MemberRequest;
 import kh.java.project.member.service.MemberService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
 @Slf4j
 @Controller
 @AllArgsConstructor
 public class MemberController {
-    private final MemberService service;
+    private MemberService memberService;
 
     @GetMapping("/all")
     public String all(Principal principal, Model model) {
@@ -47,21 +46,13 @@ public class MemberController {
 
     @PostMapping("/join")
     public String join(MemberRequest request) {
-        service.createMember(request);
+        memberService.createMember(request);
         return "redirect:/login";
     }
 
-//    @GetMapping("/login")
-//    public String loginRoute(HttpServletRequest req, String page) {
-//        System.out.println("page = " + page);
-//        String uri = req.getHeader("Referer");
-//        if(uri != null && !uri.contains("/login"))
-//            req.getSession().setAttribute("prevPage", uri);
-//        return "/member/login";
-//    }
     @GetMapping("/login")
     public String loginRoute(String page) {
-        System.out.println("page = " + page);
+        log.info("page {} ", page);
         return "/member/login";
     }
 

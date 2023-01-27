@@ -42,14 +42,17 @@
             success: function (data) {
                 const element = document.getElementById('hidden2');
                 const path = '<img src="' + data.file + '" alt="no_img"/>';
-                console.log(path);
-                element.innerHTML +=
-                    '<div>ajax</div>' +
-                    '<div>' + data.no + '</div>' +
-                    '<div>' + data.name + '</div>' +
-                    '<div>' + data.inter + '<br/></div>' +
-                    '<div class="marginB">' + path + '<br/></div>'
+                console.log(data);
+                if(data.no !== undefined) {
+                    element.innerHTML +=
+                        '<div>ajax</div>' +
+                        '<div>' + data.no + '</div>' +
+                        '<div>' + data.name + '</div>' +
+                        '<div>' + data.inter + '<br/></div>' +
+                        '<div class="marginB">' + path + '<br/></div>'
+                }
             }
+
         })
 
     }

@@ -26,7 +26,6 @@ public class AjaxServiceImpl implements AjaxService{
                 ajaxResponse = new AjaxResponse(ajaxRequest.getNo(), ajaxRequest.getName(), num * 2);
             else {
                 String makeName = fireBaseService.uploadFiles(file);
-                System.out.println("makeName = " + makeName);
                 ajaxResponse = new AjaxResponse(ajaxRequest.getNo(), ajaxRequest.getName(), num * 2, makeName);
             }
             return ajaxResponse;

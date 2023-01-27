@@ -3,6 +3,7 @@ package kh.java.project.config.handler;
 import kh.java.project.member.entity.Authorities;
 import kh.java.project.member.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -19,22 +20,19 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@RequiredArgsConstructor
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     private final RequestCache requestCache = new HttpSessionRequestCache();
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
-    private final MemberMapper mapper;
+    @Autowired private MemberMapper mapper;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
                                         HttpServletResponse httpServletResponse,
-                                        Authentication authentication) throws IOException, ServletException {
+                                        Authentication authentication) throws IOException {
         clearSession(httpServletRequest);
-        SavedRequest savedRequest = requestCache.getRequest(httpServletRequest, httpServletResponse);
-        String prevPage = (String) httpServletRequest.getSession().getAttribute("prevPage");
-        System.out.println("prevPage = " + prevPage);
         List<Authorities> authoritiesAll = mapper.findAuthoritiesAll(authentication.getName());
         httpServletRequest.getSession().setAttribute("Auth", authoritiesAll);
+        httpServletRequest.getSession().getAttribute("Auth");
         // 기본 URI
         String uri = "/";
         redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, uri);
