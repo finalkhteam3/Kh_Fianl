@@ -24,7 +24,7 @@ public class FireBaseService {
         String fileName = file.getOriginalFilename();
         String downloadUrl = "https://firebasestorage.googleapis.com/v0/b/kh-fi3.appspot.com/o/";
         assert fileName != null;
-        fileName = UUID.randomUUID().toString().concat("_").concat(fileName.substring(fileName.lastIndexOf(".")));
+        fileName = UUID.randomUUID().toString().concat("_").concat(fileName);
         Bucket bucket = StorageClient.getInstance().bucket(bucketName);
         InputStream content = new ByteArrayInputStream(file.getBytes());
         Blob blob = bucket.create(fileName, content, file.getContentType());
