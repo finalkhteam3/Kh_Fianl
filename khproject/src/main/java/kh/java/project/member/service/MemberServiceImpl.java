@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberServiceImpl implements MemberService{
     private final MemberMapper mapper;
     private final PasswordEncoder encoder;
-    private final AuthenticationManager authenticationManager;
 
 
     @Transactional
