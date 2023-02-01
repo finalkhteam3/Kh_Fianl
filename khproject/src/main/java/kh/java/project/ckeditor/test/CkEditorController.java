@@ -1,4 +1,4 @@
-package kh.java.project.test.ckeditor.controller;
+package kh.java.project.ckeditor.test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
