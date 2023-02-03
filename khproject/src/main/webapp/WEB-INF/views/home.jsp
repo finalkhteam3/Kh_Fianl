@@ -15,6 +15,7 @@
 <c:if test="${param.error != null}">
     <script>
         error(`${param.error}`);
+        location.href="./";
     </script>
 </c:if>
 <jsp:include page="/WEB-INF/views/component/header.jsp"/>

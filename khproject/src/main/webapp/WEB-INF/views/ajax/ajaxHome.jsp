@@ -25,6 +25,7 @@
     let no = "";
     let name = "";
     let inter = 0;
+    let datta = {};
 
     function to_ajax() {
         const formData = new FormData();
@@ -42,7 +43,12 @@
             success: function (data) {
                 const element = document.getElementById('hidden2');
                 const path = '<img src="' + data.file + '" alt="no_img"/>';
-                console.log(data);
+                datta = data;
+                console.log("hihi");
+                console.log(datta);
+                datta.no = "hoi"; //이런식으로 원하는 값만 수정 가능하다.
+                console.log("byebye");
+                console.log(datta);
                 if(data.no !== undefined) {
                     element.innerHTML +=
                         '<div>ajax</div>' +
