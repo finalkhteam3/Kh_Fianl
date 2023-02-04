@@ -37,7 +37,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="/resources/skydashTest/images/logo.svg"
+            <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="/resources/skydashTest/images/logo.png"
                                                                            class="mr-2" alt="logo"/></a>
             <a class="navbar-brand brand-logo-mini" href="index.html"><img
                     src="/resources/skydashTest/images/logo-mini.svg" alt="logo"/></a>
@@ -112,7 +112,7 @@
                 </li>
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                        <img src="/resources/skydashTest/images/faces/face28.jpg" alt="profile"/>
+                        <img src="/resources/skydashTest/images/faces/user_face.png" alt="profile"/>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                         <a class="dropdown-item">
@@ -332,14 +332,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.html">
                         <i class="icon-grid menu-icon"></i>
-                        <span class="menu-title">Dashboard</span>
+                        <span class="menu-title">프로젝트명</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                        aria-controls="ui-basic">
                         <i class="icon-layout menu-icon"></i>
-                        <span class="menu-title">RoadMap</span>
+                        <span class="menu-title">로드맵</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="ui-basic">
@@ -357,7 +357,7 @@
                     <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
                        aria-controls="form-elements">
                         <i class="icon-columns menu-icon"></i>
-                        <span class="menu-title">Form elements</span>
+                        <span class="menu-title">보드</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="form-elements">
@@ -371,7 +371,7 @@
                     <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
                        aria-controls="charts">
                         <i class="icon-bar-graph menu-icon"></i>
-                        <span class="menu-title">Charts</span>
+                        <span class="menu-title">프로젝트 페이지</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="charts">
@@ -384,7 +384,7 @@
                     <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
                        aria-controls="tables">
                         <i class="icon-grid-2 menu-icon"></i>
-                        <span class="menu-title">Tables</span>
+                        <span class="menu-title">프로젝트 설정</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="tables">
@@ -394,6 +394,7 @@
                         </ul>
                     </div>
                 </li>
+                <!-- 
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false"
                        aria-controls="icons">
@@ -441,6 +442,7 @@
                         <span class="menu-title">Documentation</span>
                     </a>
                 </li>
+             -->
             </ul>
         </nav>
         <!-- partial -->
