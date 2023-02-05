@@ -1,22 +1,21 @@
-package kh.java.project.calendar.controller;
+package kh.java.project.test.calendar.controller;
 
 import java.util.List;
 import java.util.Map;
 
+import kh.java.project.test.calendar.service.CalendarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kh.java.project.calendar.service.CalendarService;
-
 @Controller
 @RequestMapping("/calendar")
 public class CalendarController {
     
 	 @Autowired
-	 CalendarService calendarService;
+     CalendarService calendarService;
 
 
 

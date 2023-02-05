@@ -1,5 +1,6 @@
 package kh.java.project.member.controller;
 
+import kh.java.project.member.dto.param.Test;
 import kh.java.project.member.dto.request.MemberRequest;
 import kh.java.project.member.service.MemberService;
 import kh.java.project.member.service.MemberServiceImpl;
@@ -9,7 +10,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 
@@ -53,8 +56,13 @@ public class MemberController {
 
     @GetMapping("/login")
     public String loginRoute(String page) {
-        log.info("page {} ", page);
         return "/member/login";
+    }
+
+    @GetMapping("/{path}/hi")
+    public String AjaxHi(@PathVariable String path, @RequestParam String id){
+        memberService.test(new Test(id, "name"), path);
+        return "ajax/ajaxHome";
     }
 
 //    @Scheduled(cron = "* * * * * *")

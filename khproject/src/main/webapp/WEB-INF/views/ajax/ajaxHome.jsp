@@ -58,7 +58,6 @@
                         '<div class="marginB">' + path + '<br/></div>'
                 }
             }
-
         })
 
     }

@@ -1,4 +1,4 @@
-package kh.java.project.ajax.dto.response;
+package kh.java.project.test.ajax.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

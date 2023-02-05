@@ -1,15 +1,14 @@
-package kh.java.project.ajax.controller;
+package kh.java.project.test.ajax.controller;
 
-import kh.java.project.ajax.dto.request.AjaxRequest;
-import kh.java.project.ajax.dto.response.AjaxResponse;
-import kh.java.project.ajax.service.AjaxService;
+import kh.java.project.test.ajax.dto.request.AjaxRequest;
+import kh.java.project.test.ajax.dto.response.AjaxResponse;
+import kh.java.project.test.ajax.service.AjaxService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 

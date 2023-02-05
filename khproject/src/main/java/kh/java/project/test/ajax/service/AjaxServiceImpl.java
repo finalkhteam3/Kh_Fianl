@@ -1,7 +1,8 @@
-package kh.java.project.ajax.service;
+package kh.java.project.test.ajax.service;
 
-import kh.java.project.ajax.dto.request.AjaxRequest;
-import kh.java.project.ajax.dto.response.AjaxResponse;
+import kh.java.project.test.ajax.dto.request.AjaxRequest;
+import kh.java.project.test.ajax.dto.response.AjaxResponse;
+
 import kh.java.project.config.firestore.FireBaseService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
-package kh.java.project.ajax.service;
+package kh.java.project.test.ajax.service;
 
-import kh.java.project.ajax.dto.request.AjaxRequest;
-import kh.java.project.ajax.dto.response.AjaxResponse;
+import kh.java.project.test.ajax.dto.request.AjaxRequest;
+import kh.java.project.test.ajax.dto.response.AjaxResponse;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

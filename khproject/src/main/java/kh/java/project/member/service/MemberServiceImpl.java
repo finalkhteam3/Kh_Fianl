@@ -1,5 +1,6 @@
 package kh.java.project.member.service;
 
+import kh.java.project.member.dto.param.Test;
 import kh.java.project.member.dto.request.MemberRequest;
 import kh.java.project.member.entity.Users;
 import kh.java.project.member.mapper.MemberMapper;
@@ -30,6 +31,11 @@ public class MemberServiceImpl implements MemberService{
         } catch (RuntimeException e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void test(Test test, String path) {
+        mapper.test(test, path);
     }
 
     public MemberRequest memberTest(MemberRequest memberRequest) {

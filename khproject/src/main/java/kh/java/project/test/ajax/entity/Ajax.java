@@ -1,4 +1,4 @@
-package kh.java.project.ajax.entity;
+package kh.java.project.test.ajax.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

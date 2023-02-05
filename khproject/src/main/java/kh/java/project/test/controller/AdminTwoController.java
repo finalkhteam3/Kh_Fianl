@@ -1,4 +1,4 @@
-package kh.java.project.admin2.controller;
+package kh.java.project.test.controller;
 
 import org.springframework.stereotype.Controller;
 import java.text.DateFormat;
