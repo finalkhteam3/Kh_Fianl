@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.Principal;
 
 import static kh.java.project.config.security.AuthName.ROLE_MEMBER;
 
@@ -24,8 +25,8 @@ public class AjaxController {
     private final AjaxService ajaxService;
     private final CheckAuthService checkAuthService;
     @PostMapping
-    public ResponseEntity<AjaxResponse> ajaxUse(@ModelAttribute AjaxRequest ajaxRequest, @RequestParam("file") MultipartFile file, HttpSession session) throws IOException {
-        checkAuthService.checkAuth(session, "test", ROLE_MEMBER);
+    public ResponseEntity<AjaxResponse> ajaxUse(@ModelAttribute AjaxRequest ajaxRequest, @RequestParam("file") MultipartFile file, Principal principal) throws IOException {
+//        checkAuthService.checkAuth(principal, "test", ROLE_MEMBER);
         System.out.println("ajaxRequest = " + ajaxRequest + "file  = " + file);
         AjaxResponse ajaxResponse = ajaxService.getAjaxResult(ajaxRequest, file);
         log.info("ajaxUse => {}", ajaxResponse);

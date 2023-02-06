@@ -16,8 +16,9 @@ public class MakeLog {
     public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
         try {
             Object[] args = joinPoint.getArgs();
+            System.out.println("args1 = " + args.length);
             System.out.println("[" + joinPoint.getSignature().getName() + "Controller Parameter Info] ");
-            if(args[0] != null) {
+            if(args.length != 0) {
                 for (Object obj : args) {
                     System.out.println(
                             "\t>> type: " + obj.getClass().getSimpleName() + ", value: " + obj);

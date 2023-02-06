@@ -55,6 +55,11 @@
 		<filter-class>kh.java.project.config.security.ForbiddenUrlConfig</filter-class>
 	</filter>
 
+<!--	<filter>-->
+<!--		<filter-name>AuthConfig</filter-name>-->
+<!--		<filter-class>kh.java.project.config.security.AuthUrlConfig</filter-class>-->
+<!--	</filter>-->
+
 	<!-- 매핑순서가 2	 -->
 	<filter-mapping>
 		<filter-name>forbiddenUrlConfig</filter-name>
@@ -62,6 +67,8 @@
 		<url-pattern>/member</url-pattern>
 		<url-pattern>/admin</url-pattern>
 	</filter-mapping>
+
+
 
 	<!--  스프링 시큐리티  -->
 	<filter>

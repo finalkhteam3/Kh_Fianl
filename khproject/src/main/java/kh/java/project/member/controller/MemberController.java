@@ -22,27 +22,6 @@ import java.security.Principal;
 public class MemberController {
     private MemberService memberService;
 
-    @GetMapping("/all")
-    public String all(Principal principal, Model model) {
-        if(principal != null)
-            model.addAttribute("userId", principal.getName());
-        return "/member/all";
-    }
-    @GetMapping("/member")
-    public String member() {
-        return "/member/member";
-    }
-    @GetMapping("/admin")
-    public String admin() {
-        return "/member/admin";
-    }
-
-    @GetMapping("/accessError")
-    public String accessError(Model model) {
-        model.addAttribute("msg", "Access Denied");
-        return "/error/403";
-    }
-
     @GetMapping("/join")
     public String joinRoute(){
         return "/member/join";
@@ -55,7 +34,7 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String loginRoute(String page) {
+    public String loginRoute() {
         return "/member/login";
     }
 

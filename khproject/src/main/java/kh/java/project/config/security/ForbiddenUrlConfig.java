@@ -16,10 +16,10 @@ public class ForbiddenUrlConfig implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 //        Principal userPrincipal = request.getUserPrincipal();
-        if(request.getHeader("referer") != null) {
-            chain.doFilter(request, response);
-        } else {
+        if(request.getHeader("referer") == null) {
             response.sendRedirect("/?error=300");
+            return;
         }
+        chain.doFilter(request, response);
     }
 }
