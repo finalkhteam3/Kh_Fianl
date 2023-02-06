@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Skydash Admin</title>
+    <title>내 작업 - Jira</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/feather/feather.css">
     <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -16,12 +16,12 @@
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" type="text/css" href="/resources/skydashTest/js/select.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/skydashTemp/js/select.dataTables.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="/resources/skydashTest/css/vertical-layout-light/style.css">
+    <link rel="stylesheet" href="/resources/skydashTemp/css/vertical-layout-light/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="/resources/skydashTest/images/favicon.png"/>
+    <link rel="shortcut icon" href="/resources/skydashTemp/images/favicon.png"/>
 </head>
 <style>
     .row-height{
@@ -37,10 +37,10 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="/resources/skydashTest/images/logo.png"
+            <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="/resources/skydashTemp/images/logo.png"
                                                                            class="mr-2" alt="logo"/></a>
             <a class="navbar-brand brand-logo-mini" href="index.html"><img
-                    src="/resources/skydashTest/images/logo-mini.svg" alt="logo"/></a>
+                    src="/resources/skydashTemp/images/logo-mini.svg" alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -112,7 +112,7 @@
                 </li>
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                        <img src="/resources/skydashTest/images/faces/user_face.png" alt="profile"/>
+                        <img src="/resources/skydashTemp/images/faces/user_face.png" alt="profile"/>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                         <a class="dropdown-item">
@@ -264,7 +264,7 @@
                     </div>
                     <ul class="chat-list">
                         <li class="list active">
-                            <div class="profile"><img src="/resources/skydashTest/images/faces/face1.jpg"
+                            <div class="profile"><img src="/resources/skydashTemp/images/faces/face1.jpg"
                                                       alt="image"><span class="online"></span></div>
                             <div class="info">
                                 <p>Thomas Douglas</p>
@@ -273,7 +273,7 @@
                             <small class="text-muted my-auto">19 min</small>
                         </li>
                         <li class="list">
-                            <div class="profile"><img src="/resources/skydashTest/images/faces/face2.jpg"
+                            <div class="profile"><img src="/resources/skydashTemp/images/faces/face2.jpg"
                                                       alt="image"><span class="offline"></span></div>
                             <div class="info">
                                 <div class="wrapper d-flex">
@@ -285,7 +285,7 @@
                             <small class="text-muted my-auto">23 min</small>
                         </li>
                         <li class="list">
-                            <div class="profile"><img src="/resources/skydashTest/images/faces/face3.jpg"
+                            <div class="profile"><img src="/resources/skydashTemp/images/faces/face3.jpg"
                                                       alt="image"><span class="online"></span></div>
                             <div class="info">
                                 <p>Daniel Russell</p>
@@ -294,7 +294,7 @@
                             <small class="text-muted my-auto">14 min</small>
                         </li>
                         <li class="list">
-                            <div class="profile"><img src="/resources/skydashTest/images/faces/face4.jpg"
+                            <div class="profile"><img src="/resources/skydashTemp/images/faces/face4.jpg"
                                                       alt="image"><span class="offline"></span></div>
                             <div class="info">
                                 <p>James Richardson</p>
@@ -303,7 +303,7 @@
                             <small class="text-muted my-auto">2 min</small>
                         </li>
                         <li class="list">
-                            <div class="profile"><img src="/resources/skydashTest/images/faces/face5.jpg"
+                            <div class="profile"><img src="/resources/skydashTemp/images/faces/face5.jpg"
                                                       alt="image"><span class="online"></span></div>
                             <div class="info">
                                 <p>Madeline Kennedy</p>
@@ -312,7 +312,7 @@
                             <small class="text-muted my-auto">5 min</small>
                         </li>
                         <li class="list">
-                            <div class="profile"><img src="/resources/skydashTest/images/faces/face6.jpg"
+                            <div class="profile"><img src="/resources/skydashTemp/images/faces/face6.jpg"
                                                       alt="image"><span class="online"></span></div>
                             <div class="info">
                                 <p>Sarah Graves</p>
@@ -481,7 +481,7 @@
                     <div class="col-md-6 grid-margin stretch-card">
                         <div class="card tale-bg">
                             <div class="card-people mt-auto">
-                                <img src="/resources/skydashTest/images/dashboard/people.svg" alt="people">
+                                <img src="/resources/skydashTemp/images/dashboard/people.svg" alt="people">
                                 <div class="weather-info">
                                     <div class="d-flex">
                                         <div>
@@ -1156,7 +1156,7 @@
                                 <ul class="icon-data-list">
                                     <li>
                                         <div class="d-flex">
-                                            <img src="/resources/skydashTest/images/faces/face1.jpg" alt="user">
+                                            <img src="/resources/skydashTemp/images/faces/face1.jpg" alt="user">
                                             <div>
                                                 <p class="text-info mb-1">Isabella Becker</p>
                                                 <p class="mb-0">Sales dashboard have been created</p>
@@ -1166,7 +1166,7 @@
                                     </li>
                                     <li>
                                         <div class="d-flex">
-                                            <img src="/resources/skydashTest/images/faces/face2.jpg" alt="user">
+                                            <img src="/resources/skydashTemp/images/faces/face2.jpg" alt="user">
                                             <div>
                                                 <p class="text-info mb-1">Adam Warren</p>
                                                 <p class="mb-0">You have done a great job #TW111</p>
@@ -1176,7 +1176,7 @@
                                     </li>
                                     <li>
                                         <div class="d-flex">
-                                            <img src="/resources/skydashTest/images/faces/face3.jpg" alt="user">
+                                            <img src="/resources/skydashTemp/images/faces/face3.jpg" alt="user">
                                             <div>
                                                 <p class="text-info mb-1">Leonard Thornton</p>
                                                 <p class="mb-0">Sales dashboard have been created</p>
@@ -1186,7 +1186,7 @@
                                     </li>
                                     <li>
                                         <div class="d-flex">
-                                            <img src="/resources/skydashTest/images/faces/face4.jpg" alt="user">
+                                            <img src="/resources/skydashTemp/images/faces/face4.jpg" alt="user">
                                             <div>
                                                 <p class="text-info mb-1">George Morrison</p>
                                                 <p class="mb-0">Sales dashboard have been created</p>
@@ -1196,7 +1196,7 @@
                                     </li>
                                     <li>
                                         <div class="d-flex">
-                                            <img src="/resources/skydashTest/images/faces/face5.jpg" alt="user">
+                                            <img src="/resources/skydashTemp/images/faces/face5.jpg" alt="user">
                                             <div>
                                                 <p class="text-info mb-1">Ryan Cortez</p>
                                                 <p class="mb-0">Herbs are fun and easy to grow.</p>
@@ -1270,19 +1270,19 @@
 <script src="vendors/chart.js/Chart.min.js"></script>
 <script src="vendors/datatables.net/jquery.dataTables.js"></script>
 <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-<script src="/resources/skydashTest/js/dataTables.select.min.js"></script>
+<script src="/resources/skydashTemp/js/dataTables.select.min.js"></script>
 
 <!-- End plugin js for this page -->
 <!-- inject:js -->
-<script src="/resources/skydashTest/js/off-canvas.js"></script>
-<script src="/resources/skydashTest/js/hoverable-collapse.js"></script>
-<script src="/resources/skydashTest/js/template.js"></script>
-<script src="/resources/skydashTest/js/settings.js"></script>
-<script src="/resources/skydashTest/js/todolist.js"></script>
+<script src="/resources/skydashTemp/js/off-canvas.js"></script>
+<script src="/resources/skydashTemp/js/hoverable-collapse.js"></script>
+<script src="/resources/skydashTemp/js/template.js"></script>
+<script src="/resources/skydashTemp/js/settings.js"></script>
+<script src="/resources/skydashTemp/js/todolist.js"></script>
 <!-- endinject -->
 <!-- Custom js for this page-->
-<script src="/resources/skydashTest/js/dashboard.js"></script>
-<script src="/resources/skydashTest/js/Chart.roundedBarCharts.js"></script>
+<script src="/resources/skydashTemp/js/dashboard.js"></script>
+<script src="/resources/skydashTemp/js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->
 </body>
 
