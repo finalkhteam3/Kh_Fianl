@@ -2,6 +2,7 @@ package kh.java.project.member.service;
 
 import kh.java.project.member.dto.param.Test;
 import kh.java.project.member.dto.request.MemberRequest;
+import kh.java.project.member.entity.Authorities;
 import kh.java.project.member.entity.Users;
 import kh.java.project.member.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
@@ -29,7 +30,7 @@ public class MemberServiceImpl implements MemberService{
             System.out.println("users = " + users);
             mapper.createUser(users);
         } catch (RuntimeException e){
-            e.printStackTrace();
+            throw new RuntimeException("오류");
         }
     }
 

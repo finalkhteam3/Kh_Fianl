@@ -15,4 +15,5 @@ public class Log {
     private String issueName;
     private int value;
     private int issueNo;
+    private String executor;
 }

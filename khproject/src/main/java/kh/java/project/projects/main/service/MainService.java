@@ -1,6 +1,8 @@
 package kh.java.project.projects.main.service;
 
 import kh.java.project.projects.dto.param.*;
+import kh.java.project.projects.dto.request.ProjectRequest;
+import kh.java.project.projects.dto.response.ProjectListResponse;
 
 import java.util.List;
 
@@ -23,11 +25,21 @@ public interface MainService {
     /**
      * 메인화면에서 이슈 리스트를 가져오는 기능
      */
-    List<Issue> getIssueList(String id, int page, int selectNum);
+    List<Issue> getIssueList(String id, int page, int selectNum, String keyword);
+
+//    /**
+//     * 메인화면에서 검색하는 기능으로, 키워드를 받아와서 검색
+//     * @param page = 10으로 고정값
+//     */
+//    List<Issue> getSearchAllIssueList(String id, int page, String keyword);
 
     /**
-     * 메인화면에서 검색하는 기능으로, 키워드를 받아와서 검색
-     * @param page = 10으로 고정값
+     * 메인화면에서 프로젝트를 생성하는 기능
+     * 프로젝트 생성 단계
+     * 1. 프로젝트 생성(Project 정보)
+     * 2. 기본 Progress 구성(1. 할 일, 2. 진행 중, 3. 완료)
+     * 3. 프로젝트 멤버에 프로젝트 생성자 추가
      */
-    List<Issue> getSearchAllIssueList(String id, int page, String keyword);
+    ProjectListResponse createProject(Project project, String id);
+
 }

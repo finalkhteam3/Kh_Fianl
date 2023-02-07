@@ -1,13 +1,13 @@
-package kh.java.project.projects.dto.param;
+package kh.java.project.projects.dto.request;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
 @Getter
-@Builder
 @ToString
-public class Project {
+@AllArgsConstructor
+public class ProjectRequest {
     private String no;
     private String name;
     private String info;

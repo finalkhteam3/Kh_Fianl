@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.sql.Date;
+
 @Getter
 @Builder
 @ToString
@@ -16,4 +18,6 @@ public class Issue {
     private int anceNo;
     private int projectNo;
     private int progress;
+    private Date startDate;
+    private Date finDate;
 }

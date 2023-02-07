@@ -4,7 +4,15 @@ import kh.java.project.config.Configure;
 import kh.java.project.member.dto.request.MemberRequest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class MemberServiceImplTest extends Configure {
 
@@ -20,12 +28,36 @@ public class MemberServiceImplTest extends Configure {
             }
         }
     }
+//    @Test
+//    public void createMember() {
+//        //given
+//        MemberRequest memberRequest = new MemberRequest("tuu523", "hihi", "xodnjs", "tuu523");
+//        //when
+//        memberService.createMember(memberRequest);
+//        //then
+//    }
     @Test
-    public void createMember() {
+    @Transactional
+    public void duplicate_member() {
         //given
-        MemberRequest memberRequest = new MemberRequest("hihi", "hihi", "hihi", "hihi");
+        MemberRequest memberRequest = new MemberRequest("tuu2523", "태원", "xodnjs", "tuu5234");
+        //when
+        try {
+            memberService.createMember(memberRequest);
+        } catch (RuntimeException e){
+            fail();
+        }
+        //then
+    }
+
+    @Test
+    @Transactional
+    public void create_member() {
+        //given
+        MemberRequest memberRequest = new MemberRequest("tuu2523", "태원", "xodnjs", "tuu5234");
         //when
         memberService.createMember(memberRequest);
         //then
+        
     }
 }

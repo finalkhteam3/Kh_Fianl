@@ -12,7 +12,9 @@ import java.util.Map;
 @Builder
 @ToString
 public class Comment {
+    private int no;
+    private String maker;
     private String content;
     private HashMap<String, Integer> reactionMap;
-    private List<String> userReactionMap;
+    private List<String> userReactionList;
 }

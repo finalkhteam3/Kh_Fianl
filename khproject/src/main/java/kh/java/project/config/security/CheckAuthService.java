@@ -3,6 +3,7 @@ package kh.java.project.config.security;
 import kh.java.project.member.entity.Authorities;
 import kh.java.project.member.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -14,9 +15,10 @@ import java.util.Objects;
 @AllArgsConstructor
 public class CheckAuthService {
     private MemberMapper mapper;
-    public void checkAuth(String name, String pName, AuthName authName) {
+    public void checkAuth(Principal principal, String pName, AuthName authName) {
         try {
-            List<Authorities> auth = mapper.findAuthoritiesAll(name);
+            assert principal != null;
+            List<Authorities> auth = mapper.findAuthoritiesAll(principal.getName());
             System.out.println("auth = " + auth);
             if (auth == null)
                 throw new RuntimeException("인증을 실패했습니다(로그인 바랍니다).");
@@ -27,6 +29,8 @@ public class CheckAuthService {
             }
         } catch (RuntimeException e){
             throw new RuntimeException("인증을 실패했습니다(권한이 없습니다).");
+        } catch (AssertionError e){
+            throw new AssertionError("로그인해주세요.");
         }
     }
     

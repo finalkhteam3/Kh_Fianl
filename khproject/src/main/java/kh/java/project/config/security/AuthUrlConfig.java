@@ -9,6 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,13 +21,13 @@ public class AuthUrlConfig implements Filter {
             throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
-//        Principal userPrincipal = request.getUserPrincipal();
+        Principal userPrincipal = request.getUserPrincipal();
         String name = request.getUserPrincipal().getName();
         String pName = request.getRequestURI();
         System.out.println("pName = " + pName);
         if (Objects.equals(request.getRequestURI(), "/admin")) {
             System.out.println("퍄퍄");
-            authService.checkAuth(name, pName, AuthName.ROLE_MEMBER);
+            authService.checkAuth(userPrincipal, pName, AuthName.ROLE_MEMBER);
             System.out.println("크크");
         }
 

@@ -1,5 +1,6 @@
 package kh.java.project.projects.dto.request;
 
+import kh.java.project.projects.dto.param.Progress;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
@@ -15,7 +16,7 @@ public class CreateIssueRequest {
     private int value;
     private int anceNo;
     private int category;
-    private int progress;
     private Date startDate;
     private Date finDate;
+    private Progress progress;
 }
