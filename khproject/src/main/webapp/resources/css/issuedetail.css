@@ -1,0 +1,57 @@
+
+#btn_1{
+	border: none;
+	height: 33px;
+	width: 82px;
+}
+#btn_2{
+	border: none;
+	height: 33px;
+	width: 137px;
+}
+#btn_3{
+	border: none;
+	height: 33px;
+	width: 107px;
+}
+#text{
+	
+	border: none;
+}
+#btn_4{
+	border: none;
+	height: 24px;
+	width: 40px;
+}
+
+.issuedetail {
+	width: 1147px;
+	height:	473px;
+}
+
+#left{
+	float: left;
+	width: 70%;
+}
+#right{
+	width: 30%;
+	float: right;
+}
+
+
+
+#afs{
+	font-size: 6px;
+	color : gray;
+}
+
+#btn_5{
+	margin-left: 355px;
+	
+}
+
+#block {
+	widows: 380px;
+	height: 137px;
+	border: 1px;
+}
