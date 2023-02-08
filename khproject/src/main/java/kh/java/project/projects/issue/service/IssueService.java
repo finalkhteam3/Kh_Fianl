@@ -15,17 +15,21 @@ public interface IssueService {
      *              가령 roadMap 에서는 에픽이슈인 1번만 받아오고,
      *              board 페이지에서는 에픽 하위 이슈인 2번만 받아온다.
      */
-    Issue getIssue(String projectNo, String issueNo, int value);
+    Issue getIssue(String projectNo, int issueNo, int value);
 
     /**
      * 이슈 상세보기 페이지에서 이슈 수정(pic, content 등등)
      */
-    Issue updateIssue(Issue issue, String projectNo, String issueNo);
+    void updateIssue(Issue issue, String projectNo, int issueNo);
 
+    /**
+     * 이슈 상세보기 페이지에서 이슈 삭제
+     */
+    void deleteIssue(String projectNo, int issueNo);
     /**
      * 이슈 상세보기 페이지에서 댓글 가져오기 기능
      */
-    Comment getComment(String projectNo, String issueNo, String id);
+    Comment getComment(String projectNo, int issueNo, String id);
 
     /**
      * 이슈 상세보기 페이지에서 댓글 작성 기능
@@ -33,17 +37,17 @@ public interface IssueService {
      * 2. 원글 작성자 찾기 dao(projectNo와 issueNo를 사용해서 issue 의 Maker + PIC 찾기 -> Subscriber)
      * 3. 원글 작성자에게 알림 보내기 dao(content)
      */
-    void createComment(String projectNo, String issueNo, String id, String content);
+    void createComment(String projectNo, int issueNo, String id, String content);
 
     /**
      * 이슈 상세보기 페이지에서 댓글 편집 기능
      */
-    void updateComment(String projectNo, String issueNo, String id, Comment comment);
+    void updateComment(String projectNo, int issueNo, String id, Comment comment);
 
     /**
      * 이슈 상세보기 페이지에서 댓글 삭제 기능
      */
-    void deleteComment(String projectNo, String issueNo, String id, int no);
+    void deleteComment(String projectNo, int issueNo, String id, int no);
 
     /**
      * 이슈 상세보기 페이지에서 댓글에 리액션 달기 기능
@@ -58,26 +62,26 @@ public interface IssueService {
      * 2. 댓글 작성자 찾기(comment.maker)
      * 3. 댓글 작성자에게 알림 보내기 dao(comment.userReaction)
      */
-    void updateCommentReaction(String projectNo, String issueNo, String id, Comment comment);
+    void updateCommentReaction(String projectNo, int issueNo, String id, Comment comment);
 
     /**
      * 이슈 상세보기 페이지에서 로그 리스트 확인 기능
      */
-    List<Log> getLog(String projectNo, String issueNo);
+    List<Log> getLog(String projectNo, int issueNo);
 
     /**
      * 이슈 상세보기 페이지에서 파일 리스트 확인 가능
      */
-    List<File> getFiles(String projectNo, String issueNo);
+    List<File> getFiles(String projectNo, int issueNo);
 
     /**
      * 이슈 상세보기 페이지에서 파일 업로드 기능
      */
-    void uploadedFiles(String projectNo, String issueNo, List<MultipartFile> files);
+    void uploadedFiles(String projectNo, int issueNo, List<MultipartFile> files);
 
 
     /**
      * 이슈 상세보기 페이지에서 파일 삭제 기능(여러개 클릭해서 동시에)
      */
-    void deleteFiles(String projectNo, String issueNo, List<File> fileList);
+    void deleteFiles(String projectNo, int issueNo, List<File> fileList);
 }

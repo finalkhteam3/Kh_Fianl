@@ -58,6 +58,6 @@ public class MemberServiceImplTest extends Configure {
         //when
         memberService.createMember(memberRequest);
         //then
-        
+
     }
 }

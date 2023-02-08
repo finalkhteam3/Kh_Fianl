@@ -23,7 +23,7 @@ public class CheckAuthService {
             if (auth == null)
                 throw new RuntimeException("인증을 실패했습니다(로그인 바랍니다).");
             for (Authorities authorities : auth) {
-                if(Objects.equals(authorities.getPName(), pName) &&
+                if(Objects.equals(authorities.getProjectNo(), pName) &&
                         Objects.equals(authorities.getAuthority(), authName.toString()))
                     return;
             }

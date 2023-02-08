@@ -25,4 +25,10 @@ public class MainController {
         return null;
     }
 
+    @GetMapping("/project")
+    public String getPage(Model model){
+        List<Project> hi = service.getProjectList("hi");
+        model.addAttribute(hi);
+        return "/test/project";
+    }
 }

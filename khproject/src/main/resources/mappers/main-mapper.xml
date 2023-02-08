@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kh.java.project.projects.main.mapper.MainMapper">
+  <select id="getProjectList" resultType="kh.java.project.projects.dto.param.Project">
+    select no, name, info, icon_path
+    from project p join AUTHORITIES a on a.PROJECT_NO = p.NO
+    where a.id = #{id}
+  </select>
+</mapper>

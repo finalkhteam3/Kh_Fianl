@@ -12,13 +12,13 @@
 </head>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <style>
-    #hihi {
+    .hihi {
         width: 400px;
         height: 100px;
         background-color: grey;
         margin-bottom: 20px;
     }
-    #hi{
+    .hi{
         width: 1000px;
         height: 1000px;
         background-color: #00feff;
@@ -34,11 +34,11 @@
             processData: false,
             success: function (data) {
                 console.log(data[0]);
-                const element = document.getElementById('hi');
+                const element = document.getElementsByClassName('hi')[0];
                 if (data !== undefined) {
                     data.forEach((delta) => {
                         element.innerHTML +=
-                            '<div id="hihi">'+
+                            '<div class="hihi">'+
                             '<div>ajax</div>' +
                             '<div>' + JSON.stringify(delta) + '</div>' +
                             '<div>' + delta.name + '</div>' +
@@ -53,7 +53,7 @@
 
 </script>
 <body>
-<div id="hi">
+<div class="hi">
 
 </div>
 </body>

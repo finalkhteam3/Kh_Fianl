@@ -13,10 +13,10 @@
   <select id="findAuthoritiesAuth" resultType="String">
     select AUTHORITY
     from AUTHORITIES
-    where id = #{id} and P_NAME = #{pName}
+    where id = #{id} and project_no = #{projectNo}
   </select>
   <select id="findAuthoritiesAll" resultType="kh.java.project.member.entity.Authorities">
-    select id, p_name, authority
+    select id, project_no, authority
     from AUTHORITIES
     where id = #{id}
   </select>

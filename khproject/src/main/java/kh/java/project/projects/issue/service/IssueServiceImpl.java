@@ -4,63 +4,75 @@ import kh.java.project.projects.dto.param.Comment;
 import kh.java.project.projects.dto.param.File;
 import kh.java.project.projects.dto.param.Issue;
 import kh.java.project.projects.dto.param.Log;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+@Slf4j
+@Service
+@AllArgsConstructor
 public class IssueServiceImpl implements IssueService{
+
     @Override
-    public Issue getIssue(String projectNo, String issueNo, int value) {
+    public Issue getIssue(String projectNo, int issueNo, int value) {
         return null;
     }
 
     @Override
-    public Issue updateIssue(Issue issue, String projectNo, String issueNo) {
+    public void updateIssue(Issue issue, String projectNo, int issueNo) {
+
+    }
+
+    @Override
+    public void deleteIssue(String projectNo, int issueNo) {
+
+    }
+
+    @Override
+    public Comment getComment(String projectNo, int issueNo, String id) {
         return null;
     }
 
     @Override
-    public Comment getComment(String projectNo, String issueNo, String id) {
+    public void createComment(String projectNo, int issueNo, String id, String content) {
+
+    }
+
+    @Override
+    public void updateComment(String projectNo, int issueNo, String id, Comment comment) {
+
+    }
+
+    @Override
+    public void deleteComment(String projectNo, int issueNo, String id, int no) {
+
+    }
+
+    @Override
+    public void updateCommentReaction(String projectNo, int issueNo, String id, Comment comment) {
+
+    }
+
+    @Override
+    public List<Log> getLog(String projectNo, int issueNo) {
         return null;
     }
 
     @Override
-    public void createComment(String projectNo, String issueNo, String id, String content) {
-
-    }
-
-    @Override
-    public void updateComment(String projectNo, String issueNo, String id, Comment comment) {
-
-    }
-
-    @Override
-    public void deleteComment(String projectNo, String issueNo, String id, int no) {
-
-    }
-
-    @Override
-    public void updateCommentReaction(String projectNo, String issueNo, String id, Comment comment) {
-
-    }
-
-    @Override
-    public List<Log> getLog(String projectNo, String issueNo) {
+    public List<File> getFiles(String projectNo, int issueNo) {
         return null;
     }
 
     @Override
-    public List<File> getFiles(String projectNo, String issueNo) {
-        return null;
-    }
-
-    @Override
-    public void uploadedFiles(String projectNo, String issueNo, List<MultipartFile> files) {
+    public void uploadedFiles(String projectNo, int issueNo, List<MultipartFile> files) {
 
     }
 
     @Override
-    public void deleteFiles(String projectNo, String issueNo, List<File> fileList) {
+    public void deleteFiles(String projectNo, int issueNo, List<File> fileList) {
 
     }
 }

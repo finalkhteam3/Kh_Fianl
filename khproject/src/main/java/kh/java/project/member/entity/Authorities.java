@@ -10,5 +10,5 @@ import lombok.ToString;
 public class Authorities {
     private String id;
     private String authority;
-    private String pName;
+    private String projectNo;
 }

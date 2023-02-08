@@ -23,7 +23,7 @@ public class MainServiceImplTest extends Configure {
 
     @Test
     public void getProjectList() {
-        String id = "hi";
+        String id = "tuu523";
         List<Project> projectList = mainService.getProjectList(id);
         System.out.println("projectList = " + projectList);
     }

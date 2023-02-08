@@ -16,7 +16,7 @@ public class Issue {
     private String name;
     private String content;
     private int anceNo;
-    private int projectNo;
+    private String projectNo;
     private int progress;
     private Date startDate;
     private Date finDate;
