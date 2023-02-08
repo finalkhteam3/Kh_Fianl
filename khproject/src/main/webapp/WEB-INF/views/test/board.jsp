@@ -1,9 +1,14 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page session="false" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: twkim
+  Date: 2023/02/08
+  Time: 6:10 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Home</title>
+    <title>Title</title>
 </head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/skydashTemp/vendors/feather/feather.css">
 <link rel="stylesheet"
@@ -24,30 +29,22 @@
       href="${pageContext.request.contextPath}/resources/skydashTemp/css/vertical-layout-light/style.css">
 <!-- endinject -->
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/skydashTemp/images/favicon.png"/>
-<script>
-    const error = (str) => {
-        if (str === '300')
-            alert("정상적으로 접근 해주세요(url 직접입력 불가)");
+<style>
+    .color-tl {
+        background-color: #7cead1;
+        width: 100%;
+        height: ;
     }
-</script>
+</style>
 <body>
-<c:if test="${param.error != null}">
-    <script>
-        error(`${param.error}`);
-        location.href = "./";
-    </script>
-</c:if>
-<div class="container-scroller">
-    <div class="container-fluid page-body-wrapper">
-        <jsp:include page="/WEB-INF/views/component/header2.jsp"/>
-        <jsp:include page="/WEB-INF/views/component/sidebar2.jsp"/>
-        <div class="main-panel">
-            <div class="content-wrapper">
-                    <jsp:include page="/WEB-INF/views/component/main.jsp"/>
-            </div>
-        </div>
-        <jsp:include page="/WEB-INF/views/component/footer.jsp"/>
-    </div>
+
+<div class="color-tl">
+    gd
 </div>
+<div class="color-tl">
+    gd
+</div>
+
+
 </body>
 </html>

@@ -20,30 +20,30 @@ import java.util.List;
 @Slf4j
 @RestController
 @AllArgsConstructor
-@RequestMapping("/work/api")
+@RequestMapping("/work")
 public class MainRestController {
 
     private final MainService service;
     private final CheckAuthService authService;
 
-    @GetMapping("/notify")
+    @GetMapping("/notify/api")
     public ResponseEntity<List<Notify>> getNotify(Principal principal) {
         List<Notify> notify = service.getNotify(principal.getName());
         return ResponseEntity.ok(notify);
     }
 
-    @GetMapping("/log")
+    @GetMapping("/log/api")
     public ResponseEntity<List<Log>> getLog(Principal principal) {
         List<Log> log = service.getLog(principal.getName());
         return ResponseEntity.ok(log);
     }
 
-    @GetMapping("/project")
+    @GetMapping("/project/api")
     public ResponseEntity<List<Project>> getProjectList(Principal principal) {
         List<Project> projectList = service.getProjectList(principal.getName());
         return ResponseEntity.ok(projectList);
     }
-    @GetMapping("/issue")
+    @GetMapping("/issue/api")
     public ResponseEntity<List<Issue>> getIssueList(Principal principal, int selectPage,
                                                     @RequestParam(required = false) int selectNum,
                                                     @RequestParam(required = false) String keyword) {
@@ -51,7 +51,7 @@ public class MainRestController {
         return ResponseEntity.ok(issueList);
     }
 
-    @PostMapping("/project")
+    @PostMapping("/project/api")
     public ResponseEntity<ProjectListResponse> createProject(@RequestBody Project project, Principal principal) {
         ProjectListResponse projectListResponse = service.createProject(project, project.getName());
         return ResponseEntity.ok(projectListResponse);

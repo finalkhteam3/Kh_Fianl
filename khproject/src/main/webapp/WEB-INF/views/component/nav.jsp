@@ -17,10 +17,7 @@
         $("#main").load("${pageContext.request.contextPath}/"+str);
         history.pushState(null, null, "?page=" + str)
     }
-    const clickBoardLink = (str) => {
-        $("#main").load("${pageContext.request.contextPath}/boards/"+str);
-        history.pushState(null, null, "/boards/?issue=" + str)
-    }
+
 </script>
 <style>
     ul{
@@ -33,9 +30,10 @@
 <nav>
     <ul>
         <li onclick="clickLink(`all`)">all</li>
+        <li onclick="clickLink(`index_skydash`)">skydash</li>
         <li onclick="clickLink(`member`)">member</li>
         <li onclick="clickLink(`admin`)">admin</li>
         <li onclick="clickLink(`ajax`)">ajax</li>
-        <li onclick="clickBoardLink(`main`)">Board</li>
+        <li onclick="clickLink(`board`)">board</li>
     </ul>
 </nav>

@@ -26,9 +26,9 @@ public class MainController {
     }
 
     @GetMapping("/project")
-    public String getPage(Model model){
-        List<Project> hi = service.getProjectList("hi");
-        model.addAttribute(hi);
+    public String getPage(){
+//        List<Project> hi = service.getProjectList("hi");
+//        model.addAttribute(hi);
         return "/test/project";
     }
 }

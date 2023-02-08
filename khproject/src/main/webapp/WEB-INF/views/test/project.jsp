@@ -29,7 +29,7 @@
     $(function to_ajax() {
         $.ajax({
             type: 'GET',
-            url: "<%=request.getContextPath() %>/work/api/project",
+            url: "<%=request.getContextPath() %>/work/project/api",
             contentType: false,
             processData: false,
             success: function (data) {

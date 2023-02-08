@@ -9,8 +9,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script>
+    const MainUrlList = ['all', 'index_skydash', 'member', 'admin', 'ajax', 'board']
+    const WorkUrlList = ['project']
     const go = (str) => {
-        $("#main").load("/"+str);
+        if (MainUrlList.includes(str))
+            $("#main").load(`/\${str}`);
+        else if (WorkUrlList.includes(str))
+            $("#main").load(`/work/\${str}`);
+        else
+            $("#main").load("/all");
     }
 </script>
 <body>

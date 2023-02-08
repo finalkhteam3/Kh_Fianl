@@ -24,10 +24,11 @@
     <link rel="shortcut icon" href="/resources/skydashTemp/images/favicon.png"/>
 </head>
 <style>
-    .row-height{
+    .row-height {
         height: 600px;
     }
-    .row-width{
+
+    .row-width {
         width: 300px;
         margin-right: 30px;
     }
@@ -36,7 +37,7 @@
 <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <%@ include file="/WEB-INF/views/component/header2.jsp" %>
-   <!-- partial -->
+    <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_settings-panel.html -->
         <div class="theme-setting-wrapper">
@@ -226,8 +227,8 @@
         </div>
         <!-- partial -->
         <!-- partial:partials/_sidebar.html -->
-        
-	<%@ include file="/WEB-INF/views/component/sidebar.jsp" %>        
+
+        <%@ include file="/WEB-INF/views/component/sidebar.jsp" %>
 
         <!-- partial -->
         <div class="main-panel">

@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @Controller
 @AllArgsConstructor
-@RequestMapping("/{pName}/board")
+@RequestMapping("/work/{projectNo}")
 public class BoardController {
     @GetMapping
-    public String getBoard(@PathVariable String pName) {
-        System.out.println("pName = " + pName);
-        return "/home";
+    public String getBoardPage(@PathVariable String projectNo) {
+        return null;
     }
 }

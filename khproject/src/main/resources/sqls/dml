@@ -1,2 +1,2 @@
-INSERT INTO all_authorities values('tuu523', 'ROLE_ADMIN');
-INSERT INTO AUTHORITIES values('tuu523', 'test', 'ROLE_MEMBER');
+INSERT INTO all_authorities values('본인아이디', 'ROLE_ADMIN');
+INSERT INTO AUTHORITIES values('본인아이디', 'KHF3', 'ROLE_MEMBER', sysdate);
