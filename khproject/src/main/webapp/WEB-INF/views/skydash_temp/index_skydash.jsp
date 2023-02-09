@@ -9,6 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>내 작업 - Jira</title>
+<link href="/resources/skydashTemp/images/logo_mini.png" rel="shortcut icon" type="image/x-icon">
 <!-- plugins:css -->
 <link rel="stylesheet" href="/vendors/feather/feather.css">
 <link rel="stylesheet" href="/vendors/ti-icons/css/themify-icons.css">
@@ -25,8 +26,6 @@
 <link rel="stylesheet"
 	href="/resources/skydashTemp/css/vertical-layout-light/style.css">
 <!-- endinject -->
-<link rel="shortcut icon"
-	href="/resources/skydashTemp/images/favicon.png" />
 </head>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <style>
@@ -42,9 +41,9 @@
 
 <style>
 .recent_project_bg {
-	width: 1000px;
+	width: 100%;
 	height: 300px;
-	background-color: #E9ECEF;
+	background-color: #FAFBFC;
 	margin-bottom: 100px auto;
 }
 
@@ -367,12 +366,12 @@ body {
 									<div class="recent_project_bg"></div>
 
 									<div class="tab">
-										<button class="tablinks" onclick="openCity(event, 'tab_1')">작업
+										<button class="tablinks" onclick="openTab(event, 'tab_1')">작업
 											항목</button>
-										<button class="tablinks" onclick="openCity(event, 'tab_2')">확인함</button>
-										<button class="tablinks" onclick="openCity(event, 'tab_3')">나에게
+										<button class="tablinks" onclick="openTab(event, 'tab_2')">확인함</button>
+										<button class="tablinks" onclick="openTab(event, 'tab_3')">나에게
 											할당됨(n)</button>
-										<button class="tablinks" onclick="openCity(event, 'tab_4')">별표
+										<button class="tablinks" onclick="openTab(event, 'tab_4')">별표
 											표시됨</button>
 									</div>
 
@@ -434,7 +433,7 @@ body {
 	<script src="/resources/skydashTemp/js/Chart.roundedBarCharts.js"></script>
 	<!-- End custom js for this page-->
 	<script>
-		function openCity(evt, cityName) {
+		function openTab(evt, tabName) {
 		  var i, tabcontent, tablinks;
 		  tabcontent = document.getElementsByClassName("tabcontent");
 		  for (i = 0; i < tabcontent.length; i++) {
@@ -444,7 +443,7 @@ body {
 		  for (i = 0; i < tablinks.length; i++) {
 		    tablinks[i].className = tablinks[i].className.replace(" active", "");
 		  }
-		  document.getElementById(cityName).style.display = "block";
+		  document.getElementById(tabName).style.display = "block";
 		  evt.currentTarget.className += " active";
 		}
 		</script>

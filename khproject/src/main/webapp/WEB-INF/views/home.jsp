@@ -5,25 +5,25 @@
 <head>
     <title>Home</title>
 </head>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/skydashTemp/vendors/feather/feather.css">
+<link rel="stylesheet" href="/resources/skydashTemp/vendors/feather/feather.css">
 <link rel="stylesheet"
-      href="${pageContext.request.contextPath}/resources/skydashTemp/vendors/ti-icons/css/themify-icons.css">
+      href="/resources/skydashTemp/vendors/ti-icons/css/themify-icons.css">
 <link rel="stylesheet"
-      href="${pageContext.request.contextPath}/resources/skydashTemp/vendors/css/vendor.bundle.base.css">
+      href="/resources/skydashTemp/vendors/css/vendor.bundle.base.css">
 <!-- endinject -->
 <!-- Plugin css for this page -->
 <link rel="stylesheet"
-      href="${pageContext.request.contextPath}/resources/skydashTemp/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+      href="/resources/skydashTemp/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
 <link rel="stylesheet"
-      href="${pageContext.request.contextPath}/resources/skydashTemp/vendors/ti-icons/css/themify-icons.css">
+      href="/resources/skydashTemp/vendors/ti-icons/css/themify-icons.css">
 <link rel="stylesheet" type="text/css"
-      href="${pageContext.request.contextPath}/resources/skydashTemp/js/select.dataTables.min.css">
+      href="/resources/skydashTemp/js/select.dataTables.min.css">
 <!-- End plugin css for this page -->
 <!-- inject:css -->
 <link rel="stylesheet"
-      href="${pageContext.request.contextPath}/resources/skydashTemp/css/vertical-layout-light/style.css">
+      href="/resources/skydashTemp/css/vertical-layout-light/style.css">
 <!-- endinject -->
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/skydashTemp/images/favicon.png"/>
+<link rel="shortcut icon" href="/resources/skydashTemp/images/logo_mini.png"/>
 <script>
     const error = (str) => {
         if (str === '300')
