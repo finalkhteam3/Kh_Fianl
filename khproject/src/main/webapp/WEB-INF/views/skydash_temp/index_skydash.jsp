@@ -37,6 +37,9 @@
         width: 300px;
         margin-right: 30px;
     }
+    .main-panel{
+    	width: 100%;
+    }
 </style>
 
 <style>
@@ -59,14 +62,13 @@ body {
 	font-family: Arial;
 }
 
-/* Style the tab */
 .tab {
 	overflow: hidden;
-	border: 1px solid #ccc;
-	background-color: #f1f1f1;
+	border: 1px #0052CC;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid black;
 }
 
-/* Style the buttons inside the tab */
 .tab button {
 	background-color: inherit;
 	float: left;
@@ -78,22 +80,26 @@ body {
 	font-size: 17px;
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
-	background-color: #ddd;
+	color: #0052CC
 }
 
-/* Create an active/current tablink class */
 .tab button.active {
-	background-color: #ccc;
+	/* background-color: white; */
 }
 
-/* Style the tab content */
 .tabcontent {
 	display: none;
 	padding: 6px 12px;
-	border: 1px solid #ccc;
+	background-color: #FFFFFF;
+	/* border: 1px solid #ccc; */
 	border-top: none;
+}
+.tabcontent hover{
+	display: none;
+	padding: 6px 12px;
+	background-color: #F5F6F8;
+	/* border: 1px solid #ccc; */
 }
 </style>
 <script>
@@ -366,7 +372,7 @@ body {
 									<div class="recent_project_bg"></div>
 
 									<div class="tab">
-										<button class="tablinks" onclick="openTab(event, 'tab_1')">작업
+										<button class="tablinks" id="tab_default" onclick="openTab(event, 'tab_1')">작업
 											항목</button>
 										<button class="tablinks" onclick="openTab(event, 'tab_2')">확인함</button>
 										<button class="tablinks" onclick="openTab(event, 'tab_3')">나에게
@@ -376,12 +382,12 @@ body {
 									</div>
 
 									<div id="tab_1" class="tabcontent">
-										<div>~지난주~</div>
+										<div>작업항목 ~지난주~</div>
 										<div class="tab_1"></div>
 									</div>
 
 									<div id="tab_2" class="tabcontent">
-										<div>~지난주~</div>
+										<div>확인함 ~지난주~</div>
 										<div class="tab_2"></div>
 									</div>
 
@@ -393,6 +399,7 @@ body {
 									</div>
 
 									<div id="tab_4" class="tabcontent">
+										<div>별표 표시 목록</div>
 										<div class="tab_4"></div>
 									</div>
 
@@ -446,6 +453,10 @@ body {
 		  document.getElementById(tabName).style.display = "block";
 		  evt.currentTarget.className += " active";
 		}
+		
+		$(document).ready(function(){
+		    $("#tab_default").click(); 
+		});
 		</script>
 </body>
 
