@@ -34,9 +34,13 @@ public class MainServiceImpl implements MainService{
     }
 
     @Override
-    public List<Issue> getIssueList(String id, int page, int selectNum, String keyword) {
-        return null;
+    public List<Issue> getIssueList(String id) {
+    	List<Issue> issueList = mapper.getIssueList(id);
+    	return issueList;
     }
+//    public List<Issue> getIssueList(String id, int page, int selectNum, String keyword) {
+//        return null;
+//    }
 
 //    @Override
 //    public List<Issue> getSearchAllIssueList(String id, int page, String keyword) {

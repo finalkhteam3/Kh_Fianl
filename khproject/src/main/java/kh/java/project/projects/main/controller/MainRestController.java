@@ -44,12 +44,16 @@ public class MainRestController {
         return ResponseEntity.ok(projectList);
     }
     @GetMapping("/issue/api")
-    public ResponseEntity<List<Issue>> getIssueList(Principal principal, int selectPage,
-                                                    @RequestParam(required = false) int selectNum,
-                                                    @RequestParam(required = false) String keyword) {
-        List<Issue> issueList = service.getIssueList(principal.getName(), selectPage, selectNum, keyword);
-        return ResponseEntity.ok(issueList);
+    public ResponseEntity<List<Issue>> getIssueList(Principal principal) {
+    	List<Issue> issueList = service.getIssueList(principal.getName());
+    	return ResponseEntity.ok(issueList);
     }
+//    public ResponseEntity<List<Issue>> getIssueList(Principal principal, int selectPage,
+//                                                    @RequestParam(required = false) int selectNum,
+//                                                    @RequestParam(required = false) String keyword) {
+//        List<Issue> issueList = service.getIssueList(principal.getName(), selectPage, selectNum, keyword);
+//        return ResponseEntity.ok(issueList);
+//    }
 
     @PostMapping("/project/api")
     public ResponseEntity<ProjectListResponse> createProject(@RequestBody Project project, Principal principal) {
