@@ -16,14 +16,17 @@
             $("#main").load(`/\${str}`);
         else if (WorkUrlList.includes(str))
             $("#main").load(`/work/\${str}`);
-        else
-            $("#main").load("/all");
+        else {
+            $("#main").load("/"+str);
+        }
     }
 </script>
 <body>
 <c:if test="${param.page == null}">
     <div id="main">
-        <h3>홈페이지입니다.</h3>
+        <script>
+            go(`${'testHome'}`)
+        </script>
     </div>
 </c:if>
 <c:if test="${param.page != null}">

@@ -39,7 +39,7 @@
 </c:if>
 <div class="container-scroller">
     <div class="container-fluid page-body-wrapper">
-        <jsp:include page="/WEB-INF/views/component/header2.jsp"/>
+        <jsp:include page="/WEB-INF/views/component/header3.jsp"/>
         <jsp:include page="/WEB-INF/views/component/sidebar2.jsp"/>
         <div class="main-panel">
             <div class="content-wrapper">

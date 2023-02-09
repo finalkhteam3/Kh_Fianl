@@ -12,7 +12,7 @@ import java.sql.Date;
 public class Issue {
     private int no;
     private int value;
-    private int category;
+//    private int category;
     private String name;
     private String content;
     private int anceNo;

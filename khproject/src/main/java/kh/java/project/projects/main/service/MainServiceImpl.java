@@ -29,12 +29,7 @@ public class MainServiceImpl implements MainService{
 
     @Override
     public List<Project> getProjectList(String id) {
-        List<Project> projectList = new ArrayList<>();
-        Project project1 = Project.builder().name("hi").no("KHF3").info("JIRA 프로젝트").build();
-        Project project2 = Project.builder().name("hi2").no("KHF3").info("JIRA 프로젝트222").iconPath("kk").build();
-        projectList.add(project1);
-        projectList.add(project2);
-//        List<Project> projectList = mapper.getProjectList(id);
+        List<Project> projectList = mapper.getProjectList(id);
         return projectList;
     }
 
