@@ -117,7 +117,7 @@
                 if (data.progressList !== undefined) {
                     data.progressList.forEach((delta) => {
                         element.innerHTML +=
-                            '<div class="color-tt" >' +
+                            '<div class="color-tt" id="+delta.name+">' +
                             `<div style="text-align: center">\${delta.name}</div>` +
                             // '<div>' + JSON.stringify(delta) + '</div>' +
                             // '<div>' + delta.name + '</div>' +

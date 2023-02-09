@@ -29,9 +29,6 @@ public class MainServiceImpl implements MainService{
 
     @Override
     public List<Project> getProjectList(String id) {
-<<<<<<< HEAD
-=======
->>>>>>> f80e34f91ac6a3ff8997490efd1f37d3793e366d
         List<Project> projectList = mapper.getProjectList(id);
         return projectList;
     }
