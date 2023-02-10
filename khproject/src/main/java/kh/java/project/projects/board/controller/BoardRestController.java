@@ -26,9 +26,10 @@ public class BoardRestController {
 
     @GetMapping("/issue/api")
     public ResponseEntity<IssueListResponse> getIssue(@PathVariable String projectNo,
-                                                      String keyword,
+                                                      @RequestParam(name="keyword", required = false, defaultValue ="") String keyword,
+                                                      @RequestParam(name="id", required = false, defaultValue ="") String id,
                                                       Principal principal) {
-        IssueListResponse issueList = service.getIssue(projectNo, keyword, principal.getName());
+        IssueListResponse issueList = service.getIssue(projectNo, keyword, id);
         return ResponseEntity.ok(issueList);
     }
 

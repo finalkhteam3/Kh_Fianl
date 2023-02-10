@@ -17,7 +17,7 @@ public interface BoardService {
      * keyword 가 없다면 모든 이슈를 받아오는 것이고, keyword 가 있다면 해당 keyword 가 있는
      * 부분만 가져오는 것이다. id 또한 마찬가지
      */
-    IssueListResponse getIssue(String projectNo, String keyword, String id);
+	IssueListResponse getIssue(String projectNo, String keyword, String id);
 
     /**
      * 보드 페이지 오픈시 최초에 멤버들을 받아오는 기능

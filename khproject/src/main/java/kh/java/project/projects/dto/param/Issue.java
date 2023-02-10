@@ -10,14 +10,15 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Issue {
-    private int no;
-    private int value;
-    private String projectNo;
-    private String name;
-    private int category;
-    private String content;
-    private int anceNo;
-    private int progress;
-    private Date startDate;
-    private Date finDate;
+	private int no;
+	private int value;
+	private String projectNo;
+	private String maker;
+	private String pic;
+	private int anceNo;
+	private int progress;
+	private String name;
+//    private String content;
+//    private Date startDate;
+//    private Date finDate;
 }

@@ -24,6 +24,7 @@
       href="/resources/skydashTemp/css/vertical-layout-light/style.css">
 <!-- endinject -->
 <link rel="shortcut icon" href="/resources/skydashTemp/images/logo_mini.png"/>
+<link rel="stylesheet" href="/resources/css/issuecreate.css"/>
 <script>
     const error = (str) => {
         if (str === '300')
@@ -47,6 +48,7 @@
             </div>
         </div>
         <jsp:include page="/WEB-INF/views/component/footer.jsp"/>
+        <jsp:include page="/WEB-INF/views/issue/issuecreate.jsp"/>
     </div>
 </div>
 </body>

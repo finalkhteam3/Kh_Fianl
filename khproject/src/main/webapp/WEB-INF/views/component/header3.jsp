@@ -20,6 +20,12 @@
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                 <span class="icon-menu"></span>
             </button>
+            <button id="createGlobalItem" class="css-9gygbf" type="button" onclick="modalOn();">
+				<span class="css-178ag6o">만들기</span>
+			</button>
+<script>
+
+</script>
             <ul class="navbar-nav mr-lg-2">
                 <li class="nav-item nav-search d-none d-lg-block">
                     <div class="input-group">
