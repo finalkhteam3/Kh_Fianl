@@ -1,12 +1,11 @@
 package kh.java.project.projects.dto.param;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
-@Builder
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Log {
     private boolean isRead; //이거 int로 해야하는지(mybatis상에는 int임)
     private String ProjectNo;

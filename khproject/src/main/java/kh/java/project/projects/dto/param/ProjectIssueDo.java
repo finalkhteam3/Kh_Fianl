@@ -1,12 +1,11 @@
 package kh.java.project.projects.dto.param;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
-@Builder
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProjectIssueDo {
     private int issueDo;
     private int issueFin;

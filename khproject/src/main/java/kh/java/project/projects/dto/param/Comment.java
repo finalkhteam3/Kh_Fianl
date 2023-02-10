@@ -1,16 +1,15 @@
 package kh.java.project.projects.dto.param;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Getter
-@Builder
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Comment {
     private int no;
     private String maker;

@@ -61,11 +61,13 @@
 
     .color-tt {
         background-color: grey;
-        min-height: 900px;
-        width: 260px;
         margin: 10px;
     }
-
+    .color-tt-in{
+        background-color: grey;
+        min-height: 900px;
+        width: 260px;
+    }
     .w-box {
         height: 24px;
     }
@@ -143,10 +145,14 @@
             progressList.sort((a, b) => a.rank - b.rank);
             progressList.forEach((delta) => {
                 element.innerHTML +=
-                    '<div class="color-tt" id = "progressName::'+delta.name+'" data-index="' + delta.progress + '" ondragover="dragOver(event)" ondrop="drop(event)" data-rank="' + delta.rank +'" >' +
+                    '<div class="color-tt" >' +
+                    '<div class="flex-box">'+
                     `<div style="text-align: center">\${delta.name}</div>` +
                     // '<div>' + JSON.stringify(delta) + '</div>' +
                     '<div>' + delta.progress + '</div>' +
+                    '</div>'+
+                    '<div class="color-tt-in" id = "progressName::'+delta.name+'" data-index="' + delta.progress +
+                    '" ondragover="dragOver(event)" ondrop="drop(event)" data-rank="' + delta.rank +'" ></div>' +
                     // '<div>' + delta.no + '<br/></div>' +
                     '</div>'
             })
@@ -155,13 +161,14 @@
             issueList.forEach((delta) => {
                 const element = document.getElementsByClassName('color-tt-wrap')[0].children;
                 for (let i = 0; i < element.length; i++) {
-                    if (parseInt(element[i].dataset.index) === delta.progress) {
+                    if (parseInt(element[i].children[1].dataset.index) === delta.progress) {
+                        console.log(delta.progress);
                         console.log("일치")
-                        const ele = document.getElementsByClassName('color-tt')[element[i].dataset.rank - 1];
+                        const ele = document.getElementsByClassName('color-tt-in')[element[i].children[1].dataset.rank - 1];
                         console.log(ele)
                         ele.innerHTML +=
                             '<div class="progress-stat">'+
-                            '<div id="'+"issueRank::"+delta.no+'" class="boxt" data-no="'+delta.no+'" data-index="'+(i+1)+'" draggable="true" ondragstart="dragStart(event)">' +
+                            '<div id="'+"issueRank::"+delta.no+'" class="boxt" data-no="'+delta.no+'" data-index="'+(i+1)+'" ondrop="drop_issue(event)" draggable="true" ondragstart="dragStart(event)">' +
                             '<div>' + delta.name + '</div>' +
                             '<div>' + delta.progress + '</div>' +
                             // '<div>' + delta.no + '<br/></div>' +
@@ -197,6 +204,10 @@
         }
         // document.getElementById(targetId).dataset.index = e.target.dataset.index;
         // e.target.appendChild(document.getElementById(targetId));
+        make_view();
+    }
+    const drop_issue = (e) => {
+        console.log(e);
         make_view();
     }
 </script>

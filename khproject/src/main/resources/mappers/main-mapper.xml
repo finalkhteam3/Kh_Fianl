@@ -6,9 +6,9 @@
     from project p join AUTHORITIES a on a.PROJECT_NO = p.NO
     where a.id = #{id}
   </select>
-  <select id="getIssueList" resultType="kh.java.project.projects.dto.param.Issue">
+  <select id="getIssueList" parameterType="kh.java.project.projects.dto.param.Issue" resultType="kh.java.project.projects.dto.param.Issue">
     select NO, VALUE, PROJECT_NO, NAME
-    from ISSUE 
+    from ISSUE
     <!-- i join PROJECT p on p.NO = i.PROJECT_NO
     where p.NO = #{PROJECT_NO} -->
   </select>

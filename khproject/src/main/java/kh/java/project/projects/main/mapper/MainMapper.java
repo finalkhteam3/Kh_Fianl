@@ -9,5 +9,5 @@ import java.util.List;
 @Mapper
 public interface MainMapper {
     List<Project> getProjectList(String id);
-    List<Issue> getIssueList(String id);
+    List<Issue> getIssueList();
 }

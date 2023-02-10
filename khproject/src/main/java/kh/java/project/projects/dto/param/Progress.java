@@ -1,12 +1,12 @@
 package kh.java.project.projects.dto.param;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
-@Builder
 @ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Progress {
     private int progress;
     private String name;
