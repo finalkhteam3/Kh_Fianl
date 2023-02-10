@@ -30,16 +30,22 @@ public class BoardTestController {
     public ResponseEntity<IssueListResponse> getBoardApi1() {
         List<Issue> issueList = new ArrayList<>();
         Issue issue1 = Issue.builder().value(1).progress(1).name("hi").projectNo("KHF3").no(1).build();
-        Issue issue2 = Issue.builder().value(1).progress(2).name("hi11").projectNo("KHF3").no(2).build();
+        Issue issue2 = Issue.builder().value(1).progress(2).name("hi2").projectNo("KHF3").no(2).build();
+        Issue issue3 = Issue.builder().value(1).progress(3).name("hi3").projectNo("KHF3").no(3).build();
+        Issue issue4 = Issue.builder().value(1).progress(2).name("hi4").projectNo("KHF3").no(4).build();
+        Issue issue5 = Issue.builder().value(2).progress(1).name("hi5").projectNo("KHF3").no(5).build();
         issueList.add(issue1);
         issueList.add(issue2);
+        issueList.add(issue3);
+        issueList.add(issue4);
+        issueList.add(issue5);
         List<Progress> progressList = new ArrayList<>();
+        Progress progress2 = Progress.builder().progress(2).name("진행중").rank(3).build();
+        Progress progress3 = Progress.builder().progress(3).name("완료").rank(2).build();
         Progress progress1 = Progress.builder().progress(1).name("할일").rank(1).build();
-        Progress progress2 = Progress.builder().progress(2).name("진행중").rank(2).build();
-        Progress progress3 = Progress.builder().progress(3).name("완료").rank(3).build();
+        progressList.add(progress3);
         progressList.add(progress1);
         progressList.add(progress2);
-        progressList.add(progress3);
         return ResponseEntity.ok(new IssueListResponse(issueList, progressList));
     }
 }

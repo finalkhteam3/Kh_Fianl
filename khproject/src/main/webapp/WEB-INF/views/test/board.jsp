@@ -95,16 +95,31 @@
         margin-left: 5px;
         color: #44546F;
     }
-    .boxt{
+
+    .boxt {
         width: 95%;
-        height: 50px;
-        color: whitesmoke;
+        height: 90px;
+        background-color: whitesmoke;
+        margin: 10px auto;
     }
+    .boxt-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 98%;
+        height: 90px;
+        background-color: whitesmoke;
+        margin-bottom: 10px;
+
+    }
+
     .margin-l-b {
 
     }
 </style>
 <script>
+    let progressList = [];
+    let issueList = [];
     $(function to_ajax() {
         $.ajax({
             type: 'GET',
@@ -113,33 +128,77 @@
             processData: false,
             success: function (data) {
                 console.log(data);
-                const element = document.getElementsByClassName('color-tt-wrap')[0];
-                if (data.progressList !== undefined) {
-                    data.progressList.forEach((delta) => {
-                        element.innerHTML +=
-                            '<div class="color-tt" id="+delta.name+">' +
-                            `<div style="text-align: center">\${delta.name}</div>` +
-                            // '<div>' + JSON.stringify(delta) + '</div>' +
-                            // '<div>' + delta.name + '</div>' +
-                            // '<div>' + delta.no + '<br/></div>' +
-                            '</div>'
-                    })
-                }
-                if (data.issueList !== undefined) {
-                    data.issueList.forEach((delta) => {
-                        const ele = document.getElementsByClassName('color-tt')[delta.progress-1];
-                        ele.innerHTML +=
-                            '<div class="boxt">' +
-                            '<div>' + delta.name + '</div>' +
-                            // '<div>' + delta.name + '</div>' +
-                            // '<div>' + delta.no + '<br/></div>' +
-                            '</div>'
-                    })
+                if (data !== undefined) {
+                    progressList = data.progressList;
+                    issueList = data.issueList;
+                    make_view();
                 }
             }
         })
     })
-
+    const make_view = () => {
+        const element = document.getElementsByClassName('color-tt-wrap')[0];
+        $(element).empty();
+        if (progressList !== undefined) {
+            progressList.sort((a, b) => a.rank - b.rank);
+            progressList.forEach((delta) => {
+                element.innerHTML +=
+                    '<div class="color-tt" id = "progressName::'+delta.name+'" data-index="' + delta.progress + '" ondragover="dragOver(event)" ondrop="drop(event)" data-rank="' + delta.rank +'" >' +
+                    `<div style="text-align: center">\${delta.name}</div>` +
+                    // '<div>' + JSON.stringify(delta) + '</div>' +
+                    '<div>' + delta.progress + '</div>' +
+                    // '<div>' + delta.no + '<br/></div>' +
+                    '</div>'
+            })
+        }
+        if (issueList !== undefined) {
+            issueList.forEach((delta) => {
+                const element = document.getElementsByClassName('color-tt-wrap')[0].children;
+                for (let i = 0; i < element.length; i++) {
+                    if (parseInt(element[i].dataset.index) === delta.progress) {
+                        console.log("일치")
+                        const ele = document.getElementsByClassName('color-tt')[element[i].dataset.rank - 1];
+                        console.log(ele)
+                        ele.innerHTML +=
+                            '<div class="progress-stat">'+
+                            '<div id="'+"issueRank::"+delta.no+'" class="boxt" data-no="'+delta.no+'" data-index="'+(i+1)+'" draggable="true" ondragstart="dragStart(event)">' +
+                            '<div>' + delta.name + '</div>' +
+                            '<div>' + delta.progress + '</div>' +
+                            // '<div>' + delta.no + '<br/></div>' +
+                            '</div>'+
+                            '</div>'
+                    }
+                }
+            })
+        }
+    }
+    const check_console = () => {
+        console.log(progressList);
+        console.log("실행")
+        progressList[0].name = "그래";
+        make_view();
+    }
+    const dragStart = (e) => {
+        console.log(e.target.id);
+        e.dataTransfer.setDragImage(e.target, 0, 0);
+        e.dataTransfer.setData('targetId',e.target.id);
+    }
+    const dragOver = (e) => {
+        e.preventDefault();
+    }
+    const drop = (e) => {
+        const targetId = e.dataTransfer.getData('targetId');
+        e.preventDefault();
+        const selectIssue = document.getElementById(targetId);
+        const selectProgress = e.target.dataset.index;
+        if(selectProgress !== undefined) {
+            issueList[parseInt(selectIssue.dataset.no) - 1].progress = parseInt(selectProgress);
+            console.log(issueList);
+        }
+        // document.getElementById(targetId).dataset.index = e.target.dataset.index;
+        // e.target.appendChild(document.getElementById(targetId));
+        make_view();
+    }
 </script>
 <body>
 
@@ -161,7 +220,7 @@
         <div class="b-box flex-box e-box aib">
             <ul class="flex-box">
                 <li style="display: flex; align-items: flex-end"><h3>KH3 보드</h3></li>
-                <li>아이콘 아이콘 아이콘</li>
+                <li onclick="check_console()">아이콘 아이콘 아이콘</li>
             </ul>
         </div>
     </div>
