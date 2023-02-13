@@ -109,8 +109,11 @@
         /* border: 1px solid #ccc; */
     }
 
-    .tab_1_1 {
-        /* float: left; */
+    .tab_1_to_3 {
+        /* 탭1~3번째 리스트 스타일 */
+    }
+    .tab_4 {
+        /* 탭4번째 리스트 스타일 */
     }
 </style>
 <script>
@@ -151,12 +154,123 @@
             processData: false,
             success: function (data) {
                 console.log(data);
-                const element = document.getElementsByClassName('tabcontent_bg')[num];
+                const element = document.getElementsByClassName('tab_1')[num];
                 $(element).empty();
                 if (data !== undefined) {
                     data.forEach((delta) => {
                         element.innerHTML +=
-                            '<div class="tab_1_1">' + 
+                            '<div class="tab_1_to_3">' + 
+                            '<div><p>아이콘</p>' +
+                            /* '<div>' + JSON.stringify(delta) + '<br/></div>' + */
+                            '<div>' + delta.no + '<br/></div>' +
+                            '<div>' + delta.value + '<br/></div>' +
+                            '<div>' + delta.name + '<br/></div>' +
+                            '<div>' + delta.projectNo + '<br/></div>' +
+                            '</div>'
+
+                    })
+                }
+            }
+        })
+    }
+    
+    function to_ajax1(num) {
+        $.ajax({
+            type: 'GET',
+            url: "<%=request.getContextPath()%>/work/issue/api",
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                console.log(data);
+                const element = document.getElementsByClassName('tab_2')[num];
+                $(element).empty();
+                if (data !== undefined) {
+                    data.forEach((delta) => {
+                        element.innerHTML +=
+                            '<div class="tab_1_to_3">' + 
+                            '<div><p>아이콘</p>' +
+                            /* '<div>' + JSON.stringify(delta) + '<br/></div>' + */
+                            '<div>' + delta.no + '<br/></div>' +
+                            '<div>' + delta.value + '<br/></div>' +
+                            '<div>' + delta.name + '<br/></div>' +
+                            '<div>' + delta.projectNo + '<br/></div>' +
+                            '</div>'
+
+                    })
+                }
+            }
+        })
+    }
+    
+    function to_ajax1(num) {
+        $.ajax({
+            type: 'GET',
+            url: "<%=request.getContextPath()%>/work/issue/api",
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                console.log(data);
+                const element = document.getElementsByClassName('tab_3_1')[num];
+                $(element).empty();
+                if (data !== undefined) {
+                    data.forEach((delta) => {
+                        element.innerHTML +=
+                            '<div class="tab_1_to_3">' + 
+                            '<div><p>아이콘</p>' +
+                            /* '<div>' + JSON.stringify(delta) + '<br/></div>' + */
+                            '<div>' + delta.no + '<br/></div>' +
+                            '<div>' + delta.value + '<br/></div>' +
+                            '<div>' + delta.name + '<br/></div>' +
+                            '<div>' + delta.projectNo + '<br/></div>' +
+                            '</div>'
+
+                    })
+                }
+            }
+        })
+    }
+    function to_ajax1(num) {
+        $.ajax({
+            type: 'GET',
+            url: "<%=request.getContextPath()%>/work/issue/api",
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                console.log(data);
+                const element = document.getElementsByClassName('tab_3_2')[num];
+                $(element).empty();
+                if (data !== undefined) {
+                    data.forEach((delta) => {
+                        element.innerHTML +=
+                            '<div class="tab_1_to_3">' + 
+                            '<div><p>아이콘</p>' +
+                            /* '<div>' + JSON.stringify(delta) + '<br/></div>' + */
+                            '<div>' + delta.no + '<br/></div>' +
+                            '<div>' + delta.value + '<br/></div>' +
+                            '<div>' + delta.name + '<br/></div>' +
+                            '<div>' + delta.projectNo + '<br/></div>' +
+                            '</div>'
+
+                    })
+                }
+            }
+        })
+    }
+    
+    function to_ajax1(num) {
+        $.ajax({
+            type: 'GET',
+            url: "<%=request.getContextPath()%>/work/issue/api",
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                console.log(data);
+                const element = document.getElementsByClassName('tab_4')[num];
+                $(element).empty();
+                if (data !== undefined) {
+                    data.forEach((delta) => {
+                        element.innerHTML +=
+                            '<div class="tab_4">' + 
                             '<div><p>아이콘</p>' +
                             /* '<div>' + JSON.stringify(delta) + '<br/></div>' + */
                             '<div>' + delta.no + '<br/></div>' +
@@ -209,7 +323,7 @@
 
                                 <div id="tab_1" class="tabcontent">
                                     <div>작업항목 ~지난주~</div>
-                                    <div class="tabcontent_bg"></div>
+                                    <div class="tab_1"></div>
                                 </div>
 
                                 <div id="tab_2" class="tabcontent">
@@ -278,6 +392,7 @@
     }
 
     $(document).ready(function () {
+        $("#tab_default").css("color","#0052cc");
         $("#tab_default").click();
     });
 </script>
