@@ -110,7 +110,7 @@
     }
 
     .tab_1_1 {
-        float: left;
+        /* float: left; */
     }
 </style>
 <script>
@@ -151,11 +151,12 @@
             processData: false,
             success: function (data) {
                 console.log(data);
-                const element = document.getElementsByClassName('tabcontent')[num];
+                const element = document.getElementsByClassName('tabcontent_bg')[num];
+                $(element).empty();
                 if (data !== undefined) {
                     data.forEach((delta) => {
                         element.innerHTML +=
-                            '<div class="tab_1_1">' +
+                            '<div class="tab_1_1">' + 
                             '<div><p>아이콘</p>' +
                             /* '<div>' + JSON.stringify(delta) + '<br/></div>' + */
                             '<div>' + delta.no + '<br/></div>' +
@@ -208,7 +209,7 @@
 
                                 <div id="tab_1" class="tabcontent">
                                     <div>작업항목 ~지난주~</div>
-                                    <div class="tab_1_1"></div>
+                                    <div class="tabcontent_bg"></div>
                                 </div>
 
                                 <div id="tab_2" class="tabcontent">
