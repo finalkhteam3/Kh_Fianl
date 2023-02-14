@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="${pageContext.request.contextPath}/resources/script/test.js"></script>
 </head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/skydashTemp/vendors/feather/feather.css">
 <link rel="stylesheet"
@@ -120,17 +121,18 @@
     }
 </style>
 <script>
-    let progressList = [];
-    let issueList = [];
+    var progressList = [];
+    var issueList = [];
     $(function to_ajax() {
         $.ajax({
             type: 'GET',
-            url: "<%=request.getContextPath() %>/board/api1",
+            url: "/board/api1",
             contentType: false,
             processData: false,
             success: function (data) {
                 console.log(data);
                 if (data !== undefined) {
+                    console.log("hi")
                     progressList = data.progressList;
                     issueList = data.issueList;
                     make_view();
@@ -138,7 +140,7 @@
             }
         })
     })
-    const make_view = () => {
+    function make_view(){
         const element = document.getElementsByClassName('color-tt-wrap')[0];
         $(element).empty();
         if (progressList !== undefined) {
@@ -150,6 +152,7 @@
                     `<div style="text-align: center">\${delta.name}</div>` +
                     // '<div>' + JSON.stringify(delta) + '</div>' +
                     '<div>' + delta.progress + '</div>' +
+                    '<button onclick="make_issue_button(this.parentElement.nextSibling)">' + '이슈 만들기' + '</button>'+
                     '</div>'+
                     '<div class="color-tt-in" id = "progressName::'+delta.name+'" data-index="' + delta.progress +
                     '" ondragover="dragOver(event)" ondrop="drop(event)" data-rank="' + delta.rank +'" ></div>' +
@@ -158,6 +161,7 @@
             })
         }
         if (issueList !== undefined) {
+            console.log(issueList);
             issueList.forEach((delta) => {
                 const element = document.getElementsByClassName('color-tt-wrap')[0].children;
                 for (let i = 0; i < element.length; i++) {
@@ -165,7 +169,6 @@
                         console.log(delta.progress);
                         console.log("일치")
                         const ele = document.getElementsByClassName('color-tt-in')[element[i].children[1].dataset.rank - 1];
-                        console.log(ele)
                         ele.innerHTML +=
                             '<div class="progress-stat">'+
                             '<div id="'+"issueRank::"+delta.no+'" class="boxt" data-no="'+delta.no+'" data-index="'+(i+1)+'" ondrop="drop_issue(event)" draggable="true" ondragstart="dragStart(event)">' +
@@ -179,21 +182,21 @@
             })
         }
     }
-    const check_console = () => {
+    function check_console(){
         console.log(progressList);
         console.log("실행")
         progressList[0].name = "그래";
         make_view();
     }
-    const dragStart = (e) => {
+    function dragStart(e){
         console.log(e.target.id);
         e.dataTransfer.setDragImage(e.target, 0, 0);
         e.dataTransfer.setData('targetId',e.target.id);
     }
-    const dragOver = (e) => {
+    function dragOver(e){
         e.preventDefault();
     }
-    const drop = (e) => {
+    function drop(e){
         const targetId = e.dataTransfer.getData('targetId');
         e.preventDefault();
         const selectIssue = document.getElementById(targetId);
@@ -206,13 +209,45 @@
         // e.target.appendChild(document.getElementById(targetId));
         make_view();
     }
-    const drop_issue = (e) => {
+    function drop_issue(e){
         console.log(e);
+        make_view();
+    }
+    function check_issue_button(){
+        const alreadyMake = document.getElementById("make_issue");
+        if(alreadyMake !== null){
+            console.log(alreadyMake.parentElement);
+            $(alreadyMake.parentElement).remove();
+        }
+    }
+    function make_issue_button(e){
+        check_issue_button();
+        e.innerHTML +=
+            '<div class="boxt">'+
+            '<input type="text" id="make_issue"/>'+
+            '</div>'
+        const issue = document.getElementById("make_issue");
+        issue.addEventListener("keyup", function (event){
+            if (event.keyCode === 13) {
+                make_issue(issue.value, e.dataset.index);
+            }
+        });
+        document.addEventListener("keydown", function(event){
+            if (event.keyCode === 27 || event.which === 27) {
+                check_issue_button();
+            }
+        });
+    }
+    function make_issue(issueName, progress){
+        console.log("asdf");
+        console.log(f);
+        const pushParam = {value: 2, name: issueName, progress: parseInt(progress)}
+        console.log(pushParam);
+        issueList.push(pushParam);
         make_view();
     }
 </script>
 <body>
-
 <div class="color-tl-wrap">
     <div class="color-tl">
         <div class="w-box">

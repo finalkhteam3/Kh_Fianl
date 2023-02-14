@@ -14,6 +14,8 @@ public class CreateIssueRequest {
     private String maker;
     private String pic;
     private int value;
+    private String name;
+    private String content;
     private int anceNo;
     private int category;
     private Date startDate;

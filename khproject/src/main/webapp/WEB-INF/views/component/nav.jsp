@@ -14,7 +14,10 @@
     };
 
     const clickLink = (str) => {
-        $("#main").load("${pageContext.request.contextPath}/"+str);
+        const check = document.getElementById("main");
+        // $(check).();
+        <%--location.href = "${pageContext.request.contextPath}/"+str--%>
+        $(check).load("${pageContext.request.contextPath}/"+str);
         history.pushState(null, null, "?page=" + str)
     }
 

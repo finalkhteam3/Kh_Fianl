@@ -38,14 +38,14 @@ public class MainServiceImpl implements MainService{
     	List<Issue> issueList = mapper.getIssueList();
     	return issueList;
     }
-//    public List<Issue> getIssueList(String id, int page, int selectNum, String keyword) {
-//        return null;
-//    }
+    public List<Issue> getIssueList(String id, int page, int selectNum, String keyword) {
+        return null;
+    }
 
-//    @Override
-//    public List<Issue> getSearchAllIssueList(String id, int page, String keyword) {
-//        return null;
-//    }
+    @Override
+    public List<Issue> getSearchAllIssueList(String id, int page, String keyword) {
+        return null;
+    }
 
     @Override
     public ProjectListResponse createProject(Project project, String id) {

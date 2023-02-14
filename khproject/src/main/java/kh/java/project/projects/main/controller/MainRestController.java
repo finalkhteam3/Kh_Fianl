@@ -43,17 +43,20 @@ public class MainRestController {
         List<Project> projectList = service.getProjectList(principal.getName());
         return ResponseEntity.ok(projectList);
     }
-    @GetMapping("/issue/api")
-    public ResponseEntity<List<Issue>> getIssueList(Principal principal) {
-    	List<Issue> issueList = service.getIssueList(principal.getName());
-    	return ResponseEntity.ok(issueList);
-    }
-//    public ResponseEntity<List<Issue>> getIssueList(Principal principal, int selectPage,
-//                                                    @RequestParam(required = false) int selectNum,
-//                                                    @RequestParam(required = false) String keyword) {
-//        List<Issue> issueList = service.getIssueList(principal.getName(), selectPage, selectNum, keyword);
-//        return ResponseEntity.ok(issueList);
+
+//    public ResponseEntity<List<Issue>> getIssueList(Principal principal) {
+//    	List<Issue> issueList = service.getIssueList(principal.getName());
+//    	return ResponseEntity.ok(issueList);
 //    }
+    @GetMapping("/issue/api")
+    public ResponseEntity<List<Issue>> getIssueList(Principal principal,
+                                                    @RequestParam(required = false) int selectPage,
+                                                    @RequestParam(required = false) int selectNum,
+                                                    @RequestParam(required = false) String keyword) {
+        System.out.println("1: "+selectPage+" 2: "+selectNum+" 3: "+keyword);
+        List<Issue> issueList = service.getIssueList(principal.getName(), selectPage, selectNum, keyword);
+        return ResponseEntity.ok(issueList);
+    }
 
     @PostMapping("/project/api")
     public ResponseEntity<ProjectListResponse> createProject(@RequestBody Project project, Principal principal) {

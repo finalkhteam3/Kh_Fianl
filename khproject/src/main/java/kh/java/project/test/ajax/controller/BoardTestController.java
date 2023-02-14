@@ -6,9 +6,12 @@ import kh.java.project.projects.dto.response.IssueListResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +19,8 @@ import java.util.List;
 @AllArgsConstructor
 public class BoardTestController {
     @GetMapping("/board")
-    public String getBoardPage() {
+    public String getBoardPage(Model model, Principal principal, HttpServletRequest req) {
+        model.addAttribute("userId", principal.getName());
         return "/test/board";
     }
     @GetMapping("/testHome")

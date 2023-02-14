@@ -25,14 +25,14 @@ public interface MainService {
     /**
      * 메인화면에서 이슈 리스트를 가져오는 기능
      */
-//    List<Issue> getIssueList(String id, int page, int selectNum, String keyword);
+    List<Issue> getIssueList(String id, int page, int selectNum, String keyword);
     List<Issue> getIssueList(String id);
 
-//    /**
-//     * 메인화면에서 검색하는 기능으로, 키워드를 받아와서 검색
-//     * @param page = 10으로 고정값
-//     */
-//    List<Issue> getSearchAllIssueList(String id, int page, String keyword);
+    /**
+     * 메인화면에서 검색하는 기능으로, 키워드를 받아와서 검색
+     * @param page = 10으로 고정값
+     */
+    List<Issue> getSearchAllIssueList(String id, int page, String keyword);
 
     /**
      * 메인화면에서 프로젝트를 생성하는 기능

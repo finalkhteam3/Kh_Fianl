@@ -20,7 +20,8 @@ public class MakeLog {
             System.out.println("[" + joinPoint.getSignature().getName() + "Controller Parameter Info] ");
             if(args.length != 0 && args[0] != null) {
                 for (Object obj : args) {
-                    System.out.println(
+                    if(obj != null)
+                        System.out.println(
                             "\t>> type: " + obj.getClass().getSimpleName() + ", value: " + obj);
                 }
             } else {

@@ -14,8 +14,12 @@
 	};
 
 	const clickLink = (path, str) => {
-		$("#main").load("${pageContext.request.contextPath}"+path+str);
+		const check = document.getElementById("main");
+		<%--location.href = "${pageContext.request.contextPath}"+path+str;--%>
+		$(check).load("${pageContext.request.contextPath}"+path+str);
 		history.pushState(null, null, "?page=" + str)
+		// location.reload();
+
 	}
 
 </script>
