@@ -19,4 +19,23 @@
 		select * from progress where no = #{projectNo}
 	</select>
 
+	<select id="getMembers" resultType="kh.java.project.projects.dto.param.Member">
+		select id, authority as projectAuth, name, email 
+		from (select id, authority from authorities where project_no = #{projectNo})
+		join users using(id)
+	</select>
+	
+	<insert id="createIssue">
+		insert into issue values (
+			(select nvl(max(no), 0)+1 from issue),
+			#{request.value},
+			#{projectNo},
+			#{request.name},
+			#{id},
+			#{request.pic},
+			#{request.anceNo},
+			#{request.progress}
+		)
+		
+	</insert>
 </mapper>

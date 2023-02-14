@@ -21,44 +21,40 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/work/{projectNo}")
 public class BoardRestController {
-    private final CheckAuthService authService;
-    private final BoardService service;
+	private final CheckAuthService authService;
+	private final BoardService service;
 
-    @GetMapping("/issue/api")
-    public ResponseEntity<IssueListResponse> getIssue(@PathVariable String projectNo,
-                                                      @RequestParam(name="keyword", required = false, defaultValue ="") String keyword,
-                                                      @RequestParam(name="id", required = false, defaultValue ="") String id,
-                                                      Principal principal) {
-        IssueListResponse issueList = service.getIssue(projectNo, keyword, id);
-        return ResponseEntity.ok(issueList);
-    }
+	@GetMapping("/issue/api")
+	public ResponseEntity<IssueListResponse> getIssue(@PathVariable String projectNo,
+			@RequestParam(name = "keyword", required = false, defaultValue = "") String keyword,
+			@RequestParam(name = "id", required = false, defaultValue = "") String id, Principal principal) {
+		IssueListResponse issueList = service.getIssue(projectNo, keyword, id);
+		return ResponseEntity.ok(issueList);
+	}
 
-    @GetMapping("/member/api")
-    public ResponseEntity<List<Member>> getMemberList(@PathVariable String projectNo) {
-        List<Member> memberList = service.getMembers(projectNo);
-        return ResponseEntity.ok(memberList);
-    }
+	@GetMapping("/member/api")
+	public ResponseEntity<List<Member>> getMemberList(@PathVariable String projectNo) {
+		List<Member> memberList = service.getMembers(projectNo);
+		return ResponseEntity.ok(memberList);
+	}
 
-    @PostMapping("/member/api")
-    public HttpStatus updateMember(@PathVariable String projectNo,
-                                   @RequestBody AddMemberRequest request) {
-        service.addMember(request, projectNo);
-        return HttpStatus.OK;
-    }
+	@PostMapping("/member/api")
+	public HttpStatus updateMember(@PathVariable String projectNo, @RequestBody AddMemberRequest request) {
+		service.addMember(request, projectNo);
+		return HttpStatus.OK;
+	}
 
-    @PostMapping("/issue/api")
-    public HttpStatus createIssue(@PathVariable String projectNo,
-                                  @RequestBody CreateIssueRequest request,
-                                  Principal principal) {
-        service.createIssue(request, projectNo, principal.getName());
-        return HttpStatus.OK;
-    }
+	@PostMapping("/issue/api")
+	public HttpStatus createIssue(@PathVariable String projectNo, CreateIssueRequest request,
+			Principal principal) {
+		service.createIssue(request, projectNo, principal.getName());
+		return HttpStatus.OK;
+	}
 
-    @PatchMapping("/progress/api")
-    public HttpStatus updateProgress(@PathVariable String projectNo,
-                                     Principal principal,
-                                     @RequestBody Progress progress) {
-        service.updateProgress(progress, projectNo);
-        return HttpStatus.OK;
-    }
+	@PatchMapping("/progress/api")
+	public HttpStatus updateProgress(@PathVariable String projectNo, Principal principal,
+			@RequestBody Progress progress) {
+		service.updateProgress(progress, projectNo);
+		return HttpStatus.OK;
+	}
 }

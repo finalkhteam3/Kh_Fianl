@@ -28,7 +28,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<Member> getMembers(String projectNo) {
-		return null;
+		return mapper.getMembers(projectNo);
 	}
 
 	@Override
@@ -38,7 +38,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void createIssue(CreateIssueRequest request, String projectNo, String id) {
-
+		mapper.createIssue(request, projectNo, id);	
+		return;
 	}
 
 	@Override

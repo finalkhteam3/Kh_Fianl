@@ -13,10 +13,13 @@ import java.sql.Date;
 public class CreateIssueRequest {
     private String maker;
     private String pic;
-    private int value;
-    private int anceNo;
-    private int category;
+    private Integer value;
+    private Integer anceNo;
+    private Integer category;
     private Date startDate;
     private Date finDate;
-    private Progress progress;
+    private Integer progress;
+    private String name;
+    private String content;
 }
+
