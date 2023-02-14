@@ -9,64 +9,87 @@
 			<h2>이슈만들기</h2>
 		</div>
 		<div class="close-area">X</div>
-		<div>
-			<label for="project">프로젝트</label> <br> <span class="dropdown">
-				<select id="project" name="project" onchange="changeProject();">
-					<!-- <option value="">프로젝트</option> -->
 
+		<form id="frmCreate">
+			<div>
+				<label for="project">프로젝트</label>
+				<div class="dropdown">
+					<select id="project" name="project" onchange="changeProject();">
+						<!-- ajax로 채움 -->
+					</select>
+				</div>
+			</div>
 
-					<%-- <option value="${result.project}">${result.project}</option> --%>
-
-
-
-			</select>
-			</span> <br> <label for="">이슈 유형</label> <br> <span
-				class="dropdown"> <select id="issue" name="issue">
-					<option value="">이슈</option>
-
-
-					<option value="${result.issue}">${result.issue}</option>
-
-
-
-			</select>
-			</span>
-			<p>자세히 알아보기</p>
-			</span>
+			<div>
+				<label for="value">이슈 유형</label>
+				<div class="dropdown">
+					<select id="value" name="value">
+						<option value="2">작업</option>
+					</select>
+				</div>
+			</div>
 			<hr>
 
-			<label for="">상태</label> <br> <span class="dropdown">
-				<button class="dropdown-toggle">
-					상태 <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a href="#">상태1</a></li>
-					<li><a href="#">상태2</a></li>
+			<div>
+				<label for="progress">상태</label>
+				<div class="dropdown">
+					<select id="progress" name="progress">
+						<!-- ajax로 채움 -->
+					</select>
+				</div>
+			</div>
+			<hr>
+			<div>
+				<label for="name">요약</label>
+				<div class="dropdown">
+					<input type="text" id="name" name="name">
+				</div>
+			</div>
+			<div>
+				<label for="content">설명</label>
+				<div class="dropdown">
+					<textarea id="content" name="content"></textarea>
+				</div>
+			</div>
+			<!-- <div>
+			<label for="maker">보고자</label>
+			<div class="dropdown">
+				<select id="maker" name="maker">
+					<option value="내아이디">내아이디</option>
+				</select>
+			</div>
+		</div> -->
+			<div>
+				<label for="pic">담당자</label>
+				<div class="dropdown">
+					<select id="pic" name="pic">
+						<!-- ajax채움 -->
+					</select>
+				</div>
+			</div>
+			<hr>
 
-				</ul>
-				<p>이슈 초기 상태</p>
-			</span> <label for="">요약</label> <br> <input type="text"> <br>
-			<br> <label for="">설명</label> <br> <input type="textarae">
-			<br> <label for="">보고자</label> <br>
-			<button>보고자</button>
-			<br> <label for="">담당자</label> <br>
-			<button>담당자</button>
-			<br> <span class="">나에게 할당</span> <br> <label for="">레이블</label>
-			<br>
-			<button>레이블</button>
-			<br> <label for="">첨부파일</label> <br> <input type="file">
-			<br> <label for="">연결된 이슈</label> <br>
-			<button>연결</button>
-			<br>
-			<button>연결</button>
-			<br> <label for="">Flagged</label> <br>
-			<button>flag</button>
-			<p>allow</p>
-		</div>
+			<div>
+				<label for="file">첨부파일</label>
+				<div class="dropdown">
+					<input type="file" id="file" name="file">
+				</div>
+			</div>
+
+			<div>
+				<label for="anceNo">연결된 이슈</label>
+				<div class="dropdown">
+					<select id="anceNo" name="anceNo">
+						<!-- ajax채움 -->
+					</select>
+				</div>
+			</div>
+		</form>
 
 		<div>
-			<input type="checkbox" id="" name=""> <label for="">다른이슈만들기</label>
-			<button class="right-tab" type="button" tabindex="0">
+
+			<button onclick="createIssue();" class="right-tab" type="button"
+				tabindex="0">
 				<span class="">만들기</span>
 			</button>
 			<button class="right-tab" type="button" tabindex="0">
@@ -79,6 +102,23 @@
 </div>
 
 <script>
+	function createIssue() {
+		console.log($("#frmCreate").serialize());
+		var projectno = $("#project").val();
+		$.ajax({
+            type: 'POST',
+            url: "<%=request.getContextPath()%>/work/"+projectno+"/issue/api",
+            data: $("#frmCreate").serialize(),
+            //contentType: false,
+            success: function (data) {
+                console.log(data);     
+                console.log("이슈만들기 성공");    
+                modalOff();
+                location.reload();
+            }
+        })	
+	}
+	
 	function changeProject() {
 		var projectno = $("#project").val();
 		console.log(projectno);
@@ -89,8 +129,38 @@
             data: {keyword:null},
             success: function (data) {
                 console.log(data);                
-                           
+                if(data !== undefined){
+               		html = '<option value="">이슈</option>';
+                	data.issueList.forEach((delta) => {
+                		html +=
+                			'<option value="'+ delta.no +'">'+delta.name+'</option>';
+                	})
+                	$('#anceNo').html(html);
+                	
+                	html = '<option value="">상태</option>';
+                	data.progressList.forEach((delta) => {
+                		html +=
+                			'<option value="'+ delta.progress +'">'+delta.name+'</option>';
+                	})
+                	$('#progress').html(html);
+                }
             }
+            
+        })
+        $.ajax({
+            type: 'GET',
+            url: "<%=request.getContextPath()%>/work/"+projectno+"/member/api",
+            contentType: false,
+            success: function (data) {
+                console.log(data);     
+                html = '<option value="">담당자</option>';
+            	data.forEach((delta) => {
+            		html +=
+            			'<option value="'+ delta.id +'">'+delta.name+'('+delta.email+')</option>';
+            	})
+            	$('#pic').html(html);
+            }
+            
         })
 	}
 
@@ -103,14 +173,14 @@
                 processData: false,
                 success: function (data) {
                     console.log(data);                
-                    html = '<option value="">프로젝트</option>';
                     if (data !== undefined) {
+       	         	 	html = '<option value="">프로젝트</option>';
                         data.forEach((delta) => {
                         	html +=
                               '<option value="'+ delta.no +'">'+delta.name+'</option>';
                         })
+                 	  	$('#project').html(html);
                     }
-                    $('#project').html(html);
            			modal.style.display = "flex"
                 }
             })
