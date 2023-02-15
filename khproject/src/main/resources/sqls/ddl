@@ -48,23 +48,23 @@ COMMENT ON COLUMN issue.progress IS '프로젝트 코드 + 진행도가 기본�
 
 
 ---김태원 ddl 문(외래키 제거 버전)---
-DROP TABLE Users;
 DROP TABLE all_authorities;
 DROP TABLE authorities;
-DROP TABLE Project;
 DROP TABLE icons;
-DROP TABLE issue;
 DROP TABLE progress_issue;
 DROP TABLE progress_project;
 DROP TABLE authorities_temp;
 DROP TABLE log;
 DROP TABLE issue_file;
-DROP TABLE issue_comment;
 DROP TABLE issue_roadmap;
 DROP TABLE read;
 DROP TABLE Notify;
 DROP TABLE emoticon;
 DROP TABLE issue_like;
+DROP TABLE issue_comment;
+DROP TABLE issue;
+DROP TABLE Project;
+DROP TABLE Users;
 
 CREATE TABLE users(
 	id varchar(20) NOT NULL,
@@ -214,3 +214,22 @@ CREATE TABLE log(
 	executor varchar(20) NOT NULL
 );
 
+
+//로그, 알림 제외한 foreign key
+
+ALTER TABLE all_authorities ADD CONSTRAINT fk_users_to_all_authorities FOREIGN key(id) references users(id);
+ALTER TABLE authorities ADD CONSTRAINT fk_users_to_authorities FOREIGN key(id) REFERENCES users(id);
+ALTER TABLE authorities ADD CONSTRAINT fk_project_to_authorities FOREIGN key(project_no) REFERENCES project(no);
+ALTER TABLE issue ADD CONSTRAINT fk_project_to_issue FOREIGN key(project_no) REFERENCES project(no);
+ALTER TABLE progress_project ADD CONSTRAINT fk_project_to_progress_project FOREIGN KEY(project_no) REFERENCES project(no);
+ALTER TABLE progress_issue ADD CONSTRAINT fk_progress_issue_to_issue FOREIGN key(project_no, issue_no) REFERENCES issue(project_no, NO);
+ALTER TABLE progress_issue ADD CONSTRAINT fk_progress_project_to_issue FOREIGN key(project_no, progress) REFERENCES progress_project(project_no, progress);
+ALTER TABLE issue_file ADD CONSTRAINT fk_issue_to_issue_file FOREIGN key(issue_no, project_no) REFERENCES issue(no, project_no);
+ALTER TABLE issue_comment ADD CONSTRAINT fk_issue_to_issue_comment FOREIGN key(issue_no, project_no) REFERENCES issue(NO, project_no);
+ALTER TABLE issue_comment ADD CONSTRAINT fk_users_to_issue_comment FOREIGN key(id) REFERENCES users(id);
+ALTER TABLE emoticon ADD CONSTRAINT fk_comment_to_emoticon FOREIGN key(seq, project_no, issue_no) references issue_comment(seq, project_no, issue_no	);
+ALTER TABLE emoticon ADD CONSTRAINT fk_users_to_emoticon FOREIGN key(id) REFERENCES users(id);
+ALTER TABLE issue_roadmap ADD CONSTRAINT fk_issue_to_roadmap FOREIGN key(issue_no, project_no) REFERENCES issue(NO, project_no);
+ALTER TABLE READ ADD CONSTRAINT fk_issue_to_read FOREIGN KEY(issue_no, project_no) REFERENCES issue(NO, project_no);
+ALTER TABLE READ ADD CONSTRAINT fk_users_to_read FOREIGN key(id) REFERENCES users(id);
+ALTER TABLE authorities_temp ADD CONSTRAINT fk_authorities_to_temp FOREIGN key(project_no) REFERENCES project(NO);
