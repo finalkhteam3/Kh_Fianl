@@ -1,53 +1,77 @@
 
-#btn_1{
-	border: none;
-	height: 33px;
-	width: 82px;
+#left {
+	float: left;
+	width: 60%;
 }
-#btn_2{
+
+#right {
+	width: 40%;
+	float: right;
+}
+
+#btn_1 {
 	border: none;
 	height: 33px;
 	width: 137px;
 }
-#btn_3{
+
+#btn_2 {
+	border: none;
+	height: 33px;
+	width: 137px;
+}
+
+#btn_3 {
 	border: none;
 	height: 33px;
 	width: 107px;
 }
-#text{
-	
+
+#text {
 	border: none;
 }
-#btn_4{
+
+#btn_4 {
 	border: none;
 	height: 24px;
 	width: 40px;
 }
+.dropbtn:hover, .dropbtn:focus {
+    background-color: gray;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.show {display:block;}
+.dropdown-content a:hover {background-color: #f1f1f1}
+
 
 .issuedetail {
 	width: 1147px;
-	height:	473px;
+	height: 473px;
 }
 
-#left{
-	float: left;
-	width: 70%;
-}
-#right{
-	width: 30%;
-	float: right;
-}
-
-
-
-#afs{
+#afs {
 	font-size: 6px;
-	color : gray;
+	color: gray;
 }
 
-#btn_5{
+#modal_close_btn {
 	margin-left: 355px;
-	
 }
 
 #block {
@@ -55,3 +79,35 @@
 	height: 137px;
 	border: 1px;
 }
+
+#modal_issue {
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+#modal_issue h2 {
+	margin: 0;
+}
+
+#modal_issue .modal_content {
+	width: 1147px;
+	height: 473px;
+	margin: 100px auto;
+	padding: 20px 10px;
+	background: #fff;
+	border: 2px solid #666;
+}
+#modal_issue .modal_layer {
+          position:fixed;
+          top:0;
+          left:0;
+          width:100%;
+          height:100%;
+          background:rgba(0, 0, 0, 0.5);
+          z-index:-1;
+        }   
