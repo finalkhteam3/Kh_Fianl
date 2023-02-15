@@ -25,7 +25,7 @@ public interface MainService {
     /**
      * 메인화면에서 이슈 리스트를 가져오는 기능
      */
-    List<Issue> getIssueList(String id, int page, int selectNum, String keyword);
+    List<Issue> getIssueList(String id, Integer page, Integer selectNum, String keyword);
     List<Issue> getIssueList(String id);
 
     /**

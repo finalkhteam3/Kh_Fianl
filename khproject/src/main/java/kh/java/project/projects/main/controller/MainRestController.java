@@ -50,10 +50,10 @@ public class MainRestController {
 //    }
     @GetMapping("/issue/api")
     public ResponseEntity<List<Issue>> getIssueList(Principal principal,
-                                                    @RequestParam(required = false) int selectPage,
-                                                    @RequestParam(required = false) int selectNum,
+                                                    @RequestParam(required = false) Integer selectPage,
+                                                    @RequestParam(required = false) Integer selectNum,
                                                     @RequestParam(required = false) String keyword) {
-        System.out.println("1: "+selectPage+" 2: "+selectNum+" 3: "+keyword);
+//        System.out.println("1: "+selectPage+" 2: "+selectNum+" 3: "+keyword);
         List<Issue> issueList = service.getIssueList(principal.getName(), selectPage, selectNum, keyword);
         return ResponseEntity.ok(issueList);
     }
