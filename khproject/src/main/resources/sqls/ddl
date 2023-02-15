@@ -43,3 +43,193 @@ COMMENT ON COLUMN issue.ance_no IS '해당 이슈가 의존하는 상위 이슈'
 
 COMMENT ON COLUMN issue.progress IS '프로젝트 코드 + 진행도가 기본키';
 
+
+
+
+
+---김태원 ddl 문(외래키 제거 버전)---
+DROP TABLE all_authorities;
+DROP TABLE authorities;
+DROP TABLE icons;
+DROP TABLE progress_issue;
+DROP TABLE progress_project;
+DROP TABLE authorities_temp;
+DROP TABLE log;
+DROP TABLE issue_file;
+DROP TABLE issue_roadmap;
+DROP TABLE read;
+DROP TABLE Notify;
+DROP TABLE emoticon;
+DROP TABLE issue_like;
+DROP TABLE issue_comment;
+DROP TABLE issue;
+DROP TABLE Project;
+DROP TABLE Users;
+
+CREATE TABLE users(
+	id varchar(20) NOT NULL,
+	pwd varchar(50) NOT NULL,
+	name varchar(30) NOT NULL,
+	enable char(1) DEFAULT '1' NOT null,
+	email varchar(100) NOT NULL,
+	icon_path varchar(100) NOT NULL,
+	POSITION varchar(20) null
+);
+ALTER TABLE users ADD CONSTRAINT pk_users PRIMARY KEY (id);
+
+CREATE TABLE all_authorities(
+	id varchar(20) NOT NULL,
+	authority varchar(20) DEFAULT 'ROLE_MEMBER' NOT null
+);
+ALTER TABLE all_authorities ADD CONSTRAINT pk_all_authorities PRIMARY key(id);
+
+CREATE TABLE authorities(
+	id varchar(20) NOT NULL,
+	project_no varchar(5) NOT NULL,
+	authority varchar(20) DEFAULT 'ROLE_MEMBER' NOT NULL,
+	enable_date DATE null
+);
+ALTER TABLE authorities ADD CONSTRAINT pk_authorities PRIMARY key(id, project_no);
+
+
+CREATE TABLE project(
+	NO varchar(5) NOT NULL,
+	name varchar(20) NOT NULL,
+	info varchar(100) NOT NULL,
+	icon_path varchar(100) NOT null
+);
+ALTER TABLE project ADD CONSTRAINT pk_project PRIMARY key(no);
+
+CREATE TABLE icons(
+	NO number(3) NOT NULL,
+	img_path varchar(255) NOT NULL,
+	name varchar(50) NOT null
+);
+ALTER TABLE icons ADD CONSTRAINT pk_icons PRIMARY key(no);
+
+CREATE TABLE issue(
+	NO number(5) NOT NULL,
+	value NUMBER(1) NOT NULL,
+	project_no varchar(5) NOT NULL,
+	maker varchar(20) NOT NULL,
+	pic varchar(20) NULL,
+	ance_no number(5) NULL,
+	name varchar(20) NOT NULL,
+	content varchar(1000) NULL
+);
+ALTER TABLE issue ADD CONSTRAINT pk_issue PRIMARY KEY (NO, project_no);
+
+CREATE TABLE progress_issue(
+	project_no varchar(5) NOT NULL,
+	issue_no number(5) NOT NULL,
+	progress number(2) NOT NULL,
+	RANK number(4) DEFAULT 1 NOT null
+);
+ALTER TABLE progress_issue ADD CONSTRAINT pk_progress_issue PRIMARY KEY (project_no, issue_no, progress);
+
+CREATE TABLE progress_project(
+	progress number(2) NOT NULL,
+	project_no varchar(5) NOT NULL,
+	name varchar(20) NOT NULL,
+	RANK number(2) DEFAULT 1 NOT null
+);
+ALTER TABLE progress_project ADD CONSTRAINT pk_progress_project PRIMARY KEY (project_no, progress);
+
+CREATE TABLE issue_file(
+	issue_no number(5) NOT NULL,
+	project_no varchar(5) NOT NULL,
+	file_name varchar(20) NOT NULL,
+	file_path varchar(100) NOT null
+);
+ALTER TABLE issue_file ADD CONSTRAINT pk_issue_file PRIMARY KEY (issue_no, project_no, file_path);
+
+CREATE TABLE issue_comment(
+	seq number(3) NOT NULL,
+	project_no varchar(5) NOT NULL,
+	issue_no number(5) NOT NULL,
+	id varchar(20) NOT NULL,
+	content varchar(1000) NOT NULL
+);
+ALTER TABLE issue_comment ADD CONSTRAINT pk_issue_comment PRIMARY KEY (seq, project_no, issue_no);
+
+CREATE TABLE emoticon(
+	seq number(3) NOT NULL,
+	project_no varchar(5) NOT NULL,
+	issue_no number(5) NOT NULL,
+	id varchar(20) NOT NULL,
+	reaction varchar(20) NOT null
+);
+ALTER TABLE emoticon ADD CONSTRAINT pk_emoticion PRIMARY KEY (seq, project_no, issue_no, id, reaction);
+
+CREATE TABLE issue_roadmap(
+	issue_no number(5) NOT NULL,
+	project_no varchar(5) NOT NULL,
+	start_date DATE NOT NULL,
+	fin_date DATE NOT null
+);
+ALTER TABLE issue_roadmap ADD CONSTRAINT pk_issue_roadmap PRIMARY KEY (issue_no, project_no);
+
+CREATE TABLE read(
+	issue_no number(5) NOT NULL,
+	project_no varchar(5) NOT NULL,
+	id varchar(20) NOT null
+);
+ALTER TABLE READ ADD CONSTRAINT pk_read PRIMARY KEY (issue_no, project_no, id);
+
+CREATE TABLE authorities_temp(
+	email varchar(100) NOT NULL,
+	project_no varchar(5) NOT NULL,
+	name varchar(20) NOT NULL,
+	authority varchar(20) NOT NULL
+);
+ALTER TABLE authorities_temp ADD CONSTRAINT pk_authorities_temp PRIMARY KEY (project_no, email);
+
+CREATE TABLE issue_like(
+	id varchar(20) NOT NULL,
+	issue_no number(5) NOT NULL,
+	project_no varchar(5) NOT NULL
+);
+ALTER TABLE issue_like ADD CONSTRAINT pk_issue_like PRIMARY KEY (id, issue_no, project_no);
+
+CREATE TABLE notify(
+	category varchar(20) NOT NULL,
+	state varchar(20) NOT NULL,
+	content varchar(1000) NOT NULL,
+	watcher varchar(20) NOT NULL,
+	issue_no number(5) NOT NULL,
+	value number(1) NOT NULL,
+	project_no varchar(5) NOT NULL,
+	executor varchar(20) NOT NULL,
+	READ number(1) DEFAULT 0 NOT null
+);
+
+CREATE TABLE log(
+	category varchar(20) NOT NULL,
+	state varchar(20) NOT NULL,
+	BEFORE varchar(1000) NULL,
+	AFTER varchar(1000) NULL,
+	issue_no number(5) NOT NULL,
+	issue_value number(1) NOT NULL,
+	project_no varchar(5) NOT NULL,
+	executor varchar(20) NOT NULL
+);
+
+
+//로그, 알림 제외한 foreign key
+
+ALTER TABLE all_authorities ADD CONSTRAINT fk_users_to_all_authorities FOREIGN key(id) references users(id);
+ALTER TABLE authorities ADD CONSTRAINT fk_users_to_authorities FOREIGN key(id) REFERENCES users(id);
+ALTER TABLE authorities ADD CONSTRAINT fk_project_to_authorities FOREIGN key(project_no) REFERENCES project(no);
+ALTER TABLE issue ADD CONSTRAINT fk_project_to_issue FOREIGN key(project_no) REFERENCES project(no);
+ALTER TABLE progress_project ADD CONSTRAINT fk_project_to_progress_project FOREIGN KEY(project_no) REFERENCES project(no);
+ALTER TABLE progress_issue ADD CONSTRAINT fk_progress_issue_to_issue FOREIGN key(project_no, issue_no) REFERENCES issue(project_no, NO);
+ALTER TABLE progress_issue ADD CONSTRAINT fk_progress_project_to_issue FOREIGN key(project_no, progress) REFERENCES progress_project(project_no, progress);
+ALTER TABLE issue_file ADD CONSTRAINT fk_issue_to_issue_file FOREIGN key(issue_no, project_no) REFERENCES issue(no, project_no);
+ALTER TABLE issue_comment ADD CONSTRAINT fk_issue_to_issue_comment FOREIGN key(issue_no, project_no) REFERENCES issue(NO, project_no);
+ALTER TABLE issue_comment ADD CONSTRAINT fk_users_to_issue_comment FOREIGN key(id) REFERENCES users(id);
+ALTER TABLE emoticon ADD CONSTRAINT fk_comment_to_emoticon FOREIGN key(seq, project_no, issue_no) references issue_comment(seq, project_no, issue_no	);
+ALTER TABLE emoticon ADD CONSTRAINT fk_users_to_emoticon FOREIGN key(id) REFERENCES users(id);
+ALTER TABLE issue_roadmap ADD CONSTRAINT fk_issue_to_roadmap FOREIGN key(issue_no, project_no) REFERENCES issue(NO, project_no);
+ALTER TABLE READ ADD CONSTRAINT fk_issue_to_read FOREIGN KEY(issue_no, project_no) REFERENCES issue(NO, project_no);
+ALTER TABLE READ ADD CONSTRAINT fk_users_to_read FOREIGN key(id) REFERENCES users(id);
+ALTER TABLE authorities_temp ADD CONSTRAINT fk_authorities_to_temp FOREIGN key(project_no) REFERENCES project(NO);

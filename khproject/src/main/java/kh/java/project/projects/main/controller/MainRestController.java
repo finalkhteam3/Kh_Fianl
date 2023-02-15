@@ -53,7 +53,8 @@ public class MainRestController {
                                                     @RequestParam(required = false) Integer selectPage,
                                                     @RequestParam(required = false) Integer selectNum,
                                                     @RequestParam(required = false) String keyword) {
-//        System.out.println("1: "+selectPage+" 2: "+selectNum+" 3: "+keyword);
+        System.out.println("123123123123");
+        System.out.println("1: "+selectPage+" 2: "+selectNum+" 3: "+keyword);
         List<Issue> issueList = service.getIssueList(principal.getName(), selectPage, selectNum, keyword);
         return ResponseEntity.ok(issueList);
     }

@@ -4,6 +4,7 @@ import kh.java.project.projects.dto.param.Comment;
 import kh.java.project.projects.dto.param.File;
 import kh.java.project.projects.dto.param.Issue;
 import kh.java.project.projects.dto.param.Log;
+import kh.java.project.projects.issue.mapper.IssueMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,11 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class IssueServiceImpl implements IssueService{
-
+	private final IssueMapper mapper;
+	
     @Override
     public Issue getIssue(String projectNo, int issueNo, int value) {
-        return null;
+        return mapper.getIssue(projectNo, issueNo, value);
     }
 
     @Override

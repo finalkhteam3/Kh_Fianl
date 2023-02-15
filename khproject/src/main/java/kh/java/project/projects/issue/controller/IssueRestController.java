@@ -26,7 +26,7 @@ public class IssueRestController {
     public ResponseEntity<Issue> getIssue(@PathVariable String projectNo,
                                           @PathVariable int issueNo,
                                           Principal principal,
-                                          int value) {
+                                      	@RequestParam(name = "value", required = false, defaultValue = "2") int value) {
         Issue issue = service.getIssue(projectNo, issueNo, value);
         return ResponseEntity.ok(issue);
     }

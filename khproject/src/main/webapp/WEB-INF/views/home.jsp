@@ -25,6 +25,7 @@
 <!-- endinject -->
 <link rel="shortcut icon" href="/resources/skydashTemp/images/logo_mini.png"/>
 <link rel="stylesheet" href="/resources/css/issuecreate.css"/>
+<link rel="stylesheet" href="/resources/css/issuedetail.css"/>
 <script>
     const error = (str) => {
         if (str === '300')
@@ -49,7 +50,9 @@
         </div>
         <jsp:include page="/WEB-INF/views/component/footer.jsp"/>
         <jsp:include page="/WEB-INF/views/issue/issuecreate.jsp"/>
+         <jsp:include page="/WEB-INF/views/issue/issuedetail.jsp"/>
     </div>
+
 </div>
 </body>
 </html>
