@@ -145,7 +145,7 @@ body {
 }
 </style>
 <script>
-    $(function to_ajax() {
+    $(function show_project() {
         $.ajax({
             type: 'GET',
             url: "<%=request.getContextPath()%>/work/project/api",
@@ -174,6 +174,7 @@ body {
         })
     })
 
+    
 </script>
 
 <body>
@@ -262,52 +263,52 @@ body {
 	<script src="/resources/skydashTemp/js/Chart.roundedBarCharts.js"></script>
 	<!-- End custom js for this page-->
 	<script>
-function to_tab(num) {
-    $.ajax({
-        type: 'GET',
-        url: "<%=request.getContextPath()%>/work/issue/api",
-        contentType: false,
-        processData: false,
-        success: function (data) {
-            console.log(data);
-            var ctabName = ".tab_"+num;
-            var tabName = "tab_"+num;
-            var html = "";
-            $(ctabName).empty();
-            if (data !== undefined) {
-                data.forEach((delta) => {
-                    html +=
-                        '<div class="'+tabName+'">' + 
-                        '<div><p>아이콘</p>' +
-                        /* '<div>' + JSON.stringify(delta) + '<br/></div>' + */
-                        '<div>' + delta.no + '<br/></div>' +
-                        '<div>' + delta.value + '<br/></div>' +
-                        '<div>' + delta.name + '<br/></div>' +
-                        '<div>' + delta.projectNo + '<br/></div>' +
-                        '</div>'
-
-                })
-                $(ctabName).html(html);
-            }
-        }
-    })
-}
-
-function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    $(".tabcontent").css("display", "none");
-	$(".tablinks").removeClass("active");
+	function to_tab(num) {
+	    $.ajax({
+	        type: 'GET',
+	        url: "<%=request.getContextPath()%>/work/issue/api",
+	        contentType: false,
+	        processData: false,
+	        success: function (data) {
+	            console.log(data);
+	            var ctabName = ".tab_"+num;
+	            var tabName = "tab_"+num;
+	            var html = "";
+	            $(ctabName).empty();
+	            if (data !== undefined) {
+	                data.forEach((delta) => {
+	                    html +=
+	                        '<div class="'+tabName+'">' + 
+	                        '<div><p>아이콘</p>' +
+	                        /* '<div>' + JSON.stringify(delta) + '<br/></div>' + */
+	                        '<div>' + delta.no + '<br/></div>' +
+	                        '<div>' + delta.value + '<br/></div>' +
+	                        '<div>' + delta.name + '<br/></div>' +
+	                        '<div>' + delta.projectNo + '<br/></div>' +
+	                        '</div>'
 	
-	tabName = "#"+tabName;
-	$(tabName).css("display", "block");
-	$(evt.target).addClass("active");
-	$(".tablinks").each(function(idx){
-		if($(this).hasClass("active")){
-			to_tab(idx+1);
-		}
-	});
+	                })
+	                $(ctabName).html(html);
+	            }
+	        }
+	    })
+	}
 
-}
+	function openTab(evt, tabName) {
+	    var i, tabcontent, tablinks;
+	    $(".tabcontent").css("display", "none");
+		$(".tablinks").removeClass("active");
+		
+		tabName = "#"+tabName;
+		$(tabName).css("display", "block");
+		$(evt.target).addClass("active");
+		$(".tablinks").each(function(idx){
+			if($(this).hasClass("active")){
+				to_tab(idx+1);
+			}
+		});
+	
+	}
     /* function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
