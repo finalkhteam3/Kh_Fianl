@@ -238,10 +238,10 @@
             }
         });
     }
-    function make_issue(issueName, progress){
+    function make_issue(e, f){
         console.log("asdf");
         console.log(f);
-        const pushParam = {value: 2, name: issueName, progress: parseInt(progress)}
+        const pushParam = {value: 2, name: e, progress: parseInt(f)}
         console.log(pushParam);
         issueList.push(pushParam);
         make_view();

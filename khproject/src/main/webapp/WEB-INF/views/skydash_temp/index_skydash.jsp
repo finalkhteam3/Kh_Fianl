@@ -263,6 +263,7 @@ body {
 	<!-- End custom js for this page-->
 	<script>
 function to_tab(num) {
+    console.log("ㅅㄷㄴㅅ")
     $.ajax({
         type: 'GET',
         url: "<%=request.getContextPath()%>/work/issue/api",
