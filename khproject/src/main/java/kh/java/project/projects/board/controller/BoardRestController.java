@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -45,8 +46,9 @@ public class BoardRestController {
 	}
 
 	@PostMapping("/issue/api")
-	public HttpStatus createIssue(@PathVariable String projectNo, CreateIssueRequest request,
+	public HttpStatus createIssue(@PathVariable String projectNo, @RequestBody CreateIssueRequest request,
 			Principal principal) {
+		System.out.println(request);
 		service.createIssue(request, projectNo, principal.getName());
 		return HttpStatus.OK;
 	}

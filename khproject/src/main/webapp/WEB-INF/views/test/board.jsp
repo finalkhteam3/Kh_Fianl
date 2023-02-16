@@ -182,6 +182,40 @@
             })
         }
     }
+    <%--function createIssue() {--%>
+    <%--    console.log($("#frmCreate").serialize());--%>
+    <%--    var projectno = $("#project").val();--%>
+    <%--    $.ajax({--%>
+    <%--        type: 'POST',--%>
+    <%--        url: "<%=request.getContextPath()%>/work/"+projectno+"/issue/api",--%>
+    <%--        data: $("#frmCreate").serialize(),--%>
+    <%--        //contentType: false,--%>
+    <%--        success: function (data) {--%>
+    <%--            console.log(data);--%>
+    <%--            console.log("이슈만들기 성공");--%>
+    <%--            modalOff();--%>
+    <%--            location.reload();--%>
+    <%--        }--%>
+    <%--    })--%>
+    <%--}--%>
+    function createIssue(e){
+        const projectNo = "KHF3";
+        console.log(projectNo);
+        console.log(e);
+        $.ajax({
+            type: 'POST',
+            url: "/work/"+projectNo+"/issue/api",
+            // contentType: false,
+            processData: false,
+            datatype: 'json',
+            contentType: "application/json",
+            data: e,
+            success: function (data) {
+                console.log(data);
+                make_view();
+            }
+        });
+    }
     function check_console(){
         console.log(progressList);
         console.log("실행")
@@ -241,10 +275,15 @@
     function make_issue(e, f){
         console.log("asdf");
         console.log(f);
-        const pushParam = {value: 2, name: e, progress: parseInt(f)}
+        const formData = new FormData();
+        formData.append("value", "2");
+        formData.append("maker", "tuu523");
+        formData.append("name", e);
+        formData.append("progress", f);
+        const pushParam = JSON.stringify({value: 2, name: e, progress: parseInt(f), maker: "tuu523"})
         console.log(pushParam);
         issueList.push(pushParam);
-        make_view();
+        createIssue(pushParam);
     }
 </script>
 <body>
