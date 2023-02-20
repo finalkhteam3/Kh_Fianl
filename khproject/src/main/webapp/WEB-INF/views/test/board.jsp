@@ -171,7 +171,8 @@
                         const ele = document.getElementsByClassName('color-tt-in')[element[i].children[1].dataset.rank - 1];
                         ele.innerHTML +=
                             '<div class="progress-stat">'+
-                            '<div id="'+"issueRank::"+delta.no+'" class="boxt" data-no="'+delta.no+'" data-index="'+(i+1)+'" ondrop="drop_issue(event)" draggable="true" ondragstart="dragStart(event)">' +
+                            '<div id="'+"issueRank::"+delta.no+'" class="boxt" data-no="'+delta.no+'" data-index="'+(i+1)+'" '+
+                            ' onclick="click_issue(this);"	ondrop="drop_issue(event)" draggable="true" ondragstart="dragStart(event)" > ' +
                             '<div>' + delta.name + '</div>' +
                             '<div>' + delta.progress + '</div>' +
                             // '<div>' + delta.no + '<br/></div>' +
@@ -216,6 +217,31 @@
             }
         });
     }
+    function detail_issue(issueNo){
+    	let projectNo = $("#projectNo").text(); 
+    	$.ajax({
+            type: 'GET',
+            url: "<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo+"/issue/api",
+           // data: {"value": 2},
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                console.log(data);    
+                document.getElementById("modal_issue").style.display="block";
+                
+            }
+        })
+    }
+
+    
+    function click_issue(targetEle){
+        console.log(targetEle.id);
+        console.log("모달 띄우기");
+        console.log(targetEle.dataset.no);
+        detail_issue(targetEle.dataset.no);
+        // 모달 띄우기
+    }
+
     function check_console(){
         console.log(progressList);
         console.log("실행")
