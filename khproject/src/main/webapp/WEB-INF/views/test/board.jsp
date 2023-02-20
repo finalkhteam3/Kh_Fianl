@@ -124,9 +124,11 @@
     var progressList = [];
     var issueList = [];
     $(function to_ajax() {
+    	var projectNo = $("#projectNo").text(); 
         $.ajax({
             type: 'GET',
-            url: "/board/api1",
+//            url: "/board/api1",
+            url: "<%=request.getContextPath()%>/work/"+projectNo+"/issue/api",
             contentType: false,
             processData: false,
             success: function (data) {
@@ -200,7 +202,8 @@
     <%--    })--%>
     <%--}--%>
     function createIssue(e){
-        const projectNo = "KHF3";
+        //const projectNo = "KHF3";
+        var projectNo = $("#projectNo").text(); 
         console.log(projectNo);
         console.log(e);
         $.ajax({
@@ -217,21 +220,7 @@
             }
         });
     }
-    function detail_issue(issueNo){
-    	let projectNo = $("#projectNo").text(); 
-    	$.ajax({
-            type: 'GET',
-            url: "<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo+"/issue/api",
-           // data: {"value": 2},
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                console.log(data);    
-                document.getElementById("modal_issue").style.display="block";
-                
-            }
-        })
-    }
+
 
     
     function click_issue(targetEle){
@@ -319,7 +308,7 @@
             <ul class="flex-box margin-l-s">
                 <li>프로젝트</li>
                 <li>/</li>
-                <li id="projectNo">samp</li>
+                <li id="projectNo">KHF3</li>
             </ul>
         </div>
         <div class="b-box">

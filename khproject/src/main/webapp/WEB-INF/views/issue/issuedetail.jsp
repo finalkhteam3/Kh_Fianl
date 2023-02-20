@@ -2,13 +2,13 @@
 	pageEncoding="UTF-8"%>
 
 	<div id="root">
-		<button type="button" id="modal_opne_btn">모달 창 열기</button>
+		<button type="button" id="modal_open_btn" style="display: none">모달창열기</button>
 		<div id="modal_issue">
 			<div class="modal_content">
 				<div class="issuedetail">
 					<div id="left">
-						<p>issue</p>
-						<h2>title</h2>
+						<p class= projectNo>issue</p>
+						<h2 class= name>title</h2>
 						<button id=btn_1>첨부</button>
 						<button id=btn_2>하위 이슈 추가</button>
 						<button id=btn_3>이슈 연결</button>
@@ -41,8 +41,14 @@
 									정보</button>
 							</div>
 							<div id="block">
-								<p>보고자</p>
-								<p>담당자</p>
+								<div>
+									<p>보고자</p>
+									<p class="maker">todo</p>
+								</div>
+								<div>
+									<p>담당자</p>
+									<p class="pic">할당되지않음</p>
+								</div>
 								<p>Automation</p>
 							</div>
 							<div>
@@ -58,17 +64,39 @@
 						</div>
 					</div>
 			</div>
-			
-			<script>
-    document.getElementById("modal_opne_btn").onclick = function() {
+<script>
+function detail_issue(issueNo){
+	var projectNo = $("#projectNo").text(); 
+	$.ajax({
+        type: 'GET',
+        url: "<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo+"/issue/api",
+       // data: {"value": 2},
+        contentType: false,
+        processData: false,
+        success: function (data) {
+        	console.log(data); 
+            console.log(data.pic);   
+            $("#modal_issue .projectNo").html(data.projectNo);
+            $("#modal_issue .pic").html(data.pic);
+            $("#modal_issue .maker").html(data.maker);
+            $("#modal_issue .name").html(data.name);
+            document.getElementById("modal_issue").style.display="block";
+            
+        }
+    })
+}
+
+</script>
+	<script>
+    document.getElementById("modal_open_btn").onclick = function() {
         document.getElementById("modal_issue").style.display="block";
     }
    
     document.getElementById("modal_close_btn").onclick = function() {
         document.getElementById("modal_issue").style.display="none";
     }   
-    </script>
-    <script>
+   </script>
+<script>
     function myFunction() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
