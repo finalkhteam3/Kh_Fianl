@@ -100,10 +100,27 @@ body {
 		<div
 			class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 			<div class="navbar2">
-				<a href="#home">Home</a> <a href="#news">News</a>
 				<div class="dropdown">
 					<button class="dropbtn" onclick="dropbtn()">
 						내 작업 <i class="fa fa-caret-down"></i>
+					</button>
+					<div style="display: none;" class="dropdown-content" id="dropdown-content">
+						<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link
+							3</a>
+					</div>
+				</div>
+				<div class="dropdown">
+					<button class="dropbtn" onclick="dropbtn()">
+						프로젝트 <i class="fa fa-caret-down"></i>
+					</button>
+					<div style="display: none;" class="dropdown-content" id="dropdown-content">
+						<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link
+							3</a>
+					</div>
+				</div>
+				<div class="dropdown">
+					<button class="dropbtn" onclick="dropbtn()">
+						사용자 <i class="fa fa-caret-down"></i>
 					</button>
 					<div style="display: none;" class="dropdown-content" id="dropdown-content">
 						<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 <!-- Required meta tags -->
@@ -193,7 +193,7 @@ body {
 									<h3 class="font-weight-bold">내 작업</h3>
 									<h6 class="font-weight-normal mb-0">최근 프로젝트</h6>
 									<h6 class="font-weight-normal mb-0">
-										<a href="#">모든 프로젝트 보기</a>
+										<a href="${pageContext.request.contextPath}/jira/projects">모든 프로젝트 보기</a>
 									</h6>
 
 									<div class="recent_project_bg"></div>

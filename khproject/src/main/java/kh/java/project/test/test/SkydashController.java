@@ -17,4 +17,8 @@ public class SkydashController {
 	public String getIndexPage() {
 		return "skydash_temp/index_skydash";
 	}
+	@GetMapping("/jira/projects")
+	public String projects() {
+		return "skydash_temp/all_projects";
+	}
 }
