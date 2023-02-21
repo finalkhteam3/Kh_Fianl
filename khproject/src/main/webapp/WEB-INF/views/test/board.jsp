@@ -290,13 +290,12 @@
     function make_issue(e, f){
         console.log("asdf");
         console.log(f);
-        const formData = new FormData();
-        formData.append("value", "2");
-        formData.append("maker", "tuu523");
-        formData.append("name", e);
-        formData.append("progress", f);
+        // const formData = new FormData();
+        // formData.append("value", "2");
+        // formData.append("maker", "tuu523");
+        // formData.append("name", e);
+        // formData.append("progress", f);
         const pushParam = JSON.stringify({value: 2, name: e, progress: parseInt(f), maker: "tuu523"})
-        console.log(pushParam);
         issueList.push(pushParam);
         createIssue(pushParam);
     }
