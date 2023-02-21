@@ -26,7 +26,18 @@
 <!-- endinject -->
 </head>
 <style>
-.all_projects {
+table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-top: 10px;
+}
+
+td {
+	border: 1px solid black;
+	padding: 3px 5px;
+	text-aligh: center;
+}
+/* .all_projects {
 	width: 100%;
 	background-color: #FAFBFC;
 	margin-bottom: 100px auto;
@@ -37,7 +48,7 @@
 	background-color: white;
 	margin: 5px;
 	float: left;
-}
+} */
 </style>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script>
@@ -45,28 +56,25 @@
         $.ajax({
             type: 'GET',
             url: "<%=request.getContextPath()%>/work/project/api",
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                console.log(data)
-                const element = document.getElementsByClassName('all_projects')[0];
-                if (data !== undefined) {
-                    data.forEach((delta) => {
-                        element.innerHTML +=
-                            '<div class="all_projects_list">' +
-                            '<div>' + delta.iconPath + '</div>' +
-                            '<div>' + delta.name + '</div>' +
-                            '<div>' + delta.info + '</div>' +
-                            /* '<div>' + [리드] + '</div>' + */
-                            '</div>'
-
-                    })
-                }
-            }
-        })
-    })
-
-    
+			success : function(data) {
+				console.log(data)
+				var projectList = data;
+				var tr = "<thead>" + "<tr>"
+				+ "<td>★</td>"
+				+ "<td>이름</td>" + "<td>키</td>" + "<td>유형</td>"
+				+ "<td>리드</td>"
+				+ "<td>(더보기)</td>" 
+				+ "</tr>";
+				+"</thead>";
+				$.each(projectList, function(i) {
+					tr += "<td>" + "별표" +  "</td><td>" + projectList[i].name + "</td><td>"
+							+ projectList[i].no + "</td><td>"+ projectList[i].info + "</td><td>"
+							+ "리드 이름" + "</td><td>" + "더보기메뉴" + "</td></tr>";
+				});
+				$("#projectList").append(tr);
+			}
+		})
+	})
 </script>
 <body>
 	<div class="container-scroller">
@@ -99,7 +107,8 @@
 								</div>
 							</div>
 
-							<div class="all_projects"></div>
+							<div id="projectList"></div>
+							<!-- <div class="all_projects"></div> -->
 
 							<!-- <table>
 								<thead>
