@@ -88,7 +88,7 @@
 
 		<div>
 
-			<button onclick="createIssue();" class="right-tab" type="button"
+			<button onclick="createIssue2();" class="right-tab" type="button"
 				tabindex="0">
 				<span class="">만들기</span>
 			</button>
@@ -102,13 +102,25 @@
 </div>
 
 <script>
-	function createIssue() {
-		console.log($("#frmCreate").serialize());
+	function createIssue2() {
+	
+		
+		var frmObj = {
+			project : $("#project").val(),
+			value : $("#value").val(),
+			progress : $("#progress").val(),
+			name : $("#content").val(),
+			pic : $("#pic").val(),
+			anceNo : $("#anceNo").val(),
+		};
+
+		console.log(JSON.stringify(frmObj));
 		var projectno = $("#project").val();
 		$.ajax({
             type: 'POST',
             url: "<%=request.getContextPath()%>/work/"+projectno+"/issue/api",
-            data: $("#frmCreate").serialize(),
+            data: JSON.stringify(frmObj),
+            contentType: "application/json",
             //contentType: false,
             success: function (data) {
                 console.log(data);     

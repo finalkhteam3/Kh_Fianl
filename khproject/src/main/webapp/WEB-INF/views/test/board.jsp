@@ -120,6 +120,7 @@
 
     }
 </style>
+<body>
 <script>
 $.ajax({
     type: 'GET',
@@ -142,6 +143,7 @@ $.ajax({
 
     var progressList = [];
     var issueList = [];
+    
     function to_ajax() {
     	var projectNo = $("#projectNo").text(); 
         $.ajax({
@@ -226,6 +228,7 @@ $.ajax({
         var projectNo = $("#projectNo").text(); 
         console.log(projectNo);
         console.log(e);
+       
         $.ajax({
             type: 'POST',
             url: "/work/"+projectNo+"/issue/api",
@@ -236,6 +239,8 @@ $.ajax({
             data: e,
             success: function (data) {
                 console.log(data);
+                console.log(progressList);
+                console.log(issueList);
                 make_view();
             }
         });
@@ -287,6 +292,17 @@ $.ajax({
         if(alreadyMake !== null){
             console.log(alreadyMake.parentElement);
             $(alreadyMake.parentElement).remove();
+            document.removeEventListener("keydown", handlerKeydown);
+        }
+    }
+    function handlerKeydown(event){
+    	console.log("keydown");
+    	const alreadyMake = document.getElementById("make_issue");
+        if(alreadyMake !== null){
+        	console.log("alreadyMake esc");
+            if (event.keyCode === 27 || event.which === 27) {
+                check_issue_button();
+            }
         }
     }
     function make_issue_button(e){
@@ -296,16 +312,13 @@ $.ajax({
             '<input type="text" id="make_issue"/>'+
             '</div>'
         const issue = document.getElementById("make_issue");
+            
         issue.addEventListener("keyup", function (event){
             if (event.keyCode === 13) {
                 make_issue(issue.value, e.dataset.index);
             }
         });
-        document.addEventListener("keydown", function(event){
-            if (event.keyCode === 27 || event.which === 27) {
-                check_issue_button();
-            }
-        });
+        document.addEventListener("keydown", handlerKeydown);
     }
     function make_issue(e, f){
         console.log("asdf");
@@ -315,8 +328,9 @@ $.ajax({
         // formData.append("maker", "tuu523");
         // formData.append("name", e);
         // formData.append("progress", f);
-        const pushParam = JSON.stringify({value: 2, name: e, progress: parseInt(f), maker: "tuu523"})
-        issueList.push(pushParam);
+        const param = {value: 2, name: e, progress: parseInt(f), maker: "tuu523"};
+        const pushParam = JSON.stringify(param);
+        issueList.push(param);
         createIssue(pushParam);
     }
 	function changeProject2() {
@@ -349,7 +363,7 @@ $.ajax({
 		to_ajax();
 	}
 </script>
-<body>
+
 <div class="color-tl-wrap">
     <div class="color-tl">
         <div class="w-box">
