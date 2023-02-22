@@ -37,6 +37,10 @@ td {
 	padding: 3px 5px;
 	text-aligh: center;
 }
+.icon_style{
+	height: 24px;
+	width: 24px;
+}
 /* .all_projects {
 	width: 100%;
 	background-color: #FAFBFC;
@@ -67,9 +71,9 @@ td {
 				+ "</tr>";
 				+"</thead>";
 				$.each(projectList, function(i) {
-					tr += "<td>" + "별표" +  "</td><td>" + projectList[i].name + "</td><td>"
+					tr += "<td>" + "별표" +  "</td><td>" + '<img src="/resources/skydashTemp/images/icon_project1.svg" class="icon_style">' + projectList[i].name + "</td><td>"
 							+ projectList[i].no + "</td><td>"+ projectList[i].info + "</td><td>"
-							+ "리드 이름" + "</td><td>" + "더보기메뉴" + "</td></tr>";
+							+ "리드 이름" + "</td><td>" + '<img src="/resources/skydashTemp/images/meatball_menu.png" class="icon_style">' + "</td></tr>";
 				});
 				$("#projectList").append(tr);
 			}

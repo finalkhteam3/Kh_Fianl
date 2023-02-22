@@ -158,7 +158,8 @@ body {
                     data.forEach((delta) => {
                         element.innerHTML +=
                             '<div class="recent_project">' +
-                            '<div>' + delta.iconPath + '<br/></div>' +
+                            '<img src="/resources/skydashTemp/images/icon_project1.svg" width="24px" height="24px">' +
+                            /* '<div>' + delta.iconPath + '<br/></div>' + */
                             '<div>' + delta.name + '<br/></div>' +
                             '<div>' + delta.info + '<br/></div>' +
                             '<div>빠른 연결<br/></div>' +
@@ -279,12 +280,14 @@ body {
 	                data.forEach((delta) => {
 	                    html +=
 	                        '<div class="'+tabName+'">' + 
-	                        '<div><p>아이콘</p>' +
+	                        '<img src="/resources/skydashTemp/images/icon_issue1.svg">' +
 	                        /* '<div>' + JSON.stringify(delta) + '<br/></div>' + */
-	                        '<div>' + delta.no + '<br/></div>' +
-	                        '<div>' + delta.value + '<br/></div>' +
-	                        '<div>' + delta.name + '<br/></div>' +
-	                        '<div>' + delta.projectNo + '<br/></div>' +
+	                        '<span><h5>' + delta.name + '</h5></span>' +
+	                        /* '<span>' + delta.no + '</span>' +
+	                        '<span>' + delta.value + '</span>' + */
+	                        '<span>' + delta.maker + '</span>' +
+	                        '<span>' + delta.pic + '</span>' +
+	                        '<span>' + delta.projectNo + '</span>' +
 	                        '</div>'
 	
 	                })
