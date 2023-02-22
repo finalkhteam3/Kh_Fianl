@@ -121,9 +121,28 @@
     }
 </style>
 <script>
+$.ajax({
+    type: 'GET',
+    url: "<%=request.getContextPath()%>/work/project/api",
+    contentType: false,
+    processData: false,
+    success: function (data) {
+        console.log(data);                
+        if (data !== undefined) {
+        	 	html = '<option value="">프로젝트</option>';
+            data.forEach((delta) => {
+            	html +=
+                  '<option value="'+ delta.no +'">'+delta.name+'</option>';
+            })
+     	  	$('#project2').html(html);
+        }
+    }
+})
+
+
     var progressList = [];
     var issueList = [];
-    $(function to_ajax() {
+    function to_ajax() {
     	var projectNo = $("#projectNo").text(); 
         $.ajax({
             type: 'GET',
@@ -141,7 +160,8 @@
                 }
             }
         })
-    })
+    }
+    $(to_ajax);
     function make_view(){
         const element = document.getElementsByClassName('color-tt-wrap')[0];
         $(element).empty();
@@ -299,6 +319,35 @@
         issueList.push(pushParam);
         createIssue(pushParam);
     }
+	function changeProject2() {
+		var projectno = $("#project2").val();
+    	$('#projectNo').text(projectno);
+		console.log(projectno);
+		$.ajax({
+		    type: 'GET',
+		    url: "<%=request.getContextPath()%>/work/project/api",
+		    contentType: false,
+		    processData: false,
+		    success: function (data) {
+		        console.log(data);                
+		        if (data !== undefined) {
+		        	 	html = '<option value="">프로젝트</option>';
+		            data.forEach((delta) => {
+		            	if(delta.no == projectno){
+		            		html +=
+				                  '<option value="'+ delta.no +'" selected>'+delta.name+'</option>';
+		            	}else {
+		            		html +=
+				                  '<option value="'+ delta.no +'">'+delta.name+'</option>';
+		            	}
+		            	
+		            })
+		     	  	$('#project2').html(html);
+		        }
+		    }
+		})
+		to_ajax();
+	}
 </script>
 <body>
 <div class="color-tl-wrap">
@@ -315,6 +364,13 @@
                 <li><h3>KH3 보드</h3></li>
                 <li>아이콘 아이콘 아이콘</li>
             </ul>
+            <div>
+				<label for="project2">프로젝트</label>
+				<div class="dropdown">
+					<select id="project2" name="project2" onchange="changeProject2();">
+					</select>
+				</div>
+			</div>
         </div>
         <div class="b-box flex-box e-box aib">
             <ul class="flex-box">

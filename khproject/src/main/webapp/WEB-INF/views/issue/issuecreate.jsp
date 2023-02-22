@@ -121,6 +121,7 @@
 	
 	function changeProject() {
 		var projectno = $("#project").val();
+    	$('#projectNo').text(projectno);
 		console.log(projectno);
 		$.ajax({
             type: 'GET',
@@ -143,6 +144,7 @@
                 			'<option value="'+ delta.progress +'">'+delta.name+'</option>';
                 	})
                 	$('#progress').html(html);
+
                 }
             }
             
