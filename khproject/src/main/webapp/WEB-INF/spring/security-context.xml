@@ -10,6 +10,7 @@
     <!-- http 설정 -->
     <security:http>
         <security:csrf disabled="true"/>
+        <security:intercept-url method="GET" pattern="/" access="isAuthenticated()"/>
         <security:intercept-url method="GET" pattern="/all" access="permitAll()"/>
         <security:intercept-url method="GET" pattern="/member" access="isAuthenticated()"/>
         <security:intercept-url method="GET" pattern="/admin" access="isAuthenticated()"/>

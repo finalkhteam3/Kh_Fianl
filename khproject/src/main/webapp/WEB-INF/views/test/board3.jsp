@@ -365,7 +365,7 @@
                 if (data !== undefined) {
                     html = '<option value="">프로젝트</option>';
                     data.forEach((delta) => {
-                        if (delta.no == projectno) {
+                        if (delta.no === projectno) {
                             html +=
                                 '<option value="' + delta.no + '" selected>' + delta.name + '</option>';
                         } else {
