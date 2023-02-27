@@ -33,6 +33,7 @@
     }
 </script>
 <body>
+${projectNo}
 <c:if test="${param.error != null}">
     <script>
         error(`${param.error}`);

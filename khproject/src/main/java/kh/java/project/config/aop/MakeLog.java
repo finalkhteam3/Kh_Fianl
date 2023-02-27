@@ -28,8 +28,10 @@ public class MakeLog {
                 System.out.println("\t>> null");
             }
             Object ro = joinPoint.proceed();
-            System.out.println("[" + joinPoint.getSignature().getName() + "Controller Return Info] ");
-            System.out.println("\t>> type: " + ro.getClass().getSimpleName() + ", value: " + ro);
+            if(ro != null) {
+                System.out.println("[" + joinPoint.getSignature().getName() + "Controller Return Info] ");
+                System.out.println("\t>> type: " + ro.getClass().getSimpleName() + ", value: " + ro);
+            }
             return ro;
         } finally {
 //            System.out.println("\tend = " + joinPoint.getSignature());
