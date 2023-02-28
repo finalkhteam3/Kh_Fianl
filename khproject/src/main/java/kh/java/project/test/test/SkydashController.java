@@ -21,4 +21,8 @@ public class SkydashController {
 	public String projects() {
 		return "skydash_temp/all_projects";
 	}
+	@GetMapping("/jira/cptest")
+	public String createProject() {
+		return "skydash_temp/create_project";
+	}
 }
