@@ -5,10 +5,10 @@
     <select id="getIssues"
             resultType="kh.java.project.projects.dto.param.Issue">
         select * from issue where project_No = #{projectNo}
-        <if test="id != null and id != '' ">
+        <if test="id != null and id neq ''">
             and (maker = #{id} or pic = #{id})
         </if>
-        <if test="keyword != null and keyword != '' ">
+        <if test="keyword != null and keyword neq ''">
             and name LIKE '%' || #{keyword}|| '%'
         </if>
 
@@ -33,17 +33,17 @@
         #{request.value},
         #{projectNo},
         #{request.name},
-        #{id},
+        #{id}, 
         <choose>
-            <when test="request.pic != null and request.pic != ' ' ">
+            <when test="request.pic != null and request.pic neq ''">
                 #{request.pic},
             </when>
             <otherwise>
-                'null',
+                null,
             </otherwise>
         </choose>
         <choose>
-            <when test="request.anceNo != null and request.anceNo != ' ' ">
+            <when test="request.anceNo != null">
                 #{request.anceNo},
             </when>
             <otherwise>
