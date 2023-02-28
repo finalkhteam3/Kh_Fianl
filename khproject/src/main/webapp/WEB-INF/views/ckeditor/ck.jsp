@@ -27,7 +27,7 @@
 <script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
 			CKEDITOR.replace('ckContent',
  			{filebrowserUploadUrl:'imageUpload.do',
-			{filebrowserUploadUrl:"https://firebasestorage.googleapis.com/v0/b/kh-fi3.appspot.com/o/"
+			//{filebrowserUploadUrl:"https://firebasestorage.googleapis.com/v0/b/kh-fi3.appspot.com/o/"
 			});
 		</script>
 

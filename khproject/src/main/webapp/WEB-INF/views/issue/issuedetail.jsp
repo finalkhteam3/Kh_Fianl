@@ -1,68 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<script src="<%=request.getContextPath()%>/resources/ckeditor/ckeditor.js"></script>
 	<div id="root">
 		<button type="button" id="modal_open_btn" style="display: none">모달창열기</button>
 		<div id="modal_issue">
 			<div class="modal_content">
 				<div class="issuedetail">
-					<div id="left">
-						<p class= projectNo>issue</p>
-						<h2 class= name>title</h2>
-						<button id=btn_1>첨부</button>
-						<button id=btn_2>하위 이슈 추가</button>
-						<button id=btn_3>이슈 연결</button>
-						<p>설명</p>
-						<input type="text" value="설명 추가하기..." id=text> <br> <br>
-						<p>활동</p>
-						표시:
-						<button id=btn_4>모두</button>
-						<button id=btn_4>댓글</button>
-						<button id=btn_4>기록</button>
-						<br><br> <input type="text" value="댓글 추가..."
-							style="width: 600px; height: 40px;">
-					</div>
+				<div id="left">
+					<p class=projectNo>issue</p>
+					<h2 class=name>title</h2>
+					<button id=btn_1>첨부</button>
+					<button id=btn_2>하위 이슈 추가</button>
+					<button id=btn_3>이슈 연결</button>
+					<p>설명</p>
+					<input type="text" value="설명 추가하기..." id=text>
+					<br> <br>
+					<p>활동</p>
+					표시:
+					<button id=btn_4 style="width: 50px">모두</button>
+					<button id=btn_4 style="width: 50px">댓글</button>
+					<button id=btn_4 style="width: 50px">기록</button>
+					<br>
+					<br>
+					<form action="<%=request.getContextPath()%>/ckboard" method="post"
+						enctype="multipart/form-data" id="frm">
+						<textarea name="ckContent" id="ckContent"></textarea>
+						<button id="savebutton" style="border: none; background-color: #0052CC; color: white; border-radius: 3px" >저장</button>
+						<button id="cancelButton" style="border: none; border-radius: 3px; background-color: white;">취소</button>
+					</form>
+				</div>
 
-					<div id="right">
+				<div id="right">
+					<br>
+					<button type="button" id="modal_close_btn">X</button>
+					<br> <br>
+					<div>
+						<div class="dropdown">
+							<button onclick="myFunction()" class="dropbtn">해야 할 일</button>
+							<div id="myDropdown" class="dropdown-content">
+								<a href="#">공지</a> <a href="#">기한 못 맞출 것 같은 이슈</a> <a href="#">진행</a>
+								<a href="#">완료됨</a> <a href="#">워크플로 보기</a>
+							</div>
+						</div>
 						<br>
-						<button type="button" id="modal_close_btn">X</button>
-						<br> <br>
 						<div>
-							<div class="dropdown">
-								<button onclick="myFunction()" class="dropbtn">해야 할 일</button>
-								<div id="myDropdown" class="dropdown-content">
-									<a href="#">공지</a> <a href="#">기한 못 맞출 것 같은 이슈</a> <a href="#">진행</a> <a href="#">완료됨</a> <a href="#">워크플로 보기</a>
-								</div>
+							<button
+								style="width: 380px; height: 48px; text-align: left; background-color: white; border-color: gray;">세부
+								정보</button>
+						</div>
+						<div id="block">
+							<br>
+							<div>
+								<span>보고자</span> <span class="maker">todo</span>
 							</div>
 							<br>
 							<div>
-								<button
-									style="width: 380px; height: 48px; text-align: left; background-color: white; border-color: gray;">세부
-									정보</button>
-							</div>
-							<div id="block">
-								<div>
-									<p>보고자</p>
-									<p class="maker">todo</p>
-								</div>
-								<div>
-									<p>담당자</p>
-									<p class="pic">할당되지않음</p>
-								</div>
-								<p>Automation</p>
-							</div>
-							<div>
-								<button
-									style="width: 380px; height: 48px; text-align: left; background-color: white; border-color: gray;">더
-									많은 필드</button>
-							</div>
-							<div id="afs">
-								<br>
-								<p>만들기</p>
-								<p>업데이트 됨</p>
+								<span>담당자</span> <span class="pic">할당되지않음</span>
 							</div>
 						</div>
+						<div>
+							<button
+								style="width: 380px; height: 48px; text-align: left; background-color: white; border-color: gray;">더
+								많은 필드</button>
+						</div>
+						<div id="afs">
+							<br>
+							<p>만들기</p>
+							<p>업데이트 됨</p>
+						</div>
 					</div>
+				</div>
+			</div>
 			</div>
 <script>
 function detail_issue(issueNo){
@@ -114,6 +122,36 @@ function detail_issue(issueNo){
     	  }
     	}
 </script>
+<script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
+			CKEDITOR.replace('ckContent',
+ 			{
+				filebrowserUploadUrl:'imageUpload.do',
+			//  filebrowserUploadUrl:"https://firebasestorage.googleapis.com/v0/b/kh-fi3.appspot.com/o/"
+ 				height:60,
+ 				width:600,
+ 				toolbarGroups : [
+ 					{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+ 					{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+ 					{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+ 					{ name: 'forms', groups: [ 'forms' ] },
+ 					'/',
+ 					{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+ 					{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+ 					{ name: 'links', groups: [ 'links' ] },
+ 					{ name: 'insert', groups: [ 'insert' ] },
+ 					'/',
+ 					{ name: 'styles', groups: [ 'styles' ] },
+ 					{ name: 'colors', groups: [ 'colors' ] },
+ 					{ name: 'tools', groups: [ 'tools' ] },
+ 					{ name: 'others', groups: [ 'others' ] },
+ 					{ name: 'about', groups: [ 'about' ] },
+ 	            ],
+
+ 	            removeButtons : 'Source,Save,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Redo,Undo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,HiddenField,Subscript,Superscript,CopyFormatting,RemoveFormat,Indent,Outdent,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language,Unlink,Anchor,Flash,HorizontalRule,PageBreak,Iframe,Maximize,ShowBlocks,About,NewPage,Preview,ImageButton,ExportPdf',
+
+			});
+			
+		</script>
 		</div>
 	</div>
 
