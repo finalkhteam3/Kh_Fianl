@@ -362,6 +362,44 @@ $.ajax({
 		})
 		to_ajax();
 	}
+	
+	$.ajax({
+        type: 'GET',
+        url: "<%=request.getContextPath()%>/work/projectno/member/api",
+        contentType: false,
+        success: function (data) {
+            console.log(data);     
+            if(data !== undefined){
+            html = '<option value="">멤버</option>';
+        	data.forEach((delta) => {
+        		html +=
+        			'<option value="'+ delta.id +'">'+delta.name+'('+delta.email+')</option>';
+        	})
+        	$('#member').html(html);
+        }
+        
+        }  
+    })
+	function memberList(){
+		var projectno = $("#project").val();
+		$.ajax({
+	        type: 'GET',
+	        url: "<%=request.getContextPath()%>/work/projectno/member/api",
+	        contentType: false,
+	        success: function (data) {
+	            console.log(data);     
+	            if(data !== undefined){
+	            html = '<option value="">멤버</option>';
+	        	data.forEach((delta) => {
+	        		html +=
+	        			'<option value="'+ delta.id +'">'+delta.name+'('+delta.email+')</option>';
+	        	})
+	        	$('#member').html(html);
+	        }
+	        
+	        }  
+	    })
+	}
 </script>
 
 <div class="color-tl-wrap">
@@ -394,6 +432,13 @@ $.ajax({
         </div>
     </div>
 </div>
+<div>
+				<label for="member">멤버</label>
+				<div class="dropdown">
+					<select id="member" name="member" onchange="memberList();">
+					</select>
+				</div>
+			</div>
 <div class="color-tt-wrap">
 </div>
 
