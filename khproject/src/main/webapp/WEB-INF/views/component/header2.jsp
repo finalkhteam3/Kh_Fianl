@@ -30,49 +30,45 @@ body {
 	text-decoration: none;
 }
 
-.dropdown {
-	float: left;
-	overflow: hidden;
-}
-
-.dropdown .dropbtn {
+.dropbtn {
+	background-color: #3498DB;
+	color: white;
+	padding: 16px;
 	font-size: 16px;
 	border: none;
-	outline: none;
-	color: black;
-	padding: 14px 16px;
-	background-color: inherit;
-	font-family: inherit;
-	margin: 0;
+	cursor: pointer;
 }
 
-.navbar2 a:hover, .dropdown:hover .dropbtn {
-	color: #0052CC;
-	background-color: #E1EDFF;
+.dropbtn:hover, .dropbtn:focus {
+	background-color: #2980B9;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
 }
 
 .dropdown-content {
+	display: none;
 	position: absolute;
-	background-color: #FFFFFF;
+	background-color: #f1f1f1;
 	min-width: 160px;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 1;
 }
 
 .dropdown-content a {
-	float: none;
 	color: black;
 	padding: 12px 16px;
 	text-decoration: none;
 	display: block;
-	text-align: left;
 }
 
 .dropdown-content a:hover {
-	background-color: #F0F0F0;
+	background-color: #ddd;
 }
 
-.dropdown:hover .dropdown-content {
+.show {
 	display: block;
 }
 
@@ -86,7 +82,27 @@ body {
 .navbar2_create:hover {
 	background-color: #1963D1;
 }
+.project_create:hover {
+	background-color: #0065FF;
+}
 </style>
+<script>
+	function myFunction() {
+		document.getElementById("myDropdown").classList.toggle("show");
+	}
+	window.onclick = function(event) {
+		if (!event.target.matches('.dropbtn')) {
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+	}
+</script>
 
 <body>
 	<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -100,34 +116,14 @@ body {
 		<div
 			class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 			<div class="navbar2">
-				<div class="dropdown">
-					<button class="dropbtn" onclick="dropbtn()">
-						내 작업 <i class="fa fa-caret-down"></i>
-					</button>
-					<div style="display: none;" class="dropdown-content" id="dropdown-content">
+				<div class="dropdown" style="display: inline-block">
+					<button class="dropbtn" onclick="myFunction()">내 작업</button>
+					<div id="myDropdown" class="dropdown-content">
 						<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link
 							3</a>
 					</div>
 				</div>
-				<div class="dropdown">
-					<button class="dropbtn" onclick="dropbtn()">
-						프로젝트 <i class="fa fa-caret-down"></i>
-					</button>
-					<div style="display: none;" class="dropdown-content" id="dropdown-content">
-						<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link
-							3</a>
-					</div>
-				</div>
-				<div class="dropdown">
-					<button class="dropbtn" onclick="dropbtn()">
-						사용자 <i class="fa fa-caret-down"></i>
-					</button>
-					<div style="display: none;" class="dropdown-content" id="dropdown-content">
-						<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link
-							3</a>
-					</div>
-				</div>
-				<div>
+				<div style="display: inline-block">
 					<button class="navbar2_create">만들기</button>
 				</div>
 
@@ -221,17 +217,5 @@ body {
 			</button>
 		</div>
 	</nav>
-	<script>
-		function dropbtn() {
-			let click = document.getElementById("dropdown-content");
-			if (click.style.display === "none") {
-				click.style.display = "block";
-
-			} else {
-				click.style.display = "none";
-
-			}
-		}
-	</script>
 </body>
 </html>

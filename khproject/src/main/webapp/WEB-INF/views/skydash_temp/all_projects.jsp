@@ -96,7 +96,7 @@ td {
 									<h3 class="font-weight-bold">프로젝트</h3>
 								</div>
 								<div>
-									<button class="navbar2_create">프로젝트 만들기</button>
+									<button class="navbar2_create project_create">프로젝트 만들기</button>
 								</div>
 								<div>
 									<div class="input-group-prepend hover-cursor"

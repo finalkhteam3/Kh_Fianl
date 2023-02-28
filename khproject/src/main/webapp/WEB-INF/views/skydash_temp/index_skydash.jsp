@@ -17,15 +17,15 @@
 <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
 <!-- endinject -->
 <!-- Plugin css for this page -->
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
 <link rel="stylesheet" href="/vendors/ti-icons/css/themify-icons.css">
 <link rel="stylesheet" type="text/css"
-	href="/resources/skydashTemp/js/select.dataTables.min.css">
+	href="/resources/skydashTemp/js/select.dataTables.min.css"> -->
 <!-- End plugin css for this page -->
 <!-- inject:css -->
 <link rel="stylesheet"
-	href="/resources/skydashTemp/css/vertical-layout-light/style.css">
+ 	href="/resources/skydashTemp/css/vertical-layout-light/style.css">
 <!-- endinject -->
 </head>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -119,30 +119,7 @@ body {
 	
 }
 
-.tab_style { -
-	-leftPanelWidth: 0px; -
-	-rightSidebarWidth: 0px; -
-	-topNavigationHeight: 56px;
-	color: var(- -ds-text, #172B4D);
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.42857142857143;
-	text-decoration-skip-ink: auto;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-		Oxygen, Ubuntu, "Fira Sans", "Droid Sans", "Helvetica Neue",
-		sans-serif;
-	font-size: 14px;
-	letter-spacing: normal;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	max-width: 100%;
-	min-height: 0%;
-	flex-basis: 100%;
-	flex-direction: column;
-	-webkit-box-flex: 1;
-	flex-grow: 1;
-}
+
 </style>
 <script>
     $(function show_project() {
@@ -187,7 +164,6 @@ body {
 
 			<div class="main-panel">
 				<div class="content-wrapper">
-					<div class="row">
 						<div class="col-md-12 grid-margin">
 							<div class="row">
 								<div class="col-12 col-xl-8 mb-4 mb-xl-0">
@@ -198,7 +174,7 @@ body {
 									</h6>
 
 									<div class="recent_project_bg"></div>
-									<div class=tab_style>
+									<div>
 										<div class="tab">
 											<button class="tablinks" id="tab_default"
 												onclick="openTab(event, 'tab_1')">작업 항목</button>
@@ -236,32 +212,31 @@ body {
 							</div>
 						</div>
 
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- plugins:js -->
-	<script src="/vendors/js/vendor.bundle.base.js"></script>
+<!-- 	<script src="/vendors/js/vendor.bundle.base.js"></script> -->
 	<!-- endinject -->
 	<!-- Plugin js for this page -->
-	<script src="/vendors/chart.js/Chart.min.js"></script>
+<!-- 	<script src="/vendors/chart.js/Chart.min.js"></script>
 	<script src="/vendors/datatables.net/jquery.dataTables.js"></script>
 	<script src="/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-	<script src="/resources/skydashTemp/js/dataTables.select.min.js"></script>
+	<script src="/resources/skydashTemp/js/dataTables.select.min.js"></script> -->
 
 	<!-- End plugin js for this page -->
 	<!-- inject:js -->
-	<script src="/resources/skydashTemp/js/off-canvas.js"></script>
+<!-- 	<script src="/resources/skydashTemp/js/off-canvas.js"></script>
 	<script src="/resources/skydashTemp/js/hoverable-collapse.js"></script>
 	<script src="/resources/skydashTemp/js/template.js"></script>
 	<script src="/resources/skydashTemp/js/settings.js"></script>
-	<script src="/resources/skydashTemp/js/todolist.js"></script>
+	<script src="/resources/skydashTemp/js/todolist.js"></script> -->
 	<!-- endinject -->
 	<!-- Custom js for this page-->
-	<script src="/resources/skydashTemp/js/dashboard.js"></script>
-	<script src="/resources/skydashTemp/js/Chart.roundedBarCharts.js"></script>
+<!-- 	<script src="/resources/skydashTemp/js/dashboard.js"></script>
+	<script src="/resources/skydashTemp/js/Chart.roundedBarCharts.js"></script> -->
 	<!-- End custom js for this page-->
 	<script>
 	function to_tab(num) {
@@ -287,7 +262,7 @@ body {
 	                        '<span>' + delta.value + '</span>' + */
 	                        '<span>' + delta.maker + '</span>' +
 	                        '<span>' + delta.pic + '</span>' +
-	                        '<span>' + delta.projectNo + '</span>' +
+	                        '<span>' + delta.projectNo + '</span><br>' +
 	                        '</div>'
 	
 	                })
