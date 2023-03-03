@@ -42,5 +42,10 @@ public interface MainService {
      * 3. 프로젝트 멤버에 프로젝트 생성자 추가
      */
     ProjectListResponse createProject(Project project, String id);
-
+    
+    public List<Project> selectList();
+    public Project selectOne(int no);
+    public int insert(Project dto);
+    public int update(Project dto);
+    public int delete(int no);
 }

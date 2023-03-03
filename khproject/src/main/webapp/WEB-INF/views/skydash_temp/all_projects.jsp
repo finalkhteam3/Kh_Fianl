@@ -112,39 +112,43 @@ td {
 							</div>
 
 							<div id="projectList"></div>
-							<!-- <div class="all_projects"></div> -->
-
-							<!-- <table>
-								<thead>
-									<tr>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody class="all_projects">
-									동적 데이터 생성
-								</tbody>
-							</table> -->
-
-
-							<%--<table width=100% border=1px>
+							
+							<br><hr>
+							<h3>프로젝트 목록</h3>
+							<table border = "1">
+								<colgroup>
+									<col width = "100">
+									<col width = "100">
+									<col width = "100">
+									<col width = "100">
+									<col width = "100">
+									<col width = "100">
+								</colgroup>
 								<tr>
 									<th>★</th>
 									<th>이름</th>
 									<th>키</th>
-									<th>유형</th>
+									<th>소개</th>
 									<th>리드</th>
-									<th>(공백)</th>
+									<th>...</th>
 								</tr>
-								 <c:forEach items="${members}" var="member">
+								<c:forEach items="${list }" var="dto">
 									<tr>
-										<td>${param.}</td>
-										<td>${member.pwd}</td>
-										<td>${member.name}</td>
-										<td>${member.email}</td>
-										<td>${member.joinDate}</td>
+										<td>★</td>
+										<td><a href="#">${dto.iconPath}${dto.name}</a></td>
+										<td>${dto.no}</td>
+										<td>${dto.info}</td>
+										<td>~~리드~~</td>
+										<td>수정/삭제</td>
 									</tr>
-								</c:forEach> 
-								</table>--%>
+								</c:forEach>
+								<tr>
+									<td colspan="6" align="right">
+										<input type="button" value="프로젝트 만들기" onclick="">
+									</td>
+								</tr>
+							</table>
+
 						</div>
 
 					</div>

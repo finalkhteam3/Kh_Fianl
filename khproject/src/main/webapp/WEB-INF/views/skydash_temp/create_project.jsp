@@ -17,7 +17,7 @@
 					<h2>프로젝트 만들기</h2>
 					<h4>프로젝트 설정에서 언제든지 이러한 사항을 변경할 수 있습니다.</h4>
 				</div>
-				<div class="close-area">X</div>
+				<div class="close-area">← 돌아가기</div>
 
 				<div>
 					<label for="name">이름*</label>
@@ -36,7 +36,8 @@
 				<div>
 					<label for="info">설명</label>
 					<div class="dropdown">
-						<input type="text" id="info" name="info" placeholder="프로젝트 소개">
+						<input type="text" id="info" name="info"
+							placeholder="프로젝트를 소개해 주세요.">
 					</div>
 				</div>
 
@@ -44,12 +45,12 @@
 
 			<div>
 
+				<button class="right-tab" type="button" tabindex="0">
+					<span class="">취소</span>
+				</button>
 				<button onclick="createproject();" class="right-tab" type="submit"
 					tabindex="0">
 					<span class="">프로젝트 만들기</span>
-				</button>
-				<button class="right-tab" type="button" tabindex="0">
-					<span class="">취소</span>
 				</button>
 
 			</div>
@@ -83,6 +84,29 @@
             }
         })	
 	}
+	
+	const modal = document.getElementById("modal")
+    function modalOn() {
+    	$.ajax({
+            type: 'GET',
+            url: "<%=request.getContextPath()%>/work/project/api",
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                console.log(data);                
+                if (data !== undefined) {
+   	         	 	html = '<option value="">프로젝트</option>';
+                    data.forEach((delta) => {
+                    	html +=
+                          '<option value="'+ delta.no +'">'+delta.name+'</option>';
+                    })
+             	  	$('#key').html(html);
+                }
+       			modal.style.display = "flex"
+            }
+        })
+    	
+    }
 	
         function isModalOn() {
             return modal.style.display === "flex"
