@@ -64,19 +64,18 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
-	public int insert(Project dto) {
+	public Integer insert(Project dto) {
+		return mapper.insert(dto);
+	}
+
+	@Override
+	public Integer update(Project dto) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int update(Project dto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int delete(int no) {
+	public Integer delete(int no) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

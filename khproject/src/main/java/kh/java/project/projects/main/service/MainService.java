@@ -45,7 +45,7 @@ public interface MainService {
     
     public List<Project> selectList();
     public Project selectOne(int no);
-    public int insert(Project dto);
-    public int update(Project dto);
-    public int delete(int no);
+    public Integer insert(Project dto);
+    public Integer update(Project dto);
+    public Integer delete(int no);
 }

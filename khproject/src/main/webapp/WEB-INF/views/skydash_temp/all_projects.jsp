@@ -117,12 +117,12 @@ td {
 							<h3>프로젝트 목록</h3>
 							<table border = "1">
 								<colgroup>
+									<col width = "50">
+									<col width = "200">
 									<col width = "100">
+									<col width = "300">
 									<col width = "100">
-									<col width = "100">
-									<col width = "100">
-									<col width = "100">
-									<col width = "100">
+									<col width = "200">
 								</colgroup>
 								<tr>
 									<th>★</th>
@@ -144,7 +144,7 @@ td {
 								</c:forEach>
 								<tr>
 									<td colspan="6" align="right">
-										<input type="button" value="프로젝트 만들기" onclick="">
+										<input type="button" value="프로젝트 만들기" onclick="location.href='${pageContext.request.contextPath}/jira/cptest'">
 									</td>
 								</tr>
 							</table>

@@ -4,6 +4,8 @@
 
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- BK: "부적합한 열 유형 1111" 오류 해결을 위해 아래 코드 넣음 -->
+        <setting name="jdbcTypeForNull" value="NULL"/>
     </settings>
 
     <typeAliases>

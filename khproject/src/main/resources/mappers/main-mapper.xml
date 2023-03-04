@@ -18,18 +18,14 @@
 	<select id="selectList"
 		resultType="kh.java.project.projects.dto.param.Project">
 		select no, name, info, icon_path
+		from project
+		<!-- select no, name, info, icon_path
 		from project p join AUTHORITIES a on a.PROJECT_NO = p.NO
-		where a.id = #{id}
+		where a.id = #{id} -->
 	</select>
-	
-	<!-- <insert id="createProject">
-		insert into project values (
-		#{name},
-		#{key},
-		#{info},
-		default
-		)
-
-	</insert> -->
+	<insert id="insert" parameterType="kh.java.project.projects.dto.param.Project">
+		insert into project
+		values( #{no}, #{name}, #{info}, #{iconPath} )
+	</insert>
 
 </mapper>
