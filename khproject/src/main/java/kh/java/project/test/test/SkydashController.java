@@ -41,9 +41,10 @@ public class SkydashController {
 		return "skydash_temp/create_project";
 	}
 
-	@RequestMapping(value="/jira/projects", method=RequestMethod.POST)
-	public String insertProject(Project dto) {
-
+	@RequestMapping(value = "/jira/projects", method = RequestMethod.POST)
+	public String insertProject(String name, String no, String info, String iconPath) {
+		Project dto = new Project(no, name, info, iconPath);
+		System.out.println("dto = " + dto);
 		int result = service.insert(dto);
 
 		if (result > 0) {
@@ -52,24 +53,25 @@ public class SkydashController {
 			return "skydash_temp/create_project";
 		}
 	}
-	
-	@RequestMapping("/update.do")
-	public String update(Model model, int no) {
-		
+
+	@RequestMapping("/jira/update.do")
+	public String update(Model model, String no) {
+
 		model.addAttribute("dto", service.selectOne(no));
-		
+
 		return "skydash_temp/update_project";
 	}
+
 	@RequestMapping("/pjupdate.do")
 	public String updateProject(Project dto) {
-		
+
 		int result = service.update(dto);
-		if(result>0) {
-			return "redirect:one.do?no="+dto.getNo();
-		}else {
-			return "redirect:update.do?no="+dto.getNo();
+		if (result > 0) {
+			return "redirect:one.do?no=" + dto.getNo();
+		} else {
+			return "redirect:update.do?no=" + dto.getNo();
 		}
-		
+
 	}
-	
+
 }

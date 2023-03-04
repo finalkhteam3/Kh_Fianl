@@ -58,7 +58,7 @@ public class MainServiceImpl implements MainService{
     }
 
 	@Override
-	public Project selectOne(int no) {
+	public Project selectOne(String no) {
 		return mapper.selectOne(no);
 	}
 

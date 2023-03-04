@@ -17,14 +17,15 @@
 	</select>
 	<select id="selectList"
 		resultType="kh.java.project.projects.dto.param.Project">
-		<!-- select no, name, info, icon_path
-		from project -->
 		select no, name, info, icon_path
 		from project p join AUTHORITIES a on a.PROJECT_NO = p.NO
 		where a.id = #{id}
-		<!-- select no, name, info, icon_path
-		from project p join AUTHORITIES a on a.PROJECT_NO = p.NO
-		where a.id = #{id} -->
+	</select>
+	<select id="selectOne"
+		resultType="kh.java.project.projects.dto.param.Project">
+		select no, name, info, icon_path
+		from project p 
+		where no = #{no}
 	</select>
 	<insert id="insert" parameterType="kh.java.project.projects.dto.param.Project">
 		insert into project
