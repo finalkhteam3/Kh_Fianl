@@ -15,4 +15,6 @@ public interface MainMapper {
     List<Issue> getIssueList();
     List<Project> selectList();
     Integer insert(Project dto);
+	Project selectOne(int no);
+	Integer update(Project dto);
 }

@@ -59,8 +59,7 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	public Project selectOne(int no) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.selectOne(no);
 	}
 
 	@Override
@@ -70,8 +69,7 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	public Integer update(Project dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mapper.update(dto);
 	}
 
 	@Override

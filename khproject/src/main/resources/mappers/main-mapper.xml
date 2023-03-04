@@ -27,5 +27,9 @@
 		insert into project
 		values( #{no}, #{name}, #{info}, #{iconPath} )
 	</insert>
+	<update id="update" parameterType="kh.java.project.projects.dto.param.Project">
+		update project
+		set name=#{name}, info=#{info}, icon_path=#{iconPath} where no=#{no} 
+	</update>
 
 </mapper>

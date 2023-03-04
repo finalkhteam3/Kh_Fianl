@@ -37,8 +37,5 @@
 		</table>
 	</form>
 
-	<script>
-		
-	</script>
 </body>
 </html>

@@ -50,4 +50,24 @@ public class SkydashController {
 			return "skydash_temp/create_project";
 		}
 	}
+	
+	@RequestMapping("/update.do")
+	public String update(Model model, int no) {
+		
+		model.addAttribute("dto", service.selectOne(no));
+		
+		return "skydash_temp/update_project";
+	}
+	@RequestMapping("/pjupdate.do")
+	public String updateProject(Project dto) {
+		
+		int result = service.update(dto);
+		if(result>0) {
+			return "redirect:one.do?no="+dto.getNo();
+		}else {
+			return "redirect:update.do?no="+dto.getNo();
+		}
+		
+	}
+	
 }

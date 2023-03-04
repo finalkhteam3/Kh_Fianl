@@ -122,7 +122,6 @@ td {
 									<col width = "100">
 									<col width = "300">
 									<col width = "100">
-									<col width = "200">
 								</colgroup>
 								<tr>
 									<th>★</th>
@@ -131,19 +130,21 @@ td {
 									<th>소개</th>
 									<th>리드</th>
 									<th>...</th>
+									<th>...</th>
 								</tr>
 								<c:forEach items="${list }" var="dto">
 									<tr>
 										<td>★</td>
-										<td><a href="#">${dto.iconPath}${dto.name}</a></td>
+										<td><a href="${pageContext.request.contextPath}/work/${dto.no}">${dto.iconPath}${dto.name}</a></td>
 										<td>${dto.no}</td>
 										<td>${dto.info}</td>
 										<td>~~리드~~</td>
-										<td>수정/삭제</td>
+										<td><input type="button" value="설정" onclick="location.href='update.do?no=${dto.no}'"></td>
+										<td><input type="button" value="삭제" onclick="#"></td>
 									</tr>
 								</c:forEach>
 								<tr>
-									<td colspan="6" align="right">
+									<td colspan="7" align="right">
 										<input type="button" value="프로젝트 만들기" onclick="location.href='${pageContext.request.contextPath}/jira/cptest'">
 									</td>
 								</tr>
