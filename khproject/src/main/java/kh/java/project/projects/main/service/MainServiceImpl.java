@@ -52,8 +52,8 @@ public class MainServiceImpl implements MainService{
     }
     
     @Override
-    public List<Project> selectList(){
-		return mapper.selectList();
+    public List<Project> selectList(String id){
+		return mapper.selectList(id);
     	
     }
 

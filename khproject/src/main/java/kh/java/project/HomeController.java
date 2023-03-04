@@ -32,7 +32,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		return "main/mainPage";
+		return "skydash_temp/index_skydash";
 	}
 	
 }

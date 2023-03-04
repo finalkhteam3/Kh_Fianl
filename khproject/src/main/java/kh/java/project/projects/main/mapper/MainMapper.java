@@ -13,7 +13,7 @@ import java.util.List;
 public interface MainMapper {
     List<Project> getProjectList(String id);
     List<Issue> getIssueList();
-    List<Project> selectList();
+    List<Project> selectList(String id);
     Integer insert(Project dto);
 	Project selectOne(int no);
 	Integer update(Project dto);

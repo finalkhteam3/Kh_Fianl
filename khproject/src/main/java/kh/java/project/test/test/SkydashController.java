@@ -1,5 +1,7 @@
 package kh.java.project.test.test;
 
+import java.security.Principal;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +29,9 @@ public class SkydashController {
 	}
 
 	@GetMapping("/jira/projects")
-	public String main(Model model) {
+	public String main(Model model, Principal principal) {
 
-		model.addAttribute("list", service.selectList());
+		model.addAttribute("list", service.selectList(principal.getName()));
 
 		return "skydash_temp/all_projects";
 	}

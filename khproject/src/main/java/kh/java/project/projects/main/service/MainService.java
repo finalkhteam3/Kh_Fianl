@@ -43,7 +43,7 @@ public interface MainService {
      */
     ProjectListResponse createProject(Project project, String id);
     
-    public List<Project> selectList();
+    public List<Project> selectList(String id);
     public Project selectOne(int no);
     public Integer insert(Project dto);
     public Integer update(Project dto);

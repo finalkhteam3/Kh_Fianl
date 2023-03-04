@@ -17,8 +17,11 @@
 	</select>
 	<select id="selectList"
 		resultType="kh.java.project.projects.dto.param.Project">
+		<!-- select no, name, info, icon_path
+		from project -->
 		select no, name, info, icon_path
-		from project
+		from project p join AUTHORITIES a on a.PROJECT_NO = p.NO
+		where a.id = #{id}
 		<!-- select no, name, info, icon_path
 		from project p join AUTHORITIES a on a.PROJECT_NO = p.NO
 		where a.id = #{id} -->
