@@ -142,7 +142,7 @@ body {
                             '<div>빠른 연결<br/></div>' +
                             '<a href="#">내 미해결 이슈	(n)<br/></a>' +
                             '<a href="#">완료된 이슈<br/></a>' +
-                            '<a href="#">보드<br/></a>' +
+                            '<a href="/work/'+delta.no+'">보드<br/></a>' +
                             /* '<div><button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">보드</button><div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2"><a class="dropdown-item" href="#">보드명1</a><a class="dropdown-item" href="#">보드명2</a></div></div>' + */
                             '</div>'
 

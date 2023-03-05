@@ -62,14 +62,16 @@ public class SkydashController {
 		return "skydash_temp/update_project";
 	}
 
-	@RequestMapping("/pjupdate.do")
-	public String updateProject(Project dto) {
-
+	@RequestMapping("/jira/pjupdate.do")
+	public String updateProject(String name, String no, String info, String iconPath) {
+		Project dto = new Project(no, name, info, iconPath);
+		System.out.println("dto = " + dto);
 		int result = service.update(dto);
+		
 		if (result > 0) {
-			return "redirect:one.do?no=" + dto.getNo();
+			return "skydash_temp/all_projects";
 		} else {
-			return "redirect:update.do?no=" + dto.getNo();
+			return "skydash_temp/update_project";
 		}
 
 	}
