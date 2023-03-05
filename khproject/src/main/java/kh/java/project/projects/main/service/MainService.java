@@ -47,5 +47,5 @@ public interface MainService {
     public Project selectOne(String no);
     public Integer insert(Project dto);
     public Integer update(Project dto);
-    public Integer delete(int no);
+    public Integer delete(String no);
 }

@@ -17,4 +17,5 @@ public interface MainMapper {
     Integer insert(Project dto);
 	Project selectOne(String no);
 	Integer update(Project dto);
+	Integer delete(String no);
 }

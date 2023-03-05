@@ -73,8 +73,7 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
-	public Integer delete(int no) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Integer delete(String no) {
+		return mapper.delete(no);
 	}
 }

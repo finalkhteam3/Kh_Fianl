@@ -35,5 +35,9 @@
 		update project
 		set name=#{name}, info=#{info}, icon_path=#{iconPath} where no=#{no} 
 	</update>
+	<delete id="delete" parameterType="kh.java.project.projects.dto.param.Project">
+		delete from project
+		where no=#{no} 
+	</delete>
 
 </mapper>

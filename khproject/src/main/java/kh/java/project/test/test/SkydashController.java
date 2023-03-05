@@ -41,7 +41,7 @@ public class SkydashController {
 		return "skydash_temp/create_project";
 	}
 
-	@RequestMapping(value = "/jira/projects", method = RequestMethod.POST)
+	@RequestMapping("/jira/projects")
 	public String insertProject(String name, String no, String info, String iconPath) {
 		Project dto = new Project(no, name, info, iconPath);
 		System.out.println("dto = " + dto);
@@ -74,6 +74,17 @@ public class SkydashController {
 			return "skydash_temp/update_project";
 		}
 
+	}
+	@RequestMapping("/jira/delete.do")
+	public String deleteProject(String no) {
+		int result = service.delete(no);
+		
+		if (result > 0) {
+			return "skydash_temp/all_projects";
+		} else {
+			return "redirect:one.do?no="+no;
+		}
+		
 	}
 
 }

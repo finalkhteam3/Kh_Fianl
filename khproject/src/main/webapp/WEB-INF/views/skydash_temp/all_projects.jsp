@@ -140,7 +140,7 @@ td {
 										<td>${dto.info}</td>
 										<td>~~리드~~</td>
 										<td><input type="button" value="설정" onclick="location.href='/jira/update.do?no=${dto.no}'"></td>
-										<td><input type="button" value="삭제" onclick="#"></td>
+										<td><input type="button" value="삭제" onclick="location.href='/jira/delete.do?no=${dto.no}'"></td>
 									</tr>
 								</c:forEach>
 								<tr>
