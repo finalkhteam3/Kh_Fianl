@@ -8,4 +8,5 @@ import java.io.IOException;
 
 public interface AjaxService {
     AjaxResponse getAjaxResult(AjaxRequest ajaxRequest, MultipartFile file) throws IOException;
+    String getCkEditorResult(MultipartFile file) throws IOException;
 }

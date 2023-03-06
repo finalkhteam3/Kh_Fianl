@@ -34,4 +34,13 @@ public class AjaxServiceImpl implements AjaxService{
             throw new RuntimeException("오류오류");
         }
     }
+    public String getCkEditorResult(MultipartFile file) {
+        AjaxResponse ajaxResponse;
+        try {
+            String makeName = fireBaseService.uploadFiles(file);
+            return makeName;
+        } catch (IOException e){
+            throw new RuntimeException("오류오류");
+        }
+    }
 }

@@ -14,7 +14,6 @@
 					<button id=btn_3>이슈 연결</button>
 					<p>설명</p>
 					<input type="text" value="설명 추가하기..." id=text>
-					
 					<br> <br>
 					<p>활동</p>
 					표시:
@@ -23,18 +22,12 @@
 					<button id=btn_4 style="width: 50px">기록</button>
 					<br>
 					<br>
-					<div>
-						<input type="text" value="댓글 추가..."
-						id="commenta"	onclick="frm()" style="width: 600px; height: 40px;">
-					</div>
-					<div id="frm" style="display: none">
 					<form action="<%=request.getContextPath()%>/ckboard" method="post"
-						enctype="multipart/form-data" >
+						enctype="multipart/form-data" id="frm">
 						<textarea name="ckContent" id="ckContent"></textarea>
 						<button id="savebutton" style="border: none; background-color: #0052CC; color: white; border-radius: 3px" >저장</button>
 						<button id="cancelButton" style="border: none; border-radius: 3px; background-color: white;">취소</button>
 					</form>
-					</div>
 				</div>
 
 				<div id="right">
@@ -80,8 +73,13 @@
 			</div>
 			</div>
 <script>
+var issueNo1 = "";
+const projectNo = window.location.pathname.split("/")[2];
+
 function detail_issue(issueNo){
-	var projectNo = $("#projectNo").text(); 
+	issueNo1 = issueNo;
+	console.log("issueNo1 "+issueNo1);
+	//var projectNo = $("#projectNo").text(); 
 	$.ajax({
         type: 'GET',
         url: "<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo+"/issue/api",
@@ -109,9 +107,7 @@ function detail_issue(issueNo){
    
     document.getElementById("modal_close_btn").onclick = function() {
         document.getElementById("modal_issue").style.display="none";
-    }  
-   
-   
+    }   
    </script>
 <script>
     function myFunction() {
@@ -132,10 +128,11 @@ function detail_issue(issueNo){
     	}
 </script>
 <script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
+console.log("여기 언제 들어옴? issueNo1 "+issueNo1);
+issueNo1 = '1';
 			CKEDITOR.replace('ckContent',
  			{
-				filebrowserUploadUrl:'imageUpload.do',
-			//  filebrowserUploadUrl:"https://firebasestorage.googleapis.com/v0/b/kh-fi3.appspot.com/o/"
+				filebrowserUploadUrl:'<%=request.getContextPath()%>/work/'+projectNo+"/"+issueNo1+'/file/ckeditor/api',
  				height:60,
  				width:600,
  				toolbarGroups : [
@@ -160,16 +157,6 @@ function detail_issue(issueNo){
 
 			});
 			
-		</script>
-		<script>
-		function frm(){
-		      if($('#frm').css('display') == 'none'){
-		      $('#frm').show();
-		      $('#commenta').hide();
-		    }else{
-		      $('#frm').hide();
-		    }
-		    }
 		</script>
 		</div>
 	</div>
