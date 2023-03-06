@@ -14,6 +14,7 @@
 					<button id=btn_3>이슈 연결</button>
 					<p>설명</p>
 					<input type="text" value="설명 추가하기..." id=text>
+					
 					<br> <br>
 					<p>활동</p>
 					표시:
@@ -22,12 +23,18 @@
 					<button id=btn_4 style="width: 50px">기록</button>
 					<br>
 					<br>
+					<div>
+						<input type="text" value="댓글 추가..."
+						id="commenta"	onclick="frm()" style="width: 600px; height: 40px;">
+					</div>
+					<div id="frm" style="display: none">
 					<form action="<%=request.getContextPath()%>/ckboard" method="post"
-						enctype="multipart/form-data" id="frm">
+						enctype="multipart/form-data" >
 						<textarea name="ckContent" id="ckContent"></textarea>
 						<button id="savebutton" style="border: none; background-color: #0052CC; color: white; border-radius: 3px" >저장</button>
 						<button id="cancelButton" style="border: none; border-radius: 3px; background-color: white;">취소</button>
 					</form>
+					</div>
 				</div>
 
 				<div id="right">
@@ -102,7 +109,9 @@ function detail_issue(issueNo){
    
     document.getElementById("modal_close_btn").onclick = function() {
         document.getElementById("modal_issue").style.display="none";
-    }   
+    }  
+   
+   
    </script>
 <script>
     function myFunction() {
@@ -151,6 +160,16 @@ function detail_issue(issueNo){
 
 			});
 			
+		</script>
+		<script>
+		function frm(){
+		      if($('#frm').css('display') == 'none'){
+		      $('#frm').show();
+		      $('#commenta').hide();
+		    }else{
+		      $('#frm').hide();
+		    }
+		    }
 		</script>
 		</div>
 	</div>
