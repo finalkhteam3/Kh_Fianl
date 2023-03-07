@@ -15,5 +15,5 @@ public interface MemberMapper {
     String findAuthorities(Authorities authorities);
     List<Authorities> findAuthoritiesAll(String id);
     void test(@Param("test1") Test test, @Param("path")String path);
-
+    void createAuthorities(@Param("id")String id, @Param("role")String role);
 }

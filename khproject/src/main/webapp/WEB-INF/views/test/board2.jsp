@@ -124,7 +124,7 @@
   var progressList = [];
   var issueList = [];
   $(function to_ajax() {
-    var projectNo = $("#projectNo").text();
+    const projectNo = window.location.pathname.split("/")[2];
     $.ajax({
       type: 'GET',
 //            url: "/board/api1",
@@ -203,7 +203,7 @@
   <%--}--%>
   function createIssue(e){
     //const projectNo = "KHF3";
-    var projectNo = $("#projectNo").text();
+    const projectNo = window.location.pathname.split("/")[2];
     console.log(projectNo);
     console.log(e);
     $.ajax({

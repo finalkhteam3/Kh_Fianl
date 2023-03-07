@@ -24,4 +24,9 @@
     insert into TEST1 (ID, NAME, PATH)
     VALUES (#{test1.id}, #{test1.name}, #{path})
   </insert>
+  <insert id="createAuthorities">
+    insert into all_authorities (ID, AUTHORITY)
+    values (#{id}, #{role})
+  </insert>
+
 </mapper>

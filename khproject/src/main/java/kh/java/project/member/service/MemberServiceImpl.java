@@ -29,6 +29,7 @@ public class MemberServiceImpl implements MemberService{
             Users users = request.toEntity(encodePwd);
             System.out.println("users = " + users);
             mapper.createUser(users);
+            mapper.createAuthorities(users.getId(), "ROLE_MEMBER");
         } catch (RuntimeException e){
             throw new RuntimeException("오류");
         }
