@@ -1,12 +1,12 @@
 package kh.java.project.member.entity;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Builder
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Users {
     private String id;
     private String name;

@@ -36,6 +36,19 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    public void checkDuplicate(String id) {
+        try{
+            Users byId = mapper.findById(id);
+            if(byId != null) {
+                System.out.println("id = " + byId);
+                throw new AssertionError("중복된 아이디가 있습니다");
+            }
+        } catch (RuntimeException e){
+            throw new RuntimeException("오류");
+        }
+    }
+
+    @Override
     public void test(Test test, String path) {
         mapper.test(test, path);
     }

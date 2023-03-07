@@ -63,9 +63,7 @@
 	<!-- 매핑순서가 2	 -->
 	<filter-mapping>
 		<filter-name>forbiddenUrlConfig</filter-name>
-		<url-pattern>/all</url-pattern>
-		<url-pattern>/member</url-pattern>
-		<url-pattern>/admin</url-pattern>
+		<url-pattern>/work/*</url-pattern>
 	</filter-mapping>
 
 
