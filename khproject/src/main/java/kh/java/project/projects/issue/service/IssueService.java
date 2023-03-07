@@ -2,6 +2,7 @@ package kh.java.project.projects.issue.service;
 
 import kh.java.project.projects.dto.param.Comment;
 import kh.java.project.projects.dto.param.File;
+import kh.java.project.projects.dto.param.FileCkEditor;
 import kh.java.project.projects.dto.param.Issue;
 import kh.java.project.projects.dto.param.Log;
 import org.springframework.web.multipart.MultipartFile;
@@ -75,10 +76,14 @@ public interface IssueService {
     List<File> getFiles(String projectNo, int issueNo);
 
     /**
-     * 이슈 상세보기 페이지에서 파일 업로드 기능
+     * 이슈 상세보기 페이지에서 여러 파일 업로드 기능
      */
     void uploadedFiles(String projectNo, int issueNo, List<MultipartFile> files);
-
+    /**
+     * 이슈 상세보기 페이지에서  파일 업로드 기능
+     * @return 업로드 url
+     */
+    FileCkEditor uploadedFile(String projectNo, int issueNo, MultipartFile file);
 
     /**
      * 이슈 상세보기 페이지에서 파일 삭제 기능(여러개 클릭해서 동시에)

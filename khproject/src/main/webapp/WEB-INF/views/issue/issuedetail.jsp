@@ -73,8 +73,13 @@
 			</div>
 			</div>
 <script>
+var issueNo1 = "";
+const projectNo = window.location.pathname.split("/")[2];
+
 function detail_issue(issueNo){
-	var projectNo = $("#projectNo").text(); 
+	issueNo1 = issueNo;
+	console.log("issueNo1 "+issueNo1);
+	//var projectNo = $("#projectNo").text(); 
 	$.ajax({
         type: 'GET',
         url: "<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo+"/issue/api",
@@ -123,10 +128,11 @@ function detail_issue(issueNo){
     	}
 </script>
 <script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
+console.log("여기 언제 들어옴? issueNo1 "+issueNo1);
+issueNo1 = '1';
 			CKEDITOR.replace('ckContent',
  			{
-				filebrowserUploadUrl:'imageUpload.do',
-			//  filebrowserUploadUrl:"https://firebasestorage.googleapis.com/v0/b/kh-fi3.appspot.com/o/"
+				filebrowserUploadUrl:'<%=request.getContextPath()%>/work/'+projectNo+"/"+issueNo1+'/file/ckeditor/api',
  				height:60,
  				width:600,
  				toolbarGroups : [

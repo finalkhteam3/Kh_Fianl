@@ -126,4 +126,14 @@ public class IssueRestController {
         service.deleteFiles(projectNo, issueNo, fileList);
         return HttpStatus.OK;
     }
+    
+    @PostMapping("/file/ckeditor/api")
+    public ResponseEntity<FileCkEditor>  uploadedFilesCkeditor(@PathVariable String projectNo,
+                                    @PathVariable int issueNo,
+                                    @RequestParam("upload") MultipartFile file	) {
+    	if(file == null)System.out.println("안돼~~~~~~~~~~~~~~~~~");
+    	else System.out.println(file.getOriginalFilename());
+    	FileCkEditor url =  service.uploadedFile(projectNo, issueNo, file);
+    	return ResponseEntity.ok(url);
+    }
 }
