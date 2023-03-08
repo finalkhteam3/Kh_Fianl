@@ -13,35 +13,41 @@
 					<button id=btn_2>하위 이슈 추가</button>
 					<button id=btn_3>이슈 연결</button>
 					<p>설명</p>
-					 <input type="text" value="설명 추가하기..." id=commenta onclick="frm()">
-					 <div id="frm" style="display: none"> 
-						<form action="<%=request.getContextPath()%>/ckboard" method="post"
-							enctype="multipart/form-data" id="frm">
-							<textarea name="ckContent" id="ckContent" class="question-answer" placeholder="dfg"></textarea>
-							<button id="savebutton"
+					<input type="text" value="설명 추가하기..." data-comment="warp-frm1"
+						onclick="frm(this)" class="comment">
+					<div id="warp-frm1" style="display: none" class="warp-frm">
+						<form id="frm1" class="frm">
+							<textarea name="ckContent" id="question-answer0"
+								class="question-answer" placeholder="내용을 입력하세요"></textarea>
+							<button class="savebutton" type="button" onclick="saveHandler(this)"
 								style="border: none; background-color: #0052CC; color: white; border-radius: 3px">저장</button>
-						</form> 
-							<button id="cancelButton"
+							<button class="cancelButton" type="reset"
+								onclick="resetHandler(this)"
 								style="border: none; border-radius: 3px; background-color: white;">취소</button>
-					 </div>
+						</form>
+					</div>
 					<br> <br>
 					<p>활동</p>
 					표시:
-				<!-- 	<button id=btn_4 style="width: 50px">모두</button> -->
+					<!-- 	<button id=btn_4 style="width: 50px">모두</button> -->
 					<button id=btn_4 style="width: 50px">댓글</button>
 					<!-- <button id=btn_4 style="width: 50px">기록</button> -->
-					<br>
-					<br>
-						<div>
-						<input type="text" value="댓글 추가..."
-						id="commenta"	onclick="frm()" style="width: 600px; height: 40px;">
+					<br> <br>
+					<div>
+						<input type="text" value="댓글 추가..." data-comment="warp-frm2"
+							onclick="frm(this)" class="comment"
+							style="width: 600px; height: 40px;">
 					</div>
-					<div id="frm" style="display: none">
-				<form action="<%=request.getContextPath()%>/ckboard" method="post"	enctype="multipart/form-data" id="frm">
-						<textarea name="ckContent" id="ckContent" class="question-answer" placeholder="asd"></textarea>
-						<button id="savebutton" style="border: none; background-color: #0052CC; color: white; border-radius: 3px" >저장</button>
+					<div id="warp-frm2" style="display: none" class="warp-frm">
+						<form id="frm2" class="frm">
+							<textarea name="content" id="question-answer1"
+								class="question-answer" placeholder="내용을 입력하세요"></textarea>
+							<button class="savebutton" type="button" onclick="saveCommentHandler(this)"
+								style="border: none; background-color: #0052CC; color: white; border-radius: 3px">저장</button>
+							<button class="cancelButton" type="reset"
+								onclick="resetHandler(this)"
+								style="border: none; border-radius: 3px; background-color: white;">취소</button>
 						</form>
-						<button id="cancelButton" style="border: none; border-radius: 3px; background-color: white;" >취소</button>			
 					</div>
 				</div>
 
@@ -89,7 +95,7 @@
 			</div>
 		
 <script>
-var issueNo1 = "";
+let issueNo1 = "";
 const projectNo = window.location.pathname.split("/")[2];
 
 function detail_issue(issueNo){
@@ -111,6 +117,39 @@ function detail_issue(issueNo){
             $("#modal_issue .name").html(data.name);
             document.getElementById("modal_issue").style.display="block";
             
+            
+            
+            //CKEditor 세팅
+            $('.question-answer').each(function(i,item){
+                console.log(item);
+                var sPlaceholderText = $(item).attr('placeholder');
+                var editor2 = CKEDITOR.replace('question-answer'+i,{
+                	filebrowserUploadUrl:'<%=request.getContextPath()%>/work/'+projectNo+"/"+issueNo1+'/file/ckeditor/api',
+                    height: 100,
+                	width:600,
+                    editorplaceholder : sPlaceholderText,
+            		toolbarGroups : [
+            				{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+            				{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+            				{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+            				{ name: 'forms', groups: [ 'forms' ] },
+            				'/',
+            				{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+            				{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+            				{ name: 'links', groups: [ 'links' ] },
+            				{ name: 'insert', groups: [ 'insert' ] },
+            				'/',
+            				{ name: 'styles', groups: [ 'styles' ] },
+            				{ name: 'colors', groups: [ 'colors' ] },
+            				{ name: 'tools', groups: [ 'tools' ] },
+            				{ name: 'others', groups: [ 'others' ] },
+            				{ name: 'about', groups: [ 'about' ] },
+                     ],
+
+                     removeButtons : 'Source,Save,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Redo,Undo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,HiddenField,Subscript,Superscript,CopyFormatting,RemoveFormat,Indent,Outdent,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language,Unlink,Anchor,Flash,HorizontalRule,PageBreak,Iframe,Maximize,ShowBlocks,About,NewPage,Preview,ImageButton,ExportPdf',
+
+                });
+            });
         }
     })
 }
@@ -124,10 +163,7 @@ function detail_issue(issueNo){
     document.getElementById("modal_close_btn").onclick = function() {
         document.getElementById("modal_issue").style.display="none";
     }   
-    document.getElementById("cancelButton").onclick = function() {
-    	 document.getElementById("frm").style.display="none";
-        document.getElementById("commenta").style.display="block";
-    }
+    
    </script>
 <script>
     function myFunction() {
@@ -148,57 +184,64 @@ function detail_issue(issueNo){
     	}
 </script>
 
-<script>
-$('.question-answer').each(function(i,item){
-    console.log(item);
-   var sPlaceholderText = $(item).attr('placeholder');
-    var editor2 = CKEDITOR.replace('question-answer'+i,{
-        height: 300,
-        editorplaceholder : sPlaceholderText,
-    });
-})
-</script>
 	
-<script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
-console.log("여기 언제 들어옴? issueNo1 "+issueNo1);
-issueNo1 = '1';
-			CKEDITOR.replace('ckContent',
- 			{
-				filebrowserUploadUrl:'<%=request.getContextPath()%>/work/'+projectNo+"/"+issueNo1+'/file/ckeditor/api',
- 				height:100,
- 				width:600,
- 				toolbarGroups : [
- 					{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
- 					{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
- 					{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
- 					{ name: 'forms', groups: [ 'forms' ] },
- 					'/',
- 					{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
- 					{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
- 					{ name: 'links', groups: [ 'links' ] },
- 					{ name: 'insert', groups: [ 'insert' ] },
- 					'/',
- 					{ name: 'styles', groups: [ 'styles' ] },
- 					{ name: 'colors', groups: [ 'colors' ] },
- 					{ name: 'tools', groups: [ 'tools' ] },
- 					{ name: 'others', groups: [ 'others' ] },
- 					{ name: 'about', groups: [ 'about' ] },
- 	            ],
 
- 	            removeButtons : 'Source,Save,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Redo,Undo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,HiddenField,Subscript,Superscript,CopyFormatting,RemoveFormat,Indent,Outdent,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language,Unlink,Anchor,Flash,HorizontalRule,PageBreak,Iframe,Maximize,ShowBlocks,About,NewPage,Preview,ImageButton,ExportPdf',
-
+		<script>
+		function frm(elem){
+			$(".comment").show();
+			$(elem).hide();
+			var comment ='#'+$(elem).data("comment");
+			console.log(comment);
+			$(".warp-frm").hide();
+			$(comment).show();
+		}
+		
+		function resetHandler(elem){
+			$(".comment").show();
+			$(elem).parents(".warp-frm").hide();
+		}
+		
+	<%--  function saveHandler(elem){
+			$.ajax({
+				url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api"
+				,type:"post"
+				,data: {content: CKEDITOR.instances['question-answer0'].getData()}
+				,success: function(result){
+					
+				}
+			,error: function(result){
+				
+			}
+				
+				
 			});
 			
-		</script>
-		<script>
-		function frm(){
-		      if($('#frm').css('display') == 'none'){
-		      $('#frm').show();
-		      $('#commenta').hide();
-		    }else{
-		      $('#frm').hide();
-		    }
-		    }
+			
+			
+			$(".comment").show();
+			$(elem).parents(".warp-frm").hide(); --%>
+		
+		 function saveCommentHandler(elem){
+			 
+				$.ajax({
+					url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/comment/api"
+					,type:"post"
+					,data: {content: CKEDITOR.instances['question-answer1'].getData()}
+					,success: function(result){
+						console.log(result);
+					}
+				,error: function(result){
+					
+				}
+					
+					
+				});
+				
+				
+				
+				$(".comment").show();
+				$(elem).parents(".warp-frm").hide();
+			} 
 		</script>
 		</div>
 	</div>

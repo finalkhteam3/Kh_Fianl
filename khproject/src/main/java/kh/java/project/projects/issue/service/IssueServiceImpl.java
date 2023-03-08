@@ -30,7 +30,7 @@ public class IssueServiceImpl implements IssueService{
 
     @Override
     public void updateIssue(Issue issue, String projectNo, int issueNo) {
-
+//TODO:HHW
     }
 
     @Override
@@ -45,7 +45,7 @@ public class IssueServiceImpl implements IssueService{
 
     @Override
     public void createComment(String projectNo, int issueNo, String id, String content) {
-
+// TODO: HHW
     }
 
     @Override

@@ -52,7 +52,8 @@ public class BoardRestController {
 		service.createIssue(request, projectNo, principal.getName());
 		return HttpStatus.OK;
 	}
-
+	
+	
 	@PatchMapping("/progress/api")
 	public HttpStatus updateProgress(@PathVariable String projectNo, Principal principal,
 			@RequestBody Progress progress) {

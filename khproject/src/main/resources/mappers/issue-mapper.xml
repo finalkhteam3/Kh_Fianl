@@ -27,5 +27,12 @@
 		
 		
 	</insert>
-
+<update id="updateIssue">
+	update issue
+		pic=#{pic}
+		maker=#{maker}	
+		name=#{name}
+	where project_No=#{projectNo} and no=#{issueNo}
+</update>
+	
 </mapper>
