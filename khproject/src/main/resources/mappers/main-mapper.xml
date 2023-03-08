@@ -27,7 +27,9 @@
 	</select>
 	<select id="selectOne"
 		resultType="kh.java.project.projects.dto.param.Project">
-		select no, name, info, icon_path
+		select no, name, info, icon_path, (select (select name from users where id=ad.id)
+		from AUTHORITIES ad where PROJECT_NO = p.NO and AUTHORITY = 'ROLE_ADMIN')
+		admin_name
 		from project p
 		where no =
 		#{no}
@@ -35,8 +37,7 @@
 	<insert id="insert"
 		parameterType="kh.java.project.projects.dto.param.Project">
 		insert into project
-		values( #{no}, #{name}, #{info},
-		#{iconPath} )
+		values( #{no}, #{name}, #{info}, #{iconPath} )
 	</insert>
 	<insert id="insertProjectNAuth" statementType="CALLABLE"
 		parameterType="kh.java.project.projects.dto.param.ProjectAuthorities">
@@ -60,7 +61,7 @@
 		parameterType="kh.java.project.projects.dto.param.Project">
 		update project
 		set name=#{name}, info=#{info},
-		icon_path=#{iconPath} where no=#{no}
+		icon_path=#{iconPath} where p.no=#{no}
 	</update>
 	<delete id="delete"
 		parameterType="kh.java.project.projects.dto.param.Project">

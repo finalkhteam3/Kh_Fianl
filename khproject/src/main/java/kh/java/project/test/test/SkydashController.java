@@ -67,8 +67,8 @@ public class SkydashController {
 	}
 
 	@RequestMapping("/jira/pjupdate.do")
-	public String updateProject(String name, String no, String info, String iconPath) {
-		Project dto = new Project(no, name, info, iconPath);
+	public String updateProject(String name, String no, String info, String iconPath, String adminName) {
+		Project dto = new Project(no, name, info, iconPath, adminName);
 		System.out.println("dto = " + dto);
 		int result = service.update(dto);
 		
