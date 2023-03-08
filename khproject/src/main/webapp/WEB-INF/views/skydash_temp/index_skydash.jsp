@@ -118,7 +118,9 @@ body {
 	/* 탭4번째 리스트 스타일 */
 	
 }
-
+p{
+	display: inline-block;
+}
 
 </style>
 <script>
@@ -135,14 +137,14 @@ body {
                     data.forEach((delta) => {
                         element.innerHTML +=
                             '<div class="recent_project">' +
-                            '<img src="/resources/skydashTemp/images/icon_project1.svg" width="24px" height="24px">' +
+                            '<a href="/work/'+delta.no+'"><span><img src="/resources/skydashTemp/images/icon_project1.svg" width="24px" height="24px"></span>' +
                             /* '<div>' + delta.iconPath + '<br/></div>' + */
-                            '<div>' + delta.name + '<br/></div>' +
-                            '<div>' + delta.info + '<br/></div>' +
+                            '<div><p>' + delta.name + '<br/></p>' +
+                            '<p>' + delta.info + '</p></div></a>' +
                             '<div>빠른 연결<br/></div>' +
                             '<a href="#">내 미해결 이슈	(n)<br/></a>' +
                             '<a href="#">완료된 이슈<br/></a>' +
-                            '<a href="/work/'+delta.no+'">보드<br/></a>' +
+                            /* '<a href="/work/'+delta.no+'">보드<br/></a>' + */
                             /* '<div><button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">보드</button><div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2"><a class="dropdown-item" href="#">보드명1</a><a class="dropdown-item" href="#">보드명2</a></div></div>' + */
                             '</div>'
 

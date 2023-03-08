@@ -36,7 +36,7 @@ public class SkydashController {
 		return "skydash_temp/all_projects";
 	}
 
-	@GetMapping("/jira/cptest")
+	@GetMapping("/jira/insert.do")
 	public String insert() {
 		return "skydash_temp/create_project";
 	}

@@ -71,14 +71,20 @@ td {
 				+ "</tr>";
 				+"</thead>";
 				$.each(projectList, function(i) {
-					tr += "<td>" + "별표" +  "</td><td>" + '<img src="/resources/skydashTemp/images/icon_project1.svg" class="icon_style">' + projectList[i].name + "</td><td>"
+					tr += "<td>" + "별표" +  "</td><td>" + '<a href="/work/'+ projectList[i].no +'"><img src="/resources/skydashTemp/images/icon_project1.svg" class="icon_style">' + projectList[i].name + "</a></td><td>"
 							+ projectList[i].no + "</td><td>"+ projectList[i].info + "</td><td>"
-							+ "리드 이름" + "</td><td>" + '<img src="/resources/skydashTemp/images/meatball_menu.png" class="icon_style">' + "</td></tr>";
+							+ "리드 이름" + "</td><td>" + '<a href="/jira/update.do?no='+ projectList[i].no +'"><input type="button" value="설정" ></a><a href="/jira/delete.do?no='
+							+ projectList[i].no +'"><input type="button" value="삭제" ></a>' + "</td></tr>";
 				});
 				$("#projectList").append(tr);
 			}
 		})
 	})
+	/* 
+	'<a href="/work/'+delta.no+'">보드<br/></a>' +
+	<input type="button" value="설정" onclick="location.href='/jira/update.do?no=${dto.no}'"> 
+	<input type="button" value="삭제" onclick="location.href='/jira/delete.do?no=${dto.no}'">
+	*/
 </script>
 <body>
 	<div class="container-scroller">
@@ -96,7 +102,8 @@ td {
 									<h3 class="font-weight-bold">프로젝트</h3>
 								</div>
 								<div>
-									<button class="navbar2_create project_create"><a href="${pageContext.request.contextPath}/jira/cptest">프로젝트 만들기</a></button>
+									<%-- <button ><a href="${pageContext.request.contextPath}/jira/cptest">프로젝트 만들기</a></button> --%>
+									<input class="navbar2_create project_create" type="button" value="프로젝트 만들기" onclick="location.href='/jira/insert.do'">
 								</div>
 								<div>
 									<div class="input-group-prepend hover-cursor"
@@ -113,7 +120,7 @@ td {
 
 							<div id="projectList"></div>
 							
-							<br><hr>
+							<%-- <br><hr>
 							<h3>프로젝트 목록</h3>
 							<table border = "1">
 								<colgroup>
@@ -145,10 +152,10 @@ td {
 								</c:forEach>
 								<tr>
 									<td colspan="7" align="right">
-										<input type="button" value="프로젝트 만들기" onclick="location.href='${pageContext.request.contextPath}/jira/cptest'">
+										<input type="button" value="프로젝트 만들기" onclick="location.href='/jira/insert.do'">
 									</td>
 								</tr>
-							</table>
+							</table> --%>
 
 						</div>
 
