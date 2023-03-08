@@ -13,21 +13,36 @@
 					<button id=btn_2>하위 이슈 추가</button>
 					<button id=btn_3>이슈 연결</button>
 					<p>설명</p>
-					<input type="text" value="설명 추가하기..." id=text>
+					 <input type="text" value="설명 추가하기..." id=commenta onclick="frm()">
+					 <div id="frm" style="display: none"> 
+						<form action="<%=request.getContextPath()%>/ckboard" method="post"
+							enctype="multipart/form-data" id="frm">
+							<textarea name="ckContent" id="ckContent" class="question-answer" placeholder="dfg"></textarea>
+							<button id="savebutton"
+								style="border: none; background-color: #0052CC; color: white; border-radius: 3px">저장</button>
+						</form> 
+							<button id="cancelButton"
+								style="border: none; border-radius: 3px; background-color: white;">취소</button>
+					 </div>
 					<br> <br>
 					<p>활동</p>
 					표시:
-					<button id=btn_4 style="width: 50px">모두</button>
+				<!-- 	<button id=btn_4 style="width: 50px">모두</button> -->
 					<button id=btn_4 style="width: 50px">댓글</button>
-					<button id=btn_4 style="width: 50px">기록</button>
+					<!-- <button id=btn_4 style="width: 50px">기록</button> -->
 					<br>
 					<br>
-					<form action="<%=request.getContextPath()%>/ckboard" method="post"
-						enctype="multipart/form-data" id="frm">
-						<textarea name="ckContent" id="ckContent"></textarea>
+						<div>
+						<input type="text" value="댓글 추가..."
+						id="commenta"	onclick="frm()" style="width: 600px; height: 40px;">
+					</div>
+					<div id="frm" style="display: none">
+				<form action="<%=request.getContextPath()%>/ckboard" method="post"	enctype="multipart/form-data" id="frm">
+						<textarea name="ckContent" id="ckContent" class="question-answer" placeholder="asd"></textarea>
 						<button id="savebutton" style="border: none; background-color: #0052CC; color: white; border-radius: 3px" >저장</button>
-						<button id="cancelButton" style="border: none; border-radius: 3px; background-color: white;">취소</button>
-					</form>
+						</form>
+						<button id="cancelButton" style="border: none; border-radius: 3px; background-color: white;" >취소</button>			
+					</div>
 				</div>
 
 				<div id="right">
@@ -72,6 +87,7 @@
 				</div>
 			</div>
 			</div>
+		
 <script>
 var issueNo1 = "";
 const projectNo = window.location.pathname.split("/")[2];
@@ -108,6 +124,10 @@ function detail_issue(issueNo){
     document.getElementById("modal_close_btn").onclick = function() {
         document.getElementById("modal_issue").style.display="none";
     }   
+    document.getElementById("cancelButton").onclick = function() {
+    	 document.getElementById("frm").style.display="none";
+        document.getElementById("commenta").style.display="block";
+    }
    </script>
 <script>
     function myFunction() {
@@ -127,13 +147,25 @@ function detail_issue(issueNo){
     	  }
     	}
 </script>
+
+<script>
+$('.question-answer').each(function(i,item){
+    console.log(item);
+   var sPlaceholderText = $(item).attr('placeholder');
+    var editor2 = CKEDITOR.replace('question-answer'+i,{
+        height: 300,
+        editorplaceholder : sPlaceholderText,
+    });
+})
+</script>
+	
 <script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
 console.log("여기 언제 들어옴? issueNo1 "+issueNo1);
 issueNo1 = '1';
 			CKEDITOR.replace('ckContent',
  			{
 				filebrowserUploadUrl:'<%=request.getContextPath()%>/work/'+projectNo+"/"+issueNo1+'/file/ckeditor/api',
- 				height:60,
+ 				height:100,
  				width:600,
  				toolbarGroups : [
  					{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
@@ -157,6 +189,16 @@ issueNo1 = '1';
 
 			});
 			
+		</script>
+		<script>
+		function frm(){
+		      if($('#frm').css('display') == 'none'){
+		      $('#frm').show();
+		      $('#commenta').hide();
+		    }else{
+		      $('#frm').hide();
+		    }
+		    }
 		</script>
 		</div>
 	</div>
