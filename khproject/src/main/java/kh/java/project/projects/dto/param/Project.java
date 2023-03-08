@@ -11,4 +11,6 @@ public class Project {
     private String name;
     private String info;
     private String iconPath;
+    private String adminName;
+    
 }

@@ -46,6 +46,7 @@ public interface MainService {
     public List<Project> selectList(String id);
     public Project selectOne(String no);
     public Integer insert(Project dto);
+    public Integer insertProjectNAuth(ProjectAuthorities dto);
     public Integer update(Project dto);
     public Integer delete(String no);
 }

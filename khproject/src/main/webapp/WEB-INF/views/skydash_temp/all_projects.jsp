@@ -73,7 +73,7 @@ td {
 				$.each(projectList, function(i) {
 					tr += "<td>" + "별표" +  "</td><td>" + '<a href="/work/'+ projectList[i].no +'"><img src="/resources/skydashTemp/images/icon_project1.svg" class="icon_style">' + projectList[i].name + "</a></td><td>"
 							+ projectList[i].no + "</td><td>"+ projectList[i].info + "</td><td>"
-							+ "리드 이름" + "</td><td>" + '<a href="/jira/update.do?no='+ projectList[i].no +'"><input type="button" value="설정" ></a><a href="/jira/delete.do?no='
+							+ projectList[i].adminName + "</td><td>" + '<a href="/jira/update.do?no='+ projectList[i].no +'"><input type="button" value="설정" ></a><a href="/jira/delete.do?no='
 							+ projectList[i].no +'"><input type="button" value="삭제" ></a>' + "</td></tr>";
 				});
 				$("#projectList").append(tr);

@@ -66,6 +66,14 @@ public class MainServiceImpl implements MainService{
 	public Integer insert(Project dto) {
 		return mapper.insert(dto);
 	}
+	
+	@Override
+	public Integer insertProjectNAuth(ProjectAuthorities dto) {
+		mapper.insertProjectNAuth(dto);
+		System.out.println("###############");
+		System.out.println(dto.getResult());
+		return dto.getResult();
+	}
 
 	@Override
 	public Integer update(Project dto) {

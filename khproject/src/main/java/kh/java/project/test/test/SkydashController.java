@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kh.java.project.HomeController;
+import kh.java.project.member.entity.Authorities;
 import kh.java.project.projects.dto.param.Project;
+import kh.java.project.projects.dto.param.ProjectAuthorities;
 import kh.java.project.projects.main.service.MainService;
 import lombok.AllArgsConstructor;
 
@@ -42,10 +44,12 @@ public class SkydashController {
 	}
 
 	@RequestMapping("/jira/projects")
-	public String insertProject(String name, String no, String info, String iconPath) {
-		Project dto = new Project(no, name, info, iconPath);
+	public String insertProject(String name, String no, String info, String iconPath
+			,Principal principal) {
+		//Project pDto = new Project(no, name, info, iconPath);
+		ProjectAuthorities dto = new ProjectAuthorities(no, name, info, iconPath, principal.getName(), 0);
 		System.out.println("dto = " + dto);
-		int result = service.insert(dto);
+		int result = service.insertProjectNAuth(dto);
 
 		if (result > 0) {
 			return "skydash_temp/all_projects";
