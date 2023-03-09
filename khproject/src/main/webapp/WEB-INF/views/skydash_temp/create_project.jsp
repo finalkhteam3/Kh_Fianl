@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <body>
-	<!-- project 만들기 모달 -->
-
+<%@ include file="/WEB-INF/views/component/header2.jsp"%>
 	<h2>프로젝트 만들기</h2>
 	<h4>프로젝트 설정에서 언제든지 이러한 사항을 변경할 수 있습니다.</h4>
 	<form action="${pageContext.request.contextPath}/jira/projects" method="post">
