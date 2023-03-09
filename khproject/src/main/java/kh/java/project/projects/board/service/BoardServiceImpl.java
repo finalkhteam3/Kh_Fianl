@@ -22,8 +22,12 @@ public class BoardServiceImpl implements BoardService {
 	public IssueListResponse getIssue(String projectNo, String keyword, String id) {
 		List<Issue> issueList = mapper.getIssues(projectNo, keyword, id);
 		List<Progress> progressList = mapper.getProgresses(projectNo);
-		IssueListResponse issueListResponse = new IssueListResponse(issueList, progressList);
-		return issueListResponse;
+		return new IssueListResponse(issueList, progressList);
+	}
+
+	@Override
+	public List<Member> getAllMembers(String projectNo, String keyword) {
+		return null;
 	}
 
 	@Override

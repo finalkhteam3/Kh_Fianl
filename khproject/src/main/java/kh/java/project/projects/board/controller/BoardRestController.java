@@ -33,6 +33,12 @@ public class BoardRestController {
 		return ResponseEntity.ok(issueList);
 	}
 
+	@GetMapping("/member/all/api")
+	public ResponseEntity<List<Member>> getAllMemberList(@PathVariable String projectNo, String keyword){
+		List<Member> allMembers = service.getAllMembers(projectNo, keyword);
+		return ResponseEntity.ok(allMembers);
+	}
+
 	@GetMapping("/member/api")
 	public ResponseEntity<List<Member>> getMemberList(@PathVariable String projectNo) {
 		List<Member> memberList = service.getMembers(projectNo);

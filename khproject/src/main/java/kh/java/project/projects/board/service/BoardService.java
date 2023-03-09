@@ -20,6 +20,12 @@ public interface BoardService {
 	IssueListResponse getIssue(String projectNo, String keyword, String id);
 
     /**
+     * @param keyword 검색어(아이디를 like 사용해 자동완성 기능)
+     * @return 현재 프로젝트에 있는 멤버를 제외한 모든 유저(초대 가능한 모든 유저)를 검색
+     */
+    List<Member> getAllMembers(String projectNo, String keyword);
+
+    /**
      * 보드 페이지 오픈시 최초에 멤버들을 받아오는 기능
      */
     List<Member> getMembers(String projectNo);

@@ -15,7 +15,9 @@ import kh.java.project.projects.dto.request.CreateIssueRequest;
 public interface BoardMapper {
 	List<Issue> getIssues(@Param("projectNo")String projectNo, @Param("keyword") String keyword, @Param("id") String id);
 	List<Progress> getProgresses(@Param("projectNo")String projectNo);
+	List<Member> getAllMembers(@Param("projectNo") String projectNo, @Param("keyword") String keyword);
 	List<Member> getMembers(@Param("projectNo")String projectNo);
 	void createIssue(@Param("request") CreateIssueRequest request,@Param("projectNo")String projectNo,@Param("id") String id);
-	
+
+
 }
