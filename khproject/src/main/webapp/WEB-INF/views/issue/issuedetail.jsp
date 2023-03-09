@@ -19,7 +19,8 @@
 						<form id="frm1" class="frm">
 							<textarea name="ckContent" id="question-answer0"
 								class="question-answer" placeholder="내용을 입력하세요"></textarea>
-							<button class="savebutton" type="button" onclick="saveHandler(this)"
+							<button class="savebutton" type="button"
+								onclick="saveHandler(this)"
 								style="border: none; background-color: #0052CC; color: white; border-radius: 3px">저장</button>
 							<button class="cancelButton" type="reset"
 								onclick="resetHandler(this)"
@@ -42,13 +43,17 @@
 						<form id="frm2" class="frm">
 							<textarea name="content" id="question-answer1"
 								class="question-answer" placeholder="내용을 입력하세요"></textarea>
-							<button class="savebutton" type="button" onclick="saveCommentHandler(this)"
+							<button class="savebutton" type="button"
+								onclick="saveCommentHandler(this)"
 								style="border: none; background-color: #0052CC; color: white; border-radius: 3px">저장</button>
 							<button class="cancelButton" type="reset"
 								onclick="resetHandler(this)"
 								style="border: none; border-radius: 3px; background-color: white;">취소</button>
 						</form>
 					</div>
+					<div class="wrap comments">
+					여기 여러댓글
+					</div>					
 				</div>
 
 				<div id="right">
@@ -148,12 +153,43 @@ function detail_issue(issueNo){
 
                      removeButtons : 'Source,Save,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Redo,Undo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,HiddenField,Subscript,Superscript,CopyFormatting,RemoveFormat,Indent,Outdent,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language,Unlink,Anchor,Flash,HorizontalRule,PageBreak,Iframe,Maximize,ShowBlocks,About,NewPage,Preview,ImageButton,ExportPdf',
 
-                });
-            });
-        }
-    })
-}
+                }); // replace
+            });  // each
+        } // success
+    }); // ajax
+    
+    $.ajax({
+        type: 'GET',
+        url: "<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo+"/comment/api",
+        contentType: false,
+        processData: false,    
+        success: function (data) {
+        	console.log(data); 
+        	if (data !== undefined) {                             
+                make_view_comments(data);
+            }
+        	 
+        } // success
+    }); // ajax
+    
+} // funcction detail_issue
 
+function make_view_comments(comments){
+	var htmlVar = '';
+	comments.forEach((delta) => {
+		htmlVar+='<div style ="border:1px solid black;">';
+		htmlVar+='<div>';
+		htmlVar+='<p>'+delta.maker+'</p>';
+		htmlVar+='</div>';
+		htmlVar+='<div>';
+		htmlVar+='<div" class="comment" style="width:300px; height: 40px;">'+delta.content+'</div>';
+		htmlVar+='</div>';
+		htmlVar+='</div>';
+
+		
+	});
+	$(".wrap.comments").html(htmlVar);
+}
 </script>
 	<script>
     document.getElementById("modal_open_btn").onclick = function() {
@@ -222,12 +258,13 @@ function detail_issue(issueNo){
 			$(elem).parents(".warp-frm").hide(); --%>
 		
 		 function saveCommentHandler(elem){
-			 
+			 var commentObj =  {content: CKEDITOR.instances['question-answer1'].getData()};
 				$.ajax({
-					url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/comment/api"
-					,type:"post"
-					,data: {content: CKEDITOR.instances['question-answer1'].getData()}
-					,success: function(result){
+					url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/comment/api",
+					type:"post",
+					contentType: "application/json",
+					data: JSON.stringify(commentObj),
+					success: function(result){
 						console.log(result);
 					}
 				,error: function(result){

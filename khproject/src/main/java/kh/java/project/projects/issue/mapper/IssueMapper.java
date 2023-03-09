@@ -16,8 +16,8 @@ public interface IssueMapper {
     
 	List<Issue> getIssues(@Param("projectNo")String projectNo, @Param("keyword") String keyword, @Param("id") String id);
 	List<Progress> getProgresses(@Param("projectNo")String projectNo);
-	Comment getComment(@Param("projectNo")String projectNo,@Param("issueNo")int issueNo,@Param("id")String id);
-	void createComment(Comment comment);
+	List<Comment> getComments(@Param("projectNo")String projectNo,@Param("issueNo")int issueNo,@Param("id")String id);
+	void createComment(@Param("projectNo")String projectNo, @Param("issueNo")int issueNo, @Param("id")String id, @Param("comment")Comment comment);
 	void deleteComment(Comment comment);
 	List<File> getFiles(@Param("projectNo")String projectNo, @Param("issueNo")int issueNo);
 	void uploadedFiles(File file);

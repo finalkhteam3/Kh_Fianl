@@ -53,10 +53,10 @@ public class IssueRestController {
     }
 
     @GetMapping("/comment/api")
-    public ResponseEntity<Comment> getComment(@PathVariable String projectNo,
+    public ResponseEntity<List<Comment>> getComment(@PathVariable String projectNo,
                                               @PathVariable int issueNo,
                                               Principal principal) {
-        Comment comment = service.getComment(projectNo, issueNo, principal.getName());
+    	List<Comment> comment = service.getComments(projectNo, issueNo, principal.getName());
         return ResponseEntity.ok(comment);
     }
 
@@ -64,8 +64,8 @@ public class IssueRestController {
     public HttpStatus createComment(@PathVariable String projectNo,
                                     @PathVariable int issueNo,
                                     Principal principal,
-                                    @RequestBody String content) {
-        service.createComment(projectNo, issueNo, principal.getName(), content);
+                                    @RequestBody Comment comment) {
+        service.createComment(projectNo, issueNo, principal.getName(), comment);
         return HttpStatus.OK;
     }
 
