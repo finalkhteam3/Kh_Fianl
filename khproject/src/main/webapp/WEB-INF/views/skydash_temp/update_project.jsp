@@ -27,6 +27,10 @@
 				<!-- <td><input type="text" name="no" id="no" placeholder="프로젝트 식별 접두사"></td> -->
 			</tr>
 			<tr>
+				<th>프로젝트 리더</th>
+				<td>${dto.adminName }</td>
+			</tr>
+			<tr>
 				<th>설명</th>
 				<td><input type="text" name="info" id="info" placeholder="프로젝트를 소개해 주세요." value=${dto.info }></td>
 			</tr>

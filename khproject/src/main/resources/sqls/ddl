@@ -233,3 +233,20 @@ ALTER TABLE issue_roadmap ADD CONSTRAINT fk_issue_to_roadmap FOREIGN key(issue_n
 ALTER TABLE READ ADD CONSTRAINT fk_issue_to_read FOREIGN KEY(issue_no, project_no) REFERENCES issue(NO, project_no);
 ALTER TABLE READ ADD CONSTRAINT fk_users_to_read FOREIGN key(id) REFERENCES users(id);
 ALTER TABLE authorities_temp ADD CONSTRAINT fk_authorities_to_temp FOREIGN key(project_no) REFERENCES project(NO);
+
+//프로젝트 생성 시 ROLE_ADMIN 권한 주는 프로시저 생성
+create or replace procedure PROC_INSERT_PROJECT_AUTH (
+                id varchar2
+                , no varchar2, name varchar2, info varchar2, icon_path varchar2
+                , result out number)
+is
+begin
+        insert into project  values( no, name,info,icon_path );
+        INSERT INTO AUTHORITIES values(id, no, 'ROLE_ADMIN', sysdate);
+        commit;
+        result := 2;
+exception when others then
+        rollback;
+        result := -1;
+end;
+/

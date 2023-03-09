@@ -2,6 +2,7 @@ package kh.java.project.projects.main.mapper;
 
 import kh.java.project.projects.dto.param.Issue;
 import kh.java.project.projects.dto.param.Project;
+import kh.java.project.projects.dto.param.ProjectAuthorities;
 import kh.java.project.projects.dto.request.CreateIssueRequest;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -15,6 +16,7 @@ public interface MainMapper {
     List<Issue> getIssueList();
     List<Project> selectList(String id);
     Integer insert(Project dto);
+    void insertProjectNAuth(ProjectAuthorities dto);
 	Project selectOne(String no);
 	Integer update(Project dto);
 	Integer delete(String no);

@@ -5,6 +5,9 @@
 	<select id="getProjectList"
 		resultType="kh.java.project.projects.dto.param.Project">
 		select no, name, info, icon_path
+		, (select (select name from users where id=ad.id)
+		from AUTHORITIES ad where PROJECT_NO = p.NO and AUTHORITY = 'ROLE_ADMIN')
+		admin_name
 		from project p join AUTHORITIES a on a.PROJECT_NO = p.NO
 		where a.id = #{id}
 	</select>
@@ -18,26 +21,52 @@
 	<select id="selectList"
 		resultType="kh.java.project.projects.dto.param.Project">
 		select no, name, info, icon_path
-		from project p join AUTHORITIES a on a.PROJECT_NO = p.NO
+		from project p join
+		AUTHORITIES a on a.PROJECT_NO = p.NO
 		where a.id = #{id}
 	</select>
 	<select id="selectOne"
 		resultType="kh.java.project.projects.dto.param.Project">
-		select no, name, info, icon_path
-		from project p 
-		where no = #{no}
+		select no, name, info, icon_path, (select (select name from users where id=ad.id)
+		from AUTHORITIES ad where PROJECT_NO = p.NO and AUTHORITY = 'ROLE_ADMIN')
+		admin_name
+		from project p
+		where no =
+		#{no}
 	</select>
-	<insert id="insert" parameterType="kh.java.project.projects.dto.param.Project">
+	<insert id="insert"
+		parameterType="kh.java.project.projects.dto.param.Project">
 		insert into project
 		values( #{no}, #{name}, #{info}, #{iconPath} )
 	</insert>
-	<update id="update" parameterType="kh.java.project.projects.dto.param.Project">
+	<insert id="insertProjectNAuth" statementType="CALLABLE"
+		parameterType="kh.java.project.projects.dto.param.ProjectAuthorities">
+		{ call PROC_INSERT_PROJECT_AUTH (
+		#{id ,
+		jdbcType=VARCHAR, mode=IN }
+		, #{no , jdbcType=VARCHAR, mode=IN }
+		,
+		#{name, jdbcType=VARCHAR, mode=IN }
+		, #{info, jdbcType=VARCHAR, mode=IN
+		}
+		, #{iconPath, jdbcType=VARCHAR, mode=IN }
+		, #{result ,
+		jdbcType=INTEGER, mode=OUT }
+		)
+		}
+	</insert>
+	<!-- exec PROC_INSERT_PROJECT_AUTH('bkchoi', 'khF6','KHF6','KHF4설명', 'aa' 
+		, :var_result); -->
+	<update id="update"
+		parameterType="kh.java.project.projects.dto.param.Project">
 		update project
-		set name=#{name}, info=#{info}, icon_path=#{iconPath} where no=#{no} 
+		set name=#{name}, info=#{info},
+		icon_path=#{iconPath} where p.no=#{no}
 	</update>
-	<delete id="delete" parameterType="kh.java.project.projects.dto.param.Project">
+	<delete id="delete"
+		parameterType="kh.java.project.projects.dto.param.Project">
 		delete from project
-		where no=#{no} 
+		where no=#{no}
 	</delete>
 
 </mapper>
