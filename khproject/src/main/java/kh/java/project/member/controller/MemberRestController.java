@@ -27,6 +27,7 @@ public class MemberRestController {
         memberService.createMember(request);
         return HttpStatus.OK;
     }
+
     @ExceptionHandler(AssertionError.class)
     public HttpStatus assertExceptionHandler(AssertionError error) {
         return HttpStatus.ACCEPTED;
