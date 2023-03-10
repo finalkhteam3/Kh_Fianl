@@ -30,7 +30,7 @@ public class IssueServiceImpl implements IssueService{
 
     @Override
     public void updateIssue(Issue issue, String projectNo, int issueNo) {
-//TODO:HHW
+    	mapper.updateIssue(issue, projectNo, issueNo);
     }
 
     @Override

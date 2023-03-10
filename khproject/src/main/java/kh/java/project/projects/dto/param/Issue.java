@@ -18,7 +18,7 @@ public class Issue {
 	private int anceNo;
 	private int progress;
 	private String name;
-//    private String content;
+    private String content;
 //    private Date startDate;
 //    private Date finDate;
 }

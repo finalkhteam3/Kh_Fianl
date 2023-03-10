@@ -13,6 +13,7 @@
 					<button id=btn_2>하위 이슈 추가</button>
 					<button id=btn_3>이슈 연결</button>
 					<p>설명</p>
+					<div class="content"></div>
 					<input type="text" value="설명 추가하기..." data-comment="warp-frm1"
 						onclick="frm(this)" class="comment">
 					<div id="warp-frm1" style="display: none" class="warp-frm">
@@ -121,6 +122,7 @@ function detail_issue(issueNo){
             $("#modal_issue .pic").html(data.pic);
             $("#modal_issue .maker").html(data.maker);
             $("#modal_issue .name").html(data.name);
+            $("#modal_issue .content").html(data.content);
             document.getElementById("modal_issue").style.display="block";
             
             
@@ -244,14 +246,21 @@ function make_view_comments(comments){
 		}
 		
 	  function saveHandler(elem){
+		  var contentStr = CKEDITOR.instances['question-answer0'].getData()
 			 var contentObj =  {content: CKEDITOR.instances['question-answer0'].getData()};
 				$.ajax({
 					url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
-					type:"post",
+					type:"patch",
 					contentType: "application/json",
 					data: JSON.stringify(contentObj),
 					success: function(result){
 						console.log(result);
+						if(result =="OK"){
+							// 방법 1
+							// $("#modal_issue .content").html(contentStr);
+							// 방법 2
+							detail_issue(issueNo1);
+						}
 					}
 				,error: function(result){
 					
@@ -259,9 +268,7 @@ function make_view_comments(comments){
 					
 					
 				});
-				
-				
-				
+								
 				$(".comment").show();
 				$(elem).parents(".warp-frm").hide();
 			} 
@@ -275,8 +282,13 @@ function make_view_comments(comments){
 					data: JSON.stringify(commentObj),
 					success: function(result){
 						console.log(result);
+						if(result =="OK"){
+							
+							detail_issue(issueNo1);
+						}
 					}
 				,error: function(result){
+					
 					
 				}
 					

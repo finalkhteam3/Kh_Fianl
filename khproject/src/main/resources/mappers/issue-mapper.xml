@@ -35,11 +35,20 @@
 	
 	
 	
-<update id="updateIssue" parameterType="kh.java.project.projects.dto.param.Project">
-	update issue
-		pic=#{pic}
-		maker=#{maker}	
-		name=#{name}
+<update id="updateIssue" >
+	update issue set
+	<if test="issue.pic !=null">
+		pic=#{issue.pic}
+	</if>
+	<if test="issue.maker !=null">
+			maker=#{issue.maker}
+	</if>
+	<if test="issue.name !=null">
+		name=#{issue.name}
+	</if>
+		<if test="issue.content !=null">
+		content=#{issue.content}
+	</if>
 	where project_No=#{projectNo} and no=#{issueNo}
 </update>
 	

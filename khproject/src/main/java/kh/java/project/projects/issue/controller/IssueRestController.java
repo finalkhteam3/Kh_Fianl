@@ -39,7 +39,7 @@ public class IssueRestController {
     public HttpStatus updateIssue(@PathVariable String projectNo,
                                   @PathVariable int issueNo,
                                   Principal principal,
-                                  Issue issue) {
+                                 @RequestBody Issue issue) {
         service.updateIssue(issue, projectNo, issueNo);
         return HttpStatus.OK;
     }
