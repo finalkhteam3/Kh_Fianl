@@ -101,6 +101,8 @@
 	padding: 20px 10px;
 	background: #fff;
 	border: 2px solid #666;
+	overflow: scroll;
+	
 }
 #modal_issue .modal_layer {
           position:fixed;
@@ -111,3 +113,5 @@
           background:rgba(0, 0, 0, 0.5);
           z-index:-1;
         }   
+
+

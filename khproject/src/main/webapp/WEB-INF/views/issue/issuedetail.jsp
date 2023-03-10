@@ -30,9 +30,9 @@
 					<br> <br>
 					<p>활동</p>
 					표시:
-					<!-- 	<button id=btn_4 style="width: 50px">모두</button> -->
+
 					<button id=btn_4 style="width: 50px">댓글</button>
-					<!-- <button id=btn_4 style="width: 50px">기록</button> -->
+
 					<br> <br>
 					<div>
 						<input type="text" value="댓글 추가..." data-comment="warp-frm2"
@@ -95,6 +95,7 @@
 							<p>업데이트 됨</p>
 						</div>
 					</div>
+				</div>
 				</div>
 			</div>
 			</div>
@@ -177,12 +178,17 @@ function detail_issue(issueNo){
 function make_view_comments(comments){
 	var htmlVar = '';
 	comments.forEach((delta) => {
-		htmlVar+='<div style ="border:1px solid black;">';
+		htmlVar+='<br>';
+		htmlVar+='<div style ="border:none; solid black;">';
 		htmlVar+='<div>';
-		htmlVar+='<p>'+delta.maker+'</p>';
+		htmlVar+='<img src="/resources/skydashTemp/images/faces/user_face.png" style="width:32px; height: 32px;" alt="profile" >'+ '&nbsp' + '&nbsp'+delta.maker;
 		htmlVar+='</div>';
 		htmlVar+='<div>';
+		htmlVar+='<br>';
 		htmlVar+='<div" class="comment" style="width:300px; height: 40px;">'+delta.content+'</div>';
+		htmlVar+='</div>';
+		htmlVar+='<div>';
+		htmlVar+='<button class="updatebutton" type="button" style="border: none; border-radius: 3px; background-color: white;">편집</button>'
 		htmlVar+='</div>';
 		htmlVar+='</div>';
 
@@ -237,26 +243,29 @@ function make_view_comments(comments){
 			$(elem).parents(".warp-frm").hide();
 		}
 		
-	<%--  function saveHandler(elem){
-			$.ajax({
-				url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api"
-				,type:"post"
-				,data: {content: CKEDITOR.instances['question-answer0'].getData()}
-				,success: function(result){
+	  function saveHandler(elem){
+			 var contentObj =  {content: CKEDITOR.instances['question-answer0'].getData()};
+				$.ajax({
+					url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
+					type:"post",
+					contentType: "application/json",
+					data: JSON.stringify(contentObj),
+					success: function(result){
+						console.log(result);
+					}
+				,error: function(result){
 					
 				}
-			,error: function(result){
+					
+					
+				});
 				
-			}
 				
 				
-			});
-			
-			
-			
-			$(".comment").show();
-			$(elem).parents(".warp-frm").hide(); --%>
-		
+				$(".comment").show();
+				$(elem).parents(".warp-frm").hide();
+			} 
+	  
 		 function saveCommentHandler(elem){
 			 var commentObj =  {content: CKEDITOR.instances['question-answer1'].getData()};
 				$.ajax({
