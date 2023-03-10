@@ -30,7 +30,7 @@ public interface IssueService {
     /**
      * 이슈 상세보기 페이지에서 댓글 가져오기 기능
      */
-    Comment getComment(String projectNo, int issueNo, String id);
+    List<Comment> getComments(String projectNo, int issueNo, String id);
 
     /**
      * 이슈 상세보기 페이지에서 댓글 작성 기능
@@ -38,7 +38,7 @@ public interface IssueService {
      * 2. 원글 작성자 찾기 dao(projectNo와 issueNo를 사용해서 issue 의 Maker + PIC 찾기 -> Subscriber)
      * 3. 원글 작성자에게 알림 보내기 dao(content)
      */
-    void createComment(String projectNo, int issueNo, String id, String content);
+    void createComment(String projectNo, int issueNo, String id, Comment comment);
 
     /**
      * 이슈 상세보기 페이지에서 댓글 편집 기능

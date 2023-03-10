@@ -12,22 +12,30 @@
 		resultType="kh.java.project.projects.dto.param.Issue">
 		select * from issue 
 	</select>
+	<select id="getComments"
+		resultType="kh.java.project.projects.dto.param.Comment">
+		select * from issue_comment  
+			where project_no=#{projectNo} 
+				  and issue_no=#{issueNo}
+	</select>
 	<select id="getProgresses"
 		resultType="kh.java.project.projects.dto.param.Progress">
 		select * from progress where no = #{projectNo}
 	</select>
 	
 	<insert id="createComment">
-		insert into comment values(
-		(select nvl(max(no), 0)+1 from comment),
-			#{request.maker},
-			#{request.content},
-			#{request.reactionMap},
-			#{request.userReactionList}
-		
-		
+		insert into issue_comment values(
+		(select nvl(max(seq), 0)+1 from issue_comment),
+		#{projectNo},
+		#{issueNo},
+		#{id},
+		#{comment.content}	
+		)	
 	</insert>
-<update id="updateIssue">
+	
+	
+	
+<update id="updateIssue" parameterType="kh.java.project.projects.dto.param.Project">
 	update issue
 		pic=#{pic}
 		maker=#{maker}	

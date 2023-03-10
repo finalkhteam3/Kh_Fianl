@@ -39,13 +39,13 @@ public class IssueServiceImpl implements IssueService{
     }
 
     @Override
-    public Comment getComment(String projectNo, int issueNo, String id) {
-        return null;
+    public List<Comment> getComments(String projectNo, int issueNo, String id) {
+        return mapper.getComments(projectNo, issueNo, id);
     }
-
     @Override
-    public void createComment(String projectNo, int issueNo, String id, String content) {
-// TODO: HHW
+    public void createComment(String projectNo, int issueNo, String id,  Comment comment) {
+    	mapper.createComment(projectNo, issueNo, id, comment);	
+    	return;
     }
 
     @Override
