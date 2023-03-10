@@ -27,7 +27,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<Member> getAllMembers(String projectNo, String keyword) {
-		return null;
+		return mapper.getAllMembers(projectNo, keyword);
 	}
 
 	@Override

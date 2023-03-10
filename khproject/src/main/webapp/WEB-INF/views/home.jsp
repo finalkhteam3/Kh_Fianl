@@ -46,7 +46,7 @@ ${projectNo}
         <jsp:include page="/WEB-INF/views/component/sidebar2.jsp"/>
         <div class="main-panel">
             <div class="content-wrapper">
-                    <jsp:include page="/WEB-INF/views/component/main.jsp"/>
+                <jsp:include page="/WEB-INF/views/component/main.jsp"/>
             </div>
         </div>
         <jsp:include page="/WEB-INF/views/component/footer.jsp"/>

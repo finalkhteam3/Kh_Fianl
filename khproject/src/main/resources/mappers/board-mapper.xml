@@ -21,6 +21,12 @@
         where no = #{projectNo}
     </select>
 
+    <select id="getAllMembers" resultType="kh.java.project.projects.dto.param.Member">
+        select id, name, email
+        from users
+        where id LIKE '%${keyword}%'
+    </select>
+
     <select id="getMembers" resultType="kh.java.project.projects.dto.param.Member">
         select id, authority as projectAuth, name, email
         from (select id, authority from authorities where project_no = #{projectNo})
