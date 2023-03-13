@@ -89,7 +89,7 @@ td {
 <body>
 	<div class="container-scroller">
 		<!-- partial:partials/_navbar.html -->
-		<%@ include file="/WEB-INF/views/component/header2.jsp"%>
+		<%@ include file="/WEB-INF/views/component/header3.jsp"%>
 		<!-- partial -->
 		<div class="container-fluid page-body-wrapper">
 

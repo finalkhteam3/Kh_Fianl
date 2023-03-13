@@ -180,7 +180,7 @@
 	<div id="jira-frontend">
 		<div>
 			<div>
-				<%@ include file="/WEB-INF/views/component/header2.jsp"%>
+				<%@ include file="/WEB-INF/views/component/header3.jsp"%>
 				<div>
 					<div class="body_wrap">
 						<div class="body_wrap2">

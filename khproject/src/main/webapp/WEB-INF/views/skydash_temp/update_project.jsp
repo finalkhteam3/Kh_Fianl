@@ -8,7 +8,7 @@
 </head>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <body>
-<%@ include file="/WEB-INF/views/component/header2.jsp"%>
+<%@ include file="/WEB-INF/views/component/header3.jsp"%>
 	<h2>프로젝트 설정</h2>
 	<h4>프로젝트 / ${dto.name}</h4>
 	<form action="pjupdate.do" method="post">

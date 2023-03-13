@@ -5,6 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/resources/skydashTemp/images/logo_mini.png"
+	rel="shortcut icon" type="image/x-icon">
+	<!-- plugins:css -->
+<link rel="stylesheet" href="/vendors/feather/feather.css">
+<link rel="stylesheet" href="/vendors/ti-icons/css/themify-icons.css">
+<link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+<!-- inject:css -->
+<link rel="stylesheet"
+	href="/resources/skydashTemp/css/vertical-layout-light/style.css">
+<!-- endinject -->
+</head>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
@@ -14,7 +28,7 @@
             <a class="navbar-brand brand-logo mr-5" href="/jira/your-work"><img src="/resources/skydashTemp/images/logo.png"
                                                                            class="mr-2" alt="logo"/></a>
             <a class="navbar-brand brand-logo-mini" href="/jira/your-work"><img
-                    src="/resources/skydashTemp/images/logo-mini.svg" alt="logo"/></a>
+                    src="/resources/skydashTemp/images/logo_mini.png" alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
