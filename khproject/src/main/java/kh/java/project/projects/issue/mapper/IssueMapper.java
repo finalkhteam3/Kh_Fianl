@@ -22,4 +22,5 @@ public interface IssueMapper {
 	List<File> getFiles(@Param("projectNo")String projectNo, @Param("issueNo")int issueNo);
 	void uploadedFiles(File file);
 	void updateIssue(@Param("issue")Issue issue, @Param("projectNo")String projectNo, @Param("issueNo")int issueNo);
+	void updateComment(@Param("projectNo")String projectNo, @Param("issueNo")int issueNo, @Param("id")String id, @Param("comment")Comment comment);
 }

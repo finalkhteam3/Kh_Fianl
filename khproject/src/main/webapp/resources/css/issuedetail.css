@@ -114,4 +114,14 @@
           z-index:-1;
         }   
 
-
+#modal_issue input.name {
+	display : block;
+	font-size: 35px;
+	outline: none;
+	border-style: none;
+}
+#modal_issue input.name:focus {
+	display : block;
+	font-size: 35px;
+	border: 1px solid black;
+}

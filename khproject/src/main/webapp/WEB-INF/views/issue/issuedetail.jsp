@@ -8,7 +8,7 @@
 				<div class="issuedetail">
 				<div id="left">
 					<p class=projectNo>issue</p>
-					<h2 class=name>title</h2>
+					<div><input type="text" name="name" class="name"></div>
 					<button id=btn_1>첨부</button>
 					<button id=btn_2>하위 이슈 추가</button>
 					<button id=btn_3>이슈 연결</button>
@@ -100,7 +100,7 @@
 				</div>
 			</div>
 			</div>
-		
+		 
 <script>
 let issueNo1 = "";
 const projectNo = window.location.pathname.split("/")[2];
@@ -121,11 +121,12 @@ function detail_issue(issueNo){
             $("#modal_issue .projectNo").html(data.projectNo);
             $("#modal_issue .pic").html(data.pic);
             $("#modal_issue .maker").html(data.maker);
-            $("#modal_issue .name").html(data.name);
+            $("#modal_issue input.name").val(data.name);
             $("#modal_issue .content").html(data.content);
             document.getElementById("modal_issue").style.display="block";
-            
-            
+            //$("#modal_issue input.name").click(nameClickHandler);
+            $("#modal_issue input.name").blur(nameBlurHandler);
+           
             
             //CKEditor 세팅
             $('.question-answer').each(function(i,item){
@@ -190,7 +191,7 @@ function make_view_comments(comments){
 		htmlVar+='<div" class="comment" style="width:300px; height: 40px;">'+delta.content+'</div>';
 		htmlVar+='</div>';
 		htmlVar+='<div>';
-		htmlVar+='<button class="updatebutton" type="button" style="border: none; border-radius: 3px; background-color: white;">편집</button>'
+		htmlVar+='<button class="updatebutton" type="button" onclick="updatebutton" style="border: none; border-radius: 3px; background-color: white;">편집</button>'
 		htmlVar+='</div>';
 		htmlVar+='</div>';
 
@@ -200,12 +201,11 @@ function make_view_comments(comments){
 }
 </script>
 	<script>
-    document.getElementById("modal_open_btn").onclick = function() {
-        document.getElementById("modal_issue").style.display="block";
-    }
+
    
     document.getElementById("modal_close_btn").onclick = function() {
         document.getElementById("modal_issue").style.display="none";
+        to_ajax(); // 수정된 issues 들 다시 읽어와서 display하기.
     }   
     
    </script>
@@ -228,9 +228,36 @@ function make_view_comments(comments){
     	}
 </script>
 
-	
 
-		<script>
+	<script>
+
+	
+	function nameBlurHandler(){
+		console.log("BLUR 이벤트")
+		
+		// ajax로 patch
+		var nameobj =  {name: $("input.name").val()};
+		$.ajax({
+				url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
+				type:"patch",
+				contentType: "application/json",
+				data: JSON.stringify(nameobj),
+				success: function(result) {
+					 console.log(result);
+					if(result =="OK"){
+						console.log("okokok")
+						// 방법 1
+						// $("#modal_issue .content").html(contentStr);
+						// 방법 2
+						detail_issue(issueNo1);
+						
+					}
+				}
+				,error: function(result){ 
+					
+				}
+		}); 
+	}
 		function frm(elem){
 			$(".comment").show();
 			$(elem).hide();
@@ -300,8 +327,10 @@ function make_view_comments(comments){
 				$(".comment").show();
 				$(elem).parents(".warp-frm").hide();
 			} 
+	
 		</script>
-		</div>
+	
+</div>
 	</div>
 
 

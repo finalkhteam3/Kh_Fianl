@@ -50,7 +50,8 @@ public class IssueServiceImpl implements IssueService{
 
     @Override
     public void updateComment(String projectNo, int issueNo, String id, Comment comment) {
-
+    	mapper.updateComment(projectNo, issueNo, id, comment);	
+    	return;
     }
 
     @Override
