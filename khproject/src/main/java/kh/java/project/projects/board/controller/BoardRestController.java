@@ -46,8 +46,8 @@ public class BoardRestController {
 	}
 
 	@PostMapping("/member/api")
-	public HttpStatus updateMember(@PathVariable String projectNo, @RequestBody AddMemberRequest request) {
-		service.addMember(request, projectNo);
+	public HttpStatus updateMember(@PathVariable String projectNo, String id) {
+		service.addMember(id, projectNo);
 		return HttpStatus.OK;
 	}
 

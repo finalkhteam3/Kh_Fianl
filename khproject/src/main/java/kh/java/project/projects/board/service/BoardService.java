@@ -35,7 +35,7 @@ public interface BoardService {
      * 이름은 이메일에서 @전부분을 받아와 넣는다.
      * 이메일과 권한은 대기 테이블에 집어넣고, 초대 이메일을 보낸다.
      */
-    void addMember(AddMemberRequest req, String projectNo);
+    void addMember(String id, String projectNo);
 
     /**
      * 보드 페이지에서 이슈를 추가하는 기능.

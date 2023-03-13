@@ -18,6 +18,6 @@ public interface BoardMapper {
 	List<Member> getAllMembers(@Param("projectNo") String projectNo, @Param("keyword") String keyword);
 	List<Member> getMembers(@Param("projectNo")String projectNo);
 	void createIssue(@Param("request") CreateIssueRequest request,@Param("projectNo")String projectNo,@Param("id") String id);
-
+	int addMember(@Param("id") String id, @Param("projectNo") String projectNo);
 
 }

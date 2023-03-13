@@ -36,8 +36,17 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void addMember(AddMemberRequest req, String projectNo) {
-
+	public void addMember(String id, String projectNo) {
+		try {
+			System.out.println("id = " + id);
+			int result = mapper.addMember(id, projectNo);
+			System.out.println("result = " + result);
+			if(result != 1)
+				throw new RuntimeException("추가가 정상적으로 이뤄지지 않았습니다.");
+			System.out.println("result = " + result);
+		} catch (RuntimeException e){
+			throw new RuntimeException("오류");
+		}
 	}
 
 	@Override

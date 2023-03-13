@@ -8,6 +8,6 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 public class AddMemberRequest {
-    private String email;
+    private String id;
     private String role;
 }

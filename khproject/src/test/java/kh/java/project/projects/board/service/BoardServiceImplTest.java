@@ -23,4 +23,14 @@ public class BoardServiceImplTest extends Configure {
         //then
         System.out.println("allMembers = " + allMembers);
     }
+
+    @Test
+    public void addMember(){
+        //given
+        String projectNo = "KHF3";
+        String id = "tuu5234";
+        //when
+        boardService.addMember(id, projectNo);
+    }
+
 }

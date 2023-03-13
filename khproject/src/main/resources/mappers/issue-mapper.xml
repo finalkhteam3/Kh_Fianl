@@ -33,7 +33,7 @@
 		)	
 	</insert>
 	
-	
+
 	
 <update id="updateIssue" >
 	update issue set
