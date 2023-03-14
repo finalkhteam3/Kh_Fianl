@@ -78,14 +78,22 @@
 						<div id="block">
 							<br>
 							<div>
-								<span>보고자</span> <span class="maker">todo</span>
+								<span>보고자</span> <label for="maker2" class="maker">보고자</label>
+								<div class="dropdown">
+									<select id="maker2" name="maker" class="maker">
+										<!-- ajax채움 -->
+									</select>
 							</div>
 							<br>
 							<div>
-								<span>담당자</span> <span class="pic">할당되지않음</span>
+								<span>담당자</span> <label for="pic2" class="pic">담당자</label>
+								<div class="dropdown">
+									<select id="pic2" name="pic" class="pic">
+										<!-- ajax채움 -->
+									</select>
+								</div>
 							</div>
-						</div>
-						<div>
+							<div>
 							<button
 								style="width: 380px; height: 48px; text-align: left; background-color: white; border-color: gray;">더
 								많은 필드</button>
@@ -126,8 +134,11 @@ function detail_issue(issueNo){
             document.getElementById("modal_issue").style.display="block";
             //$("#modal_issue input.name").click(nameClickHandler);
             $("#modal_issue input.name").blur(nameBlurHandler);
-           
-            
+          	$('#pic2').change(picChangeHandler);
+          	$('#maker2').change(makerChangeHandler);
+          
+            getMaker();
+            getPic();
             //CKEditor 세팅
             $('.question-answer').each(function(i,item){
                 console.log(item);
@@ -176,6 +187,7 @@ function detail_issue(issueNo){
         } // success
     }); // ajax
     
+
 } // funcction detail_issue
 
 function make_view_comments(comments){
@@ -229,9 +241,105 @@ function make_view_comments(comments){
 </script>
 
 
-	<script>
-
 	
+	<script>
+	function getMaker() {
+		 $.ajax({
+	        type: 'GET',
+	        url: "<%=request.getContextPath()%>/work/"+projectNo+"/member/api",
+		    contentType: false,
+		    success: function (data) {
+		        console.log(data);     
+		        var saved_maker = $("#modal_issue .maker").html();
+		        html = '<option value="">보고자</option>';
+		    	data.forEach((delta) => {
+		    		if(saved_maker == delta.id){
+		    			html +=
+		    				'<option value="'+ delta.id +'" selected>'+delta.name+'('+delta.email+')</option>';
+		    		} else {
+		    			html +=
+			    			'<option value="'+ delta.id +'">'+delta.name+'('+delta.email+')</option>';
+		    		}
+		    	})
+		    	$('#maker2').html(html);
+		    }
+		})
+	}
+	function getPic() {
+		 $.ajax({
+	        type: 'GET',
+	        url: "<%=request.getContextPath()%>/work/"+projectNo+"/member/api",
+		    contentType: false,
+		    success: function (data) {
+		        console.log(data);     
+		        var saved_pic = $("#modal_issue .pic").html();
+		        html = '<option value="">담당자</option>';
+		    	data.forEach((delta) => {
+		    		if(saved_pic == delta.id){
+		    			html +=
+		    				'<option value="'+ delta.id +'" selected>'+delta.name+'('+delta.email+')</option>';
+		    		} else {
+		    			html +=
+			    			'<option value="'+ delta.id +'">'+delta.name+'('+delta.email+')</option>';
+		    		}
+		    	})
+		    	$('#pic2').html(html);
+		    }
+		})
+	}
+	
+	function makerChangeHandler(){
+		console.log("picchange 이벤트")
+		
+		// ajax로 patch
+		var makerobj =  {maker: $("select.maker").val()};
+		$.ajax({
+				url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
+				type:"patch",
+				contentType: "application/json",
+				data: JSON.stringify(makerobj),
+				success: function(result) {
+					 console.log(result);
+					if(result =="OK"){
+						console.log("okokok")
+						// 방법 1
+						// $("#modal_issue .content").html(contentStr);
+						// 방법 2
+						detail_issue(issueNo1);
+						
+					}
+				}
+				,error: function(result){ 
+					
+				}
+		}); 
+	}
+	function picChangeHandler(){
+		console.log("picchange 이벤트")
+		
+		// ajax로 patch
+		var picobj =  {pic: $("select.pic").val()};
+		$.ajax({
+				url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
+				type:"patch",
+				contentType: "application/json",
+				data: JSON.stringify(picobj),
+				success: function(result) {
+					 console.log(result);
+					if(result =="OK"){
+						console.log("okokok")
+						// 방법 1
+						// $("#modal_issue .content").html(contentStr);
+						// 방법 2
+						detail_issue(issueNo1);
+						
+					}
+				}
+				,error: function(result){ 
+					
+				}
+		}); 
+	}
 	function nameBlurHandler(){
 		console.log("BLUR 이벤트")
 		
