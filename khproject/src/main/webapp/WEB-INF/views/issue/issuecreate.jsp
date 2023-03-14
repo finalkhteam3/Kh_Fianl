@@ -92,9 +92,7 @@
 				tabindex="0">
 				<span class="">만들기</span>
 			</button>
-			<button class="right-tab" type="button" tabindex="0">
-				<span class="">취소</span>
-			</button>
+			
 
 		</div>
 
