@@ -39,6 +39,8 @@
 	margin: 0 40px;
 	padding: 0;
 	display: block;
+	position: relative;
+	height: 100%;
 }
 
 #my_work {
@@ -57,7 +59,6 @@
 
 #rc2 {
 	overflow-x: auto;
-	height: 240px;
 	margin: 0;
 	padding: 0;
 	display: block;
@@ -67,12 +68,13 @@
 	display: inline-flex;
 	white-space: nowrap;
 	padding: 14px 48px 14px 28px;
+	height: 168px;
 }
 
 .rc3 {
 	display: flex;
-	width: 240px;
-	height: 168px;
+	width: 220px;
+	height: 140px;
 	padding-top: 16px;
 	flex-direction: column;
 	background-color: white;
@@ -87,11 +89,146 @@
 	margin: 0 0 0 12px;
 }
 
+#all_projects {
+	/* float: right; */
+	text-decoration: underline;
+}
+
+#recent_projects {
+	justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 48px 0 40px;
+}
+.icon{
+	border-radius: 3px;
+	overflow: hidden;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+.icon_span{
+	display: inline-flex;
+	text-align: left;
+}
+.icon_a{
+	text-align: left;
+	width: 100%;
+	margin-bottom: 12px;
+	margin-left: -12px;
+	display: flex;
+	-webkit-box-align: center;
+    align-items: center;
+    text-decoration: none;
+}
+.p0{
+	display: inline-block;
+    vertical-align: top;
+    flex: 1 1 0%;
+    margin: 0;
+    margin-left: 8px;
+    margin-right: 4px;
+    overflow: hidden;
+    padding: 0;
+    text-align: left;
+}
+.p1{
+	font-size: 1em;
+    font-style: inherit;
+    letter-spacing: -0.003em;
+    color: var(--ds-text,#172B4D);
+    white-space: nowrap;
+    font-weight: 600;
+    line-height: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0px;
+    padding: 0;
+    height: 16px;
+}
+.p2{
+	font-size: 11px;
+    color: var(--ds-text,#172B4D);
+    letter-spacing: -0.08px;
+    margin: 0px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-transform: none;
+    font-weight: normal;
+    line-height: 14px;
+    padding: 0;
+}
+.iss0{
+	flex: 1 1 0%;
+	margin: 0;
+    padding: 0;
+    display: block;
+    white-space: nowrap;
+    color: rgb(107,119,140);
+}
+.iss00{
+	display: flex;
+    margin: 0;
+    padding: 0;
+    padding-left: 16px;
+    padding-right: 12px;
+    margin-bottom: 2px;
+}
+.iss000{
+	margin: 12px 0 0 0;
+	margin-top: 0;
+	line-height: 1.33333;
+	font-weight: var(--ds-font-weight-semibold,600);
+	color: var(--ds-text-subtlest,#6B778C);
+	padding: 0;
+    padding-left: 4px;
+    padding-bottom: 4px;
+    font-size: 11px;
+    display: block;
+}
+.iss1{
+	margin: 0;
+    padding: 0;
+	display: flex;
+    padding-left: 16px;
+    padding-right: 12px;
+    margin-bottom: 2px;
+}
+.iss2{
+	flex: 1 1 0%;
+    display: flex;
+    max-width: 100%;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 3px;
+    font-size: 11px;
+    text-decoration: none !important;
+    color: #172B4D;
+    padding: 4px 0px 4px 4px;
+}
+.tab0{
+	display: flex;
+    max-width: 100%;
+    min-height: 0%;
+    flex-basis: 100%;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    margin: 0;
+    padding: 0;
+}
 .tab {
 	overflow: hidden;
 	border: 1px #0052CC;
 	background-color: #FFFFFF;
-	border-bottom: 1px solid black;
+	border-bottom: 2px solid #EBECF0;
+	display: flex;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    font-weight: 500;
 }
 
 .tab button {
@@ -100,9 +237,7 @@
 	border: none;
 	outline: none;
 	cursor: pointer;
-	padding: 14px 16px;
 	transition: 0.3s;
-	font-size: 17px;
 }
 
 .tab button:hover {
@@ -117,10 +252,11 @@
 .tabcontent {
 	height: 100vh;
 	display: none;
-	padding: 6px 12px;
 	background-color: #FFFFFF;
 	/* border: 1px solid #ccc; */
 	border-top: none;
+	display: flex;
+    padding: 0px 8px;
 }
 
 .tabcontent hover {
@@ -129,17 +265,31 @@
 	background-color: #F5F6F8;
 	/* border: 1px solid #ccc; */
 }
-
-#all_projects {
-	/* float: right; */
-	text-decoration: underline;
+.tablinks{
+	cursor: pointer;
+    line-height: 1.8;
+    margin: 0px;
+    padding: 2px 8px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
-
-#recent_projects {
-	justify-content: space-between;
+.tc1{
+	margin: 0;
+    padding: 0;
 	display: flex;
-	justify-content: space-between;
-	padding: 0 48px 0 40px;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 8px;
+}
+.tc2{
+	color: var(--ds-text-subtlest,#6B778C) !important;
+    margin: 8px 0 0 0;
+    padding: 0;
+    font-size: 0.75em;
+    font-weight: bold;
 }
 </style>
 <script>
@@ -156,13 +306,13 @@
                     data.forEach((delta) => {
                         element.innerHTML +=
                             '<div class="rc3">' +
-                            '<a href="/work/'+delta.no+'"><span><img src="/resources/skydashTemp/images/icon_project1.svg" width="24px" height="24px"></span>' +
+                            '<a class="icon_a" href="/work/'+delta.no+'"><span class="icon_span"><img class="icon" src="/resources/skydashTemp/images/icon_project1.svg" width="24px" height="24px"></span>' +
                             /* '<div>' + delta.iconPath + '<br/></div>' + */
-                            '<div><p>' + delta.name + '<br/></p>' +
-                            '<p>' + delta.info + '</p></div></a>' +
-                            '<div>빠른 연결<br/></div>' +
-                            '<a href="#">내 미해결 이슈	(n)<br/></a>' +
-                            '<a href="#">완료된 이슈<br/></a>' +
+                            '<div class="p0"><p class="p1">' + delta.name + '</p>' +
+                            '<p class="p2">' + delta.info + '</p></div></a>' +
+                            '<div class="iss0"><div class="iss00"><p class="iss000">빠른 연결</p></div>' +
+                            '<div class="iss1"><a class="iss2" href="#">내 미해결 이슈</a></div>' +
+                            '<div class="iss1"><a class="iss2" href="#">완료된 이슈</a></div></div>' +
                             /* '<a href="/work/'+delta.no+'">보드<br/></a>' + */
                             /* '<div><button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">보드</button><div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2"><a class="dropdown-item" href="#">보드명1</a><a class="dropdown-item" href="#">보드명2</a></div></div>' + */
                             '</div>'
@@ -186,11 +336,11 @@
 						<div class="body_wrap2">
 							<div style="height: 100vh;">
 								<div id="my_work">
-									<h2>내 작업</h2>
+									<h3>내 작업</h3>
 								</div>
-								<div id="rc1">
+								<section id="rc1">
 									<div id="recent_projects">
-										<h4>최근 프로젝트</h4>
+										<h5>최근 프로젝트</h5>
 										<a id="all_projects"
 											href="${pageContext.request.contextPath}/jira/projects">모든
 											프로젝트 보기</a>
@@ -198,9 +348,9 @@
 									<div id="rc2">
 										<section class="recent_project_bg"></section>
 									</div>
-								</div>
+								</section>
 
-								<div style="height: 100vh;">
+								<div class="tab0">
 									<div class="tab">
 										<button class="tablinks" id="tab_default"
 											onclick="openTab(event, 'tab_1')">작업 항목</button>
@@ -212,8 +362,10 @@
 									</div>
 
 									<div id="tab_1" class="tabcontent">
-										<div>작업항목 ~지난주~</div>
+										<div class="tc1">
+										<h6 class="tc2">오늘</h6>
 										<div class="tab_1"></div>
+										</div>
 									</div>
 
 									<div id="tab_2" class="tabcontent">
@@ -241,27 +393,6 @@
 		</div>
 	</div>
 	</div>
-	<!-- plugins:js -->
-	<!-- 	<script src="/vendors/js/vendor.bundle.base.js"></script> -->
-	<!-- endinject -->
-	<!-- Plugin js for this page -->
-	<!-- 	<script src="/vendors/chart.js/Chart.min.js"></script>
-	<script src="/vendors/datatables.net/jquery.dataTables.js"></script>
-	<script src="/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-	<script src="/resources/skydashTemp/js/dataTables.select.min.js"></script> -->
-
-	<!-- End plugin js for this page -->
-	<!-- inject:js -->
-	<!-- 	<script src="/resources/skydashTemp/js/off-canvas.js"></script>
-	<script src="/resources/skydashTemp/js/hoverable-collapse.js"></script>
-	<script src="/resources/skydashTemp/js/template.js"></script>
-	<script src="/resources/skydashTemp/js/settings.js"></script>
-	<script src="/resources/skydashTemp/js/todolist.js"></script> -->
-	<!-- endinject -->
-	<!-- Custom js for this page-->
-	<!-- 	<script src="/resources/skydashTemp/js/dashboard.js"></script>
-	<script src="/resources/skydashTemp/js/Chart.roundedBarCharts.js"></script> -->
-	<!-- End custom js for this page-->
 	<script>
 	function to_tab(num) {
 	    $.ajax({
@@ -278,8 +409,8 @@
 	            if (data !== undefined) {
 	                data.forEach((delta) => {
 	                    html +=
-	                        '<div class="'+tabName+'">' + 
-	                        '<img src="/resources/skydashTemp/images/icon_issue1.svg">' +
+	                        '<div class="'+tabName+'" >' + 
+	                        '<img class="icon" src="/resources/skydashTemp/images/icon_issue1.svg">' +
 	                        /* '<div>' + JSON.stringify(delta) + '<br/></div>' + */
 	                        '<span><h5><strong>' + delta.name + '</strong></h5></span>' +
 	                        /* '<span>' + delta.no + '</span>' +
