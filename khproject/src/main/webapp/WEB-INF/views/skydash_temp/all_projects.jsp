@@ -26,33 +26,149 @@
 <!-- endinject -->
 </head>
 <style>
-table {
-	border: 1px solid black;
-	border-collapse: collapse;
-	margin-top: 10px;
-}
-
-td {
-	border: 1px solid black;
-	padding: 3px 5px;
-	text-aligh: center;
-}
-.icon_style{
+.icon_style {
 	height: 24px;
 	width: 24px;
 }
-/* .all_projects {
-	width: 100%;
-	background-color: #FAFBFC;
-	margin-bottom: 100px auto;
+
+.jira-frontend {
+	background: white;
+	margin: 0;
+	padding: 0;
+	display: block;
+	height: 100vh;
 }
-.all_projects_list {
+
+.body_wrap {
+	margin: 0;
+	padding: 70px 0 0;
+	display: flex;
+	height: 100%;
 	width: 100%;
-	height: 70px;
-	background-color: white;
-	margin: 5px;
-	float: left;
-} */
+}
+
+.body_wrap2 {
+	width: 100%;
+	margin: 0px;
+	padding: 0px 40px;
+	height: 100%;
+}
+
+.ap1 {
+	margin: 0px;
+	padding: 0px;
+}
+.ap2{
+	margin: 24px 0px 16px;
+	padding: 0;
+	display: block;
+}
+.ap3{
+	display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+}
+.ap4{
+	margin: 0;
+    padding: 0;
+	min-width: 0px;
+    max-width: 100%;
+    margin-bottom: 8px;
+    flex: 1 1 auto;
+}
+.ap5{
+	margin-top: 0;
+}
+.ap6{
+	margin: 0;
+    padding: 0;
+	max-width: 100%;
+    margin-bottom: 8px;
+    margin-left: auto;
+    padding-left: 32px;
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+.ap7{
+	margin: 0;
+    padding: 0;
+}
+.ap8{
+	align-items: baseline;
+    box-sizing: border-box;
+    display: inline-flex;
+    font-size: inherit;
+    font-style: normal;
+    font-family: inherit;
+    font-weight: 500;
+    max-width: 100%;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    height: 2.28571em;
+    line-height: 2.28571em;
+    vertical-align: middle;
+    width: auto;
+    justify-content: center;
+	padding: 0px 10px;
+	background: #0052CC;
+	border-width: 0px;
+	border-radius: 3px;
+	color: white;
+	text-decoration: none;
+}
+.ap9{
+	margin: 0;
+    padding: 0;
+	margin-top: 16px;
+	display: block;
+}
+.ap10{
+	margin: 0;
+    padding: 0;
+	position: relative;
+    display: flex;
+    margin-bottom: 16px;
+}
+.ap11{
+	margin: 0;
+    padding: 0;
+	margin-right: 16px;
+	display: flex;
+}
+.ap12{
+	border-radius: 3.01px;
+	padding: 4px 6px;
+    height: 2em;
+    box-sizing: border-box;
+    font-size: 14px;
+    width: 100%;
+    line-height: 1.42857;
+    border-color: #CED4DA;
+}
+.input-group-text{
+	height: 28px;
+	border-radius: 3px;
+	margin: 0 5px;
+}
+.ap13{
+	margin: 0;
+    padding: 0;
+    display: block;
+    position: relative;
+}
+.ap14{
+	margin: 0;
+	width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px;
+    table-layout: fixed;
+    border-bottom: 2px solid #DFE1E6;
+    box-sizing: border-box;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script>
@@ -60,105 +176,81 @@ td {
         $.ajax({
             type: 'GET',
             url: "<%=request.getContextPath()%>/work/project/api",
-			success : function(data) {
-				console.log(data)
-				var projectList = data;
-				var tr = "<thead>" + "<tr>"
-				+ "<td>★</td>"
-				+ "<td>이름</td>" + "<td>키</td>" + "<td>유형</td>"
-				+ "<td>리드</td>"
-				+ "<td>(더보기)</td>" 
-				+ "</tr>";
-				+"</thead>";
-				$.each(projectList, function(i) {
-					tr += "<td>" + "별표" +  "</td><td>" + '<a href="/work/'+ projectList[i].no +'"><img src="/resources/skydashTemp/images/icon_project1.svg" class="icon_style">' + projectList[i].name + "</a></td><td>"
-							+ projectList[i].no + "</td><td>"+ projectList[i].info + "</td><td>"
-							+ projectList[i].adminName + "</td><td>" + '<a href="/jira/update.do?no='+ projectList[i].no +'"><input type="button" value="설정" ></a><a href="/jira/delete.do?no='
-							+ projectList[i].no +'"><input type="button" value="삭제" ></a>' + "</td></tr>";
-				});
-				$("#projectList").append(tr);
-			}
-		})
-	})
+							success : function(data) {
+								console.log(data)
+								var projectList = data;
+								var tr = "<thead class=ap15><tr>" + '<td><img src="/resources/skydashTemp/images/star2.svg" class="icon_style"></td>'
+										+ "<td>이름</td>" + "<td>키</td>"
+										+ "<td>유형</td>" + "<td>리드</td>"
+										+ "<td>관리</td>" + "</tr>";
+								+"</thead>";
+								$
+										.each(
+												projectList,
+												function(i) {
+													tr += "<td>"
+															+ '<img src="/resources/skydashTemp/images/star.svg" class="icon_style">'
+															+ "</td><td>"
+															+ '<a href="/work/'+ projectList[i].no +'">'+'<img src="/resources/skydashTemp/images/icon_project1.svg" class="icon_style">'
+															+ projectList[i].name
+															+ "</a></td><td>"
+															+ projectList[i].no
+															+ "</td><td>"
+															+ projectList[i].info
+															+ "</td><td>"
+															+ projectList[i].adminName
+															+ "</td><td>"
+															+ '<a href="/jira/update.do?no='
+															+ projectList[i].no
+															+ '"><input type="button" value="프로젝트 설정" ></a><a href="/jira/delete.do?no='
+															+ projectList[i].no
+															+ '"><input type="button" value="휴지통으로 이동" ></a>'
+															+ "</td></tr>";
+												});
+								$("#projectList").append(tr);
+							}
+						})
+			})
 	/* 
 	'<a href="/work/'+delta.no+'">보드<br/></a>' +
 	<input type="button" value="설정" onclick="location.href='/jira/update.do?no=${dto.no}'"> 
 	<input type="button" value="삭제" onclick="location.href='/jira/delete.do?no=${dto.no}'">
-	*/
+	 */
 </script>
 <body>
-	<div class="container-scroller">
+	<div class="jira-frontend">
 		<!-- partial:partials/_navbar.html -->
-		<%@ include file="/WEB-INF/views/component/header3.jsp"%>
-		<!-- partial -->
-		<div class="container-fluid page-body-wrapper">
+		<div class="body_wrap">
+			<%@ include file="/WEB-INF/views/component/header3.jsp"%>
+			<div class="body_wrap2">
+				<!-- partial -->
+				<div class="ap1">
 
-			<div class="main-panel">
-				<div class="content-wrapper">
-					<div class="row">
-						<div class="col-md-12 grid-margin">
-							<div class="row">
-								<div class="col-12 col-xl-8 mb-4 mb-xl-0">
-									<h3 class="font-weight-bold">프로젝트</h3>
-								</div>
-								<div>
-									<%-- <button ><a href="${pageContext.request.contextPath}/jira/cptest">프로젝트 만들기</a></button> --%>
-									<input class="navbar2_create project_create" type="button" value="프로젝트 만들기" onclick="location.href='/jira/insert.do'">
-								</div>
-								<div>
-									<div class="input-group-prepend hover-cursor"
-										id="navbar-search-icon">
-										<span class="input-group-text" id="search"> <i
-											class="icon-search"></i>
-										</span>
-									</div>
-									<input type="text" class="form-control"
-										id="navbar-search-input" aria-label="search"
-										aria-describedby="search">
+					<div class="ap2">
+						<div class="ap3">
+							<div class="ap4">
+								<h3 class="ap5">프로젝트</h3>
+							</div>
+							<div class="ap6">
+								<div class="ap7">
+									<input class="ap8" type="button"
+									value="프로젝트 만들기" onclick="location.href='/jira/insert.do'">
 								</div>
 							</div>
-
-							<div id="projectList"></div>
-							
-							<%-- <br><hr>
-							<h3>프로젝트 목록</h3>
-							<table border = "1">
-								<colgroup>
-									<col width = "50">
-									<col width = "200">
-									<col width = "100">
-									<col width = "300">
-									<col width = "100">
-								</colgroup>
-								<tr>
-									<th>★</th>
-									<th>이름</th>
-									<th>키</th>
-									<th>소개</th>
-									<th>리드</th>
-									<th>...</th>
-									<th>...</th>
-								</tr>
-								<c:forEach items="${list }" var="dto">
-									<tr>
-										<td>★</td>
-										<td><a href="${pageContext.request.contextPath}/work/${dto.no}">${dto.iconPath}${dto.name}</a></td>
-										<td>${dto.no}</td>
-										<td>${dto.info}</td>
-										<td>~~리드~~</td>
-										<td><input type="button" value="설정" onclick="location.href='/jira/update.do?no=${dto.no}'"></td>
-										<td><input type="button" value="삭제" onclick="location.href='/jira/delete.do?no=${dto.no}'"></td>
-									</tr>
-								</c:forEach>
-								<tr>
-									<td colspan="7" align="right">
-										<input type="button" value="프로젝트 만들기" onclick="location.href='/jira/insert.do'">
-									</td>
-								</tr>
-							</table> --%>
-
 						</div>
-
+						<div class="ap9">
+							<div class="ap10">
+								<div class="ap11" id="navbar-search-icon">
+									<input type="text" class="ap12" id="navbar-search-input" aria-label="search" aria-describedby="search">
+									<span class="input-group-text" id="search"> 
+									<i class="icon-search"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ap13">
+						<table class="ap14" id="projectList"></table>
 					</div>
 				</div>
 			</div>
