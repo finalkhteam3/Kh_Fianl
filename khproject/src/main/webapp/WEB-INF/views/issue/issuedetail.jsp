@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<script src="<%=request.getContextPath()%>/resources/ckeditor/ckeditor.js"></script>
-	<div id="root">
-		<button type="button" id="modal_open_btn" style="display: none">모달창열기</button>
+<script
+	src="<%=request.getContextPath()%>/resources/ckeditor/ckeditor.js"></script>
+<div id="root">
+	<button type="button" id="modal_open_btn" style="display: none">모달창열기</button>
 	<div id="modal_issue">
 		<div class="modal_content">
 			<div class="issuedetail">
@@ -112,39 +113,7 @@
 			<script>
 let issueNo1 = "";
 const projectNo = window.location.pathname.split("/")[2];
-function updatebutton(elem, commentNo){
-	 var origianlCommentTxt = $(elem).parent().prev().children("div").html();
-	 $(".updatebutton").hide();
-	 $(".updatesavebutton").show();
-	 $(".updatecanclebutton").show();
-	 $(elem).parent().prev().children("div").hide();
-	 $(elem).parent().prev().html("<textarea id='editor1'/>"); 
-	 var comment = CKEDITOR.replace('editor1',{   	
-		filebrowserUploadUrl:'<%=request.getContextPath()%>/work/'+projectNo+"/"+issueNo1+'/file/ckeditor/api',
-       	height: 100,
-   		width:600,
-		toolbarGroups : [
-				{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
-				{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
-				{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
-				{ name: 'forms', groups: [ 'forms' ] },
-				'/',
-				{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-				{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
-				{ name: 'links', groups: [ 'links' ] },
-				{ name: 'insert', groups: [ 'insert' ] },
-				'/',
-				{ name: 'styles', groups: [ 'styles' ] },
-				{ name: 'colors', groups: [ 'colors' ] },
-				{ name: 'tools', groups: [ 'tools' ] },
-				{ name: 'others', groups: [ 'others' ] },
-				{ name: 'about', groups: [ 'about' ] },
-        ],
-        removeButtons : 'Source,Save,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Redo,Undo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,HiddenField,Subscript,Superscript,CopyFormatting,RemoveFormat,Indent,Outdent,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language,Unlink,Anchor,Flash,HorizontalRule,PageBreak,Iframe,Maximize,ShowBlocks,About,NewPage,Preview,ImageButton,ExportPdf',
-	});
-	CKEDITOR.instances['editor1'].setData(origianlCommentTxt);
-	$(comment).show();
-} 
+
 function getPic() {
 	 $.ajax({
        type: 'GET',
@@ -349,20 +318,25 @@ function make_view_comments(comments){
 	comments.forEach((delta) => {
 		htmlVar+='<br>';
 		htmlVar+='<div style ="border:none; solid black;">';
-		htmlVar+='<div>';
-		htmlVar+='<img src="/resources/skydashTemp/images/faces/user_face.png" style="width:32px; height: 32px;" alt="profile" >'+ '&nbsp' + '&nbsp'+delta.maker;
+			htmlVar+='<div>';
+			htmlVar+='<img src="/resources/skydashTemp/images/faces/user_face.png" style="width:32px; height: 32px;" alt="profile" >'+ '&nbsp' + '&nbsp'+delta.maker;
+			htmlVar+='</div>';
+			htmlVar+='<div>';
+				htmlVar+='<div class="wrap_comment">';
+					htmlVar+='<div class="comment" style="width:300px; height: 40px;">'+delta.content+'</div>';
+				htmlVar+='</div>';
+				htmlVar+='<div class="wrap_comment_textarea">';
+			htmlVar+='</div>';
 		htmlVar+='</div>';
-		htmlVar+='<div>';
-		htmlVar+='<div class="comment" style="width:300px; height: 40px;">'+delta.content+'</div>';
+		htmlVar+='<div class="wrap_comment">';
+			htmlVar+='<button class="updatebutton" type="button" onclick="updatebutton(this, '+delta.seq+');" style="border: none; border-radius: 3px; background-color: white;">편집</button>'
 		htmlVar+='</div>';
-		htmlVar+='<div>';
-		htmlVar+='<button class="updatebutton" type="button" onclick="updatebutton(this, '+delta.seq+');" style="border: none; border-radius: 3px; background-color: white;">편집</button>'
+		htmlVar+='<div class="wrap_comment_textarea" style="display :none;">';
+			htmlVar+='<button class="updatesavebutton"  type="button" onclick="updateCommentHandler(this, '+delta.seq+')" style="border: none; background-color: #0052CC; color: white; border-radius: 3px; ">저장</button>'
+			htmlVar+='<button class="updatecanclebutton"type="reset" onclick="updateresetHandler(this)" style="border: none; border-radius: 3px; background-color: white; ">취소</button>'
 		htmlVar+='</div>';
-		htmlVar+='<button class="updatesavebutton"  type="button" onclick="updateCommentHandler(this, '+delta.seq+')"style="border: none; background-color: #0052CC; color: white; border-radius: 3px; display :none;">저장</button>'
-		htmlVar+='<button class="updatecanclebutton"type="reset"onclick="updateresetHandler(this)"style="border: none; border-radius: 3px; background-color: white; display :none;">취소</button>'
 		htmlVar+='</div>';
 
-		
 	});
 	$(".wrap.comments").html(htmlVar);
 }
@@ -417,10 +391,8 @@ function make_view_comments(comments){
 		$(elem).parents(".warp-frm").hide();
 	}
 	
-	function updateresetHandler(elem){
-		$(elem).parents(".editor1").hide();
-		$(".comment").show();
-	}
+
+
 	function saveHandler(elem){
 		var contentStr = CKEDITOR.instances['question-answer0'].getData()
 		var contentObj =  {content: CKEDITOR.instances['question-answer0'].getData()};
@@ -466,6 +438,42 @@ function make_view_comments(comments){
 		$(".comment").show();
 		$(elem).parents(".warp-frm").hide();
 	} 
+	function updatebutton(elem, commentNo){
+		 var origianlCommentTxt = $(elem).parent().prev().children("div").html();
+		 $(elem).parent().hide();
+		 $(elem).parent().next().show();
+		 
+		 $(elem).parent().prev().find(".wrap_comment").hide();
+		 $(elem).parent().prev().find(".wrap_comment_textarea").html("<textarea id='editor1'/>"); 
+		 $(elem).parent().prev().find(".wrap_comment_textarea").show();
+
+		 var comment = CKEDITOR.replace('editor1',{   	
+			filebrowserUploadUrl:'<%=request.getContextPath()%>/work/'+projectNo+"/"+issueNo1+'/file/ckeditor/api',
+	       	height: 100,
+	   		width:600,
+			toolbarGroups : [
+					{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+					{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+					{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+					{ name: 'forms', groups: [ 'forms' ] },
+					'/',
+					{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+					{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+					{ name: 'links', groups: [ 'links' ] },
+					{ name: 'insert', groups: [ 'insert' ] },
+					'/',
+					{ name: 'styles', groups: [ 'styles' ] },
+					{ name: 'colors', groups: [ 'colors' ] },
+					{ name: 'tools', groups: [ 'tools' ] },
+					{ name: 'others', groups: [ 'others' ] },
+					{ name: 'about', groups: [ 'about' ] },
+	        ],
+	        removeButtons : 'Source,Save,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Redo,Undo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,HiddenField,Subscript,Superscript,CopyFormatting,RemoveFormat,Indent,Outdent,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language,Unlink,Anchor,Flash,HorizontalRule,PageBreak,Iframe,Maximize,ShowBlocks,About,NewPage,Preview,ImageButton,ExportPdf',
+		});
+		CKEDITOR.instances['editor1'].setData(origianlCommentTxt);
+
+	} 
+	
 	function updateCommentHandler(elem, commentNo){
 		console.log("commentNo!!!!!!!! "+ commentNo);
 		var editorData =  {content: CKEDITOR.instances['editor1'].getData(), seq: commentNo};
@@ -477,16 +485,22 @@ function make_view_comments(comments){
 			success: function(result){
 				console.log(result);
 				if(result =="OK"){
-					
 					detail_issue(issueNo1);
 				}
 			}
 			,error: function(result){
 			}
 		});
-		$(".comment").show();
-		$(elem).parents(".warp-frm").hide();
-	} 
+	}
+
+	
+	function updateresetHandler(elem){
+		$(elem).parent().hide();
+		$(elem).parent().prev().show();
+	    $(elem).parent().prev().prev().find(".wrap_comment_textarea").hide();
+	    $(elem).parent().prev().prev().find(".wrap_comment").show();
+	}
+
 	
 </script>
 
