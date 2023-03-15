@@ -30,6 +30,9 @@
 </head>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <style>
+a:hover{
+	text-decoration: none;
+}
 .body_wrap {
 	margin: 0;
 	padding: 60px 0 0;
@@ -263,6 +266,7 @@
 	display: none;
 	padding: 6px 12px;
 	background-color: #F5F6F8;
+	text-decoration: none;
 	/* border: 1px solid #ccc; */
 }
 .tablinks{
@@ -290,6 +294,125 @@
     padding: 0;
     font-size: 0.75em;
     font-weight: bold;
+}
+.yw00{
+	margin-top: 2px;
+    flex: 1 1 0%;
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 3px;
+    text-decoration: none;
+    color: var(--ds-link,#172B4D);
+}
+.yw0{
+	height: 24px;
+    width: 24px;
+    display: inline-block; 
+    margin: 0;
+    padding: 0;
+}
+.yw1{
+	height: 24px;
+    width: 24px;
+    border-radius: 3px;
+    display: inline-block;;
+}
+.yw2{
+	flex: 6 1 0%;
+	display: flex;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    margin: 0px 8px;
+    width: 150px;
+}
+.yw3{
+	color: var(--ds-text,var(--ds-text,#172B4D));
+    font-weight: var(--ds-font-weight-semibold,600);
+    letter-spacing: -0.003em;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0px;
+    display: inline-block;
+}
+.yw4{
+	-webkit-box-flex: 1;
+    flex-grow: 1;
+    margin: 0px;
+    font-size: 11px;
+    color: var(--ds-text-subtlest,#6B778C);
+    line-height: 14px;
+}
+.yw5{
+	flex: 1 1 0%;
+    margin: 0px;
+    color: var(--ds-text-subtlest,#6B778C);
+    min-width: 8em;
+    font-size: 11px;
+    padding-right: 16px;
+    display: inline-block;
+}
+.yw7{
+	height: 32px;
+    width: 32px;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    background-color: var(--ds-surface-overlay, #FFFFFF);
+    border-radius: 50%;
+    box-sizing: content-box;
+    cursor: inherit;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    outline: none;
+    overflow: hidden;
+    transform: translateZ(0px);
+    transition: transform 200ms ease 0s, opacity 200ms ease 0s;
+    box-shadow: 0 0 0 2px var(--ds-surface-overlay, #FFFFFF);
+    border: none;
+    margin: 2px;
+    padding: var(--ds-scale-0, 0px);
+    font-size: inherit;
+    font-family: inherit;
+    position: relative;
+    z-index: 5;
+}
+.yw8{
+	display: flex;
+    width: 100%;
+    height: 100%;
+    flex: 1 1 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+.ul1{
+	margin-top: 0;
+	display: flex;
+	margin-right: 8px;
+    line-height: 1;
+    list-style-type: none !important;
+    padding: var(--ds-scale-0, 0px);
+}
+.li1{
+	margin-right: -8px;
+	display: list-item;
+    text-align: -webkit-match-parent;
+    line-height: 1;
+    list-style-type: none;
+}
+.li2{
+	margin-right: -8px;
+	display: list-item;
+    text-align: -webkit-match-parent;
 }
 </style>
 <script>
@@ -356,7 +479,7 @@
 											onclick="openTab(event, 'tab_1')">작업 항목</button>
 										<button class="tablinks" onclick="openTab(event, 'tab_2')">확인함</button>
 										<button class="tablinks" onclick="openTab(event, 'tab_3')">나에게
-											할당됨(n)</button>
+											할당됨</button>
 										<button class="tablinks" onclick="openTab(event, 'tab_4')">별표
 											표시됨</button>
 									</div>
@@ -369,19 +492,22 @@
 									</div>
 
 									<div id="tab_2" class="tabcontent">
-										<div>확인함 ~지난주~</div>
+										<div class="tc1">
+										<h6 class="tc2">오늘</h6>
 										<div class="tab_2"></div>
+										</div>
 									</div>
 
 									<div id="tab_3" class="tabcontent">
-										<div>진행</div>
+										<div class="tc1">
+										<h6 class="tc2">진행</h6>
 										<div class="tab_3 tab_3_1"></div>
-										<div>해야 할 일</div>
+										<h6 class="tc2">해야 할 일</h6>
 										<div class="tab_3 tab_3_2"></div>
+										</div>
 									</div>
 
 									<div id="tab_4" class="tabcontent">
-										<div>별표 표시 목록</div>
 										<div class="tab_4"></div>
 									</div>
 								</div>
@@ -409,16 +535,17 @@
 	            if (data !== undefined) {
 	                data.forEach((delta) => {
 	                    html +=
-	                        '<div class="'+tabName+'" >' + 
-	                        '<img class="icon" src="/resources/skydashTemp/images/icon_issue1.svg">' +
+	                        '<div style="width:100%; display:block;" class="'+tabName+'" >' + 
+	                        '<a class="yw00"><div class="yw0"><img class="yw1" src="/resources/skydashTemp/images/icon_issue1.svg"></div>' +
 	                        /* '<div>' + JSON.stringify(delta) + '<br/></div>' + */
-	                        '<span><h5><strong>' + delta.name + '</strong></h5></span>' +
+	                        '<span class="yw2"><span class="yw3">' + delta.name + '</span>' +
 	                        /* '<span>' + delta.no + '</span>' +
 	                        '<span>' + delta.value + '</span>' + */
-	                        '<span>' + delta.maker + '</span>' +
-	                        '<span>' + delta.pic + '</span>' +
-	                        '<span>' + delta.projectNo + '</span><br>' +
-	                        '</div>'
+	                        /* '<span>' + delta.maker + '</span>' +
+	                        '<span>' + delta.pic + '</span>' + */
+	                        '<span class="yw4">' + delta.projectNo + '</span></span>' +
+	                        '<span class="yw5">Updated</span>'+
+	                        '<div class="yw6"><ul class="ul1"><li class="li1"><span class="yw7"><img class="yw8" src="/resources/skydashTemp/images/faces/user_face.png"></span></li><li class="li2"><span class="yw7"><img class="yw8" src="/resources/skydashTemp/images/faces/user_face.png"></span></li></ul></div></a></div>'
 	
 	                })
 	                $(ctabName).html(html);
