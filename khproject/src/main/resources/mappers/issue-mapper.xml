@@ -53,20 +53,9 @@
 </update>
 
 <update id="updateComment" >
-	update issue set
-	<if test="comment.no !=null">
-		no=#{comment.no}
-	</if>
-	<if test="comment.maker !=null">
-			maker=#{comment.maker}
-	</if>
-	<if test="comment.id !=null">
-		id=#{comment.id}
-	</if>
-	<if test="comment.content !=null">
+	update issue_comment set
 		content=#{comment.content}
-	</if>
-	where project_No=#{projectNo} and no=#{issueNo}
+	where seq=#{comment.seq}
 </update>
 	
 </mapper>

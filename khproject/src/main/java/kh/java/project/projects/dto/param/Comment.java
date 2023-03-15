@@ -11,7 +11,7 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Comment {
-    private int no;
+    private int seq;
     private String maker;
     private String content;
     private HashMap<String, Integer> reactionMap;

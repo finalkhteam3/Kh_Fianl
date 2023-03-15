@@ -3,12 +3,14 @@
 <script src="<%=request.getContextPath()%>/resources/ckeditor/ckeditor.js"></script>
 	<div id="root">
 		<button type="button" id="modal_open_btn" style="display: none">모달창열기</button>
-		<div id="modal_issue">
-			<div class="modal_content">
-				<div class="issuedetail">
+	<div id="modal_issue">
+		<div class="modal_content">
+			<div class="issuedetail">
 				<div id="left">
 					<p class=projectNo>issue</p>
-					<div><input type="text" name="name" class="name"></div>
+					<div>
+						<input type="text" name="name" class="name">
+					</div>
 					<button id=btn_1>첨부</button>
 					<button id=btn_2>하위 이슈 추가</button>
 					<button id=btn_3>이슈 연결</button>
@@ -52,9 +54,7 @@
 								style="border: none; border-radius: 3px; background-color: white;">취소</button>
 						</form>
 					</div>
-					<div class="wrap comments">
-					여기 여러댓글
-					</div>					
+					<div class="wrap comments">여기 여러댓글</div>
 				</div>
 
 				<div id="right">
@@ -83,36 +83,190 @@
 									<select id="maker2" name="maker" class="maker">
 										<!-- ajax채움 -->
 									</select>
-							</div>
-							<br>
-							<div>
-								<span>담당자</span> <label for="pic2" class="pic">담당자</label>
-								<div class="dropdown">
-									<select id="pic2" name="pic" class="pic">
-										<!-- ajax채움 -->
-									</select>
+								</div>
+								<br>
+								<div>
+									<span>담당자</span> <label for="pic2" class="pic">담당자</label>
+									<div class="dropdown">
+										<select id="pic2" name="pic" class="pic">
+											<!-- ajax채움 -->
+										</select>
+									</div>
+								</div>
+								<div>
+									<button
+										style="width: 380px; height: 48px; text-align: left; background-color: white; border-color: gray;">더
+										많은 필드</button>
+								</div>
+								<div id="afs">
+									<br>
+									<p>만들기</p>
+									<p>업데이트 됨</p>
 								</div>
 							</div>
-							<div>
-							<button
-								style="width: 380px; height: 48px; text-align: left; background-color: white; border-color: gray;">더
-								많은 필드</button>
-						</div>
-						<div id="afs">
-							<br>
-							<p>만들기</p>
-							<p>업데이트 됨</p>
 						</div>
 					</div>
 				</div>
-				</div>
 			</div>
-			</div>
-		 
-<script>
+
+			<script>
 let issueNo1 = "";
 const projectNo = window.location.pathname.split("/")[2];
-
+function updatebutton(elem, commentNo){
+	 var origianlCommentTxt = $(elem).parent().prev().children("div").html();
+	 $(".updatebutton").hide();
+	 $(".updatesavebutton").show();
+	 $(".updatecanclebutton").show();
+	 $(elem).parent().prev().children("div").hide();
+	 $(elem).parent().prev().html("<textarea id='editor1'/>"); 
+	 var comment = CKEDITOR.replace('editor1',{   	
+		filebrowserUploadUrl:'<%=request.getContextPath()%>/work/'+projectNo+"/"+issueNo1+'/file/ckeditor/api',
+       	height: 100,
+   		width:600,
+		toolbarGroups : [
+				{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+				{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+				{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+				{ name: 'forms', groups: [ 'forms' ] },
+				'/',
+				{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+				{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+				{ name: 'links', groups: [ 'links' ] },
+				{ name: 'insert', groups: [ 'insert' ] },
+				'/',
+				{ name: 'styles', groups: [ 'styles' ] },
+				{ name: 'colors', groups: [ 'colors' ] },
+				{ name: 'tools', groups: [ 'tools' ] },
+				{ name: 'others', groups: [ 'others' ] },
+				{ name: 'about', groups: [ 'about' ] },
+        ],
+        removeButtons : 'Source,Save,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Redo,Undo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,HiddenField,Subscript,Superscript,CopyFormatting,RemoveFormat,Indent,Outdent,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language,Unlink,Anchor,Flash,HorizontalRule,PageBreak,Iframe,Maximize,ShowBlocks,About,NewPage,Preview,ImageButton,ExportPdf',
+	});
+	CKEDITOR.instances['editor1'].setData(origianlCommentTxt);
+	$(comment).show();
+} 
+function getPic() {
+	 $.ajax({
+       type: 'GET',
+       url: "<%=request.getContextPath()%>/work/"+projectNo+"/member/api",
+	    contentType: false,
+	    success: function (data) {
+	        console.log(data);     
+	        var saved_pic = $("#modal_issue .pic").html();
+	        html = '<option value="">담당자</option>';
+	    	data.forEach((delta) => {
+	    		if(saved_pic == delta.id){
+	    			html +=
+	    				'<option value="'+ delta.id +'" selected>'+delta.name+'('+delta.email+')</option>';
+	    		} else {
+	    			html +=
+		    			'<option value="'+ delta.id +'">'+delta.name+'('+delta.email+')</option>';
+	    		}
+	    	})
+	    	$('#pic2').html(html);
+	    }
+	})
+}
+function getMaker() {
+	 $.ajax({
+       type: 'GET',
+       url: "<%=request.getContextPath()%>/work/"+projectNo+"/member/api",
+	    contentType: false,
+	    success: function (data) {
+	        console.log(data);     
+	        var saved_maker = $("#modal_issue .maker").html();
+	        html = '<option value="">보고자</option>';
+	    	data.forEach((delta) => {
+	    		if(saved_maker == delta.id){
+	    			html +=
+	    				'<option value="'+ delta.id +'" selected>'+delta.name+'('+delta.email+')</option>';
+	    		} else {
+	    			html +=
+		    			'<option value="'+ delta.id +'">'+delta.name+'('+delta.email+')</option>';
+	    		}
+	    	})
+	    	$('#maker2').html(html);
+	    }
+	})
+}
+function makerChangeHandler(){
+	console.log("picchange 이벤트")
+	
+	// ajax로 patch
+	var makerobj =  {maker: $("select.maker").val()};
+	$.ajax({
+			url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
+			type:"patch",
+			contentType: "application/json",
+			data: JSON.stringify(makerobj),
+			success: function(result) {
+				 console.log(result);
+				if(result =="OK"){
+					console.log("okokok")
+					// 방법 1
+					// $("#modal_issue .content").html(contentStr);
+					// 방법 2
+					detail_issue(issueNo1);
+					
+				}
+			}
+			,error: function(result){ 
+				
+			}
+	}); 
+}
+function picChangeHandler(){
+	console.log("picchange 이벤트")
+	
+	// ajax로 patch
+	var picobj =  {pic: $("select.pic").val()};
+	$.ajax({
+			url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
+			type:"patch",
+			contentType: "application/json",
+			data: JSON.stringify(picobj),
+			success: function(result) {
+				 console.log(result);
+				if(result =="OK"){
+					console.log("okokok")
+					// 방법 1
+					// $("#modal_issue .content").html(contentStr);
+					// 방법 2
+					detail_issue(issueNo1);
+					
+				}
+			}
+			,error: function(result){ 
+				
+			}
+	}); 
+}
+function nameBlurHandler(){
+	console.log("BLUR 이벤트")
+	
+	// ajax로 patch
+	var nameobj =  {name: $("input.name").val()};
+	$.ajax({
+			url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
+			type:"patch",
+			contentType: "application/json",
+			data: JSON.stringify(nameobj),
+			success: function(result) {
+				 console.log(result);
+				if(result =="OK"){
+					console.log("okokok")
+					// 방법 1
+					// $("#modal_issue .content").html(contentStr);
+					// 방법 2
+					detail_issue(issueNo1);
+					
+				}
+			}
+			,error: function(result){ 
+				
+			}
+	}); 
+}
 function detail_issue(issueNo){
 	issueNo1 = issueNo;
 	console.log("issueNo1 "+issueNo1);
@@ -136,7 +290,7 @@ function detail_issue(issueNo){
             $("#modal_issue input.name").blur(nameBlurHandler);
           	$('#pic2').change(picChangeHandler);
           	$('#maker2').change(makerChangeHandler);
-          
+          	
             getMaker();
             getPic();
             //CKEditor 세팅
@@ -199,12 +353,13 @@ function make_view_comments(comments){
 		htmlVar+='<img src="/resources/skydashTemp/images/faces/user_face.png" style="width:32px; height: 32px;" alt="profile" >'+ '&nbsp' + '&nbsp'+delta.maker;
 		htmlVar+='</div>';
 		htmlVar+='<div>';
-		htmlVar+='<br>';
-		htmlVar+='<div" class="comment" style="width:300px; height: 40px;">'+delta.content+'</div>';
+		htmlVar+='<div class="comment" style="width:300px; height: 40px;">'+delta.content+'</div>';
 		htmlVar+='</div>';
 		htmlVar+='<div>';
-		htmlVar+='<button class="updatebutton" type="button" onclick="updatebutton" style="border: none; border-radius: 3px; background-color: white;">편집</button>'
+		htmlVar+='<button class="updatebutton" type="button" onclick="updatebutton(this, '+delta.seq+');" style="border: none; border-radius: 3px; background-color: white;">편집</button>'
 		htmlVar+='</div>';
+		htmlVar+='<button class="updatesavebutton"  type="button" onclick="updateCommentHandler(this, '+delta.seq+')"style="border: none; background-color: #0052CC; color: white; border-radius: 3px; display :none;">저장</button>'
+		htmlVar+='<button class="updatecanclebutton"type="reset"onclick="updateresetHandler(this)"style="border: none; border-radius: 3px; background-color: white; display :none;">취소</button>'
 		htmlVar+='</div>';
 
 		
@@ -212,7 +367,7 @@ function make_view_comments(comments){
 	$(".wrap.comments").html(htmlVar);
 }
 </script>
-	<script>
+			<script>
 
    
     document.getElementById("modal_close_btn").onclick = function() {
@@ -221,7 +376,7 @@ function make_view_comments(comments){
     }   
     
    </script>
-<script>
+			<script>
     function myFunction() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
@@ -241,209 +396,99 @@ function make_view_comments(comments){
 </script>
 
 
+
+			<script>
 	
-	<script>
-	function getMaker() {
-		 $.ajax({
-	        type: 'GET',
-	        url: "<%=request.getContextPath()%>/work/"+projectNo+"/member/api",
-		    contentType: false,
-		    success: function (data) {
-		        console.log(data);     
-		        var saved_maker = $("#modal_issue .maker").html();
-		        html = '<option value="">보고자</option>';
-		    	data.forEach((delta) => {
-		    		if(saved_maker == delta.id){
-		    			html +=
-		    				'<option value="'+ delta.id +'" selected>'+delta.name+'('+delta.email+')</option>';
-		    		} else {
-		    			html +=
-			    			'<option value="'+ delta.id +'">'+delta.name+'('+delta.email+')</option>';
-		    		}
-		    	})
-		    	$('#maker2').html(html);
-		    }
-		})
-	}
-	function getPic() {
-		 $.ajax({
-	        type: 'GET',
-	        url: "<%=request.getContextPath()%>/work/"+projectNo+"/member/api",
-		    contentType: false,
-		    success: function (data) {
-		        console.log(data);     
-		        var saved_pic = $("#modal_issue .pic").html();
-		        html = '<option value="">담당자</option>';
-		    	data.forEach((delta) => {
-		    		if(saved_pic == delta.id){
-		    			html +=
-		    				'<option value="'+ delta.id +'" selected>'+delta.name+'('+delta.email+')</option>';
-		    		} else {
-		    			html +=
-			    			'<option value="'+ delta.id +'">'+delta.name+'('+delta.email+')</option>';
-		    		}
-		    	})
-		    	$('#pic2').html(html);
-		    }
-		})
+	
+	
+	
+
+	function frm(elem){
+		$(".comment").show();
+		$(elem).hide();
+		var comment ='#'+$(elem).data("comment");
+		console.log(comment);
+		$(".warp-frm").hide();
+		$(comment).show();
 	}
 	
-	function makerChangeHandler(){
-		console.log("picchange 이벤트")
-		
-		// ajax로 patch
-		var makerobj =  {maker: $("select.maker").val()};
+	function resetHandler(elem){
+		$(".comment").show();
+		$(elem).parents(".warp-frm").hide();
+	}
+	
+	function updateresetHandler(elem){
+		$(elem).parents(".editor1").hide();
+		$(".comment").show();
+	}
+	function saveHandler(elem){
+		var contentStr = CKEDITOR.instances['question-answer0'].getData()
+		var contentObj =  {content: CKEDITOR.instances['question-answer0'].getData()};
 		$.ajax({
-				url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
+			url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
 				type:"patch",
 				contentType: "application/json",
-				data: JSON.stringify(makerobj),
-				success: function(result) {
-					 console.log(result);
+				data: JSON.stringify(contentObj),
+				success: function(result){
+					console.log(result);
 					if(result =="OK"){
-						console.log("okokok")
 						// 방법 1
 						// $("#modal_issue .content").html(contentStr);
 						// 방법 2
 						detail_issue(issueNo1);
-						
 					}
 				}
-				,error: function(result){ 
-					
-				}
-		}); 
-	}
-	function picChangeHandler(){
-		console.log("picchange 이벤트")
-		
-		// ajax로 patch
-		var picobj =  {pic: $("select.pic").val()};
-		$.ajax({
-				url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
-				type:"patch",
-				contentType: "application/json",
-				data: JSON.stringify(picobj),
-				success: function(result) {
-					 console.log(result);
-					if(result =="OK"){
-						console.log("okokok")
-						// 방법 1
-						// $("#modal_issue .content").html(contentStr);
-						// 방법 2
-						detail_issue(issueNo1);
-						
-					}
-				}
-				,error: function(result){ 
-					
-				}
-		}); 
-	}
-	function nameBlurHandler(){
-		console.log("BLUR 이벤트")
-		
-		// ajax로 patch
-		var nameobj =  {name: $("input.name").val()};
-		$.ajax({
-				url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
-				type:"patch",
-				contentType: "application/json",
-				data: JSON.stringify(nameobj),
-				success: function(result) {
-					 console.log(result);
-					if(result =="OK"){
-						console.log("okokok")
-						// 방법 1
-						// $("#modal_issue .content").html(contentStr);
-						// 방법 2
-						detail_issue(issueNo1);
-						
-					}
-				}
-				,error: function(result){ 
-					
-				}
-		}); 
-	}
-		function frm(elem){
-			$(".comment").show();
-			$(elem).hide();
-			var comment ='#'+$(elem).data("comment");
-			console.log(comment);
-			$(".warp-frm").hide();
-			$(comment).show();
-		}
-		
-		function resetHandler(elem){
-			$(".comment").show();
-			$(elem).parents(".warp-frm").hide();
-		}
-		
-	  function saveHandler(elem){
-		  var contentStr = CKEDITOR.instances['question-answer0'].getData()
-			 var contentObj =  {content: CKEDITOR.instances['question-answer0'].getData()};
-				$.ajax({
-					url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/issue/api",
-					type:"patch",
-					contentType: "application/json",
-					data: JSON.stringify(contentObj),
-					success: function(result){
-						console.log(result);
-						if(result =="OK"){
-							// 방법 1
-							// $("#modal_issue .content").html(contentStr);
-							// 방법 2
-							detail_issue(issueNo1);
-						}
-					}
-				,error: function(result){
-					
-				}
-					
-					
-				});
-								
-				$(".comment").show();
-				$(elem).parents(".warp-frm").hide();
-			} 
+			,error: function(result){
+				
+			}
+		});
+		$(".comment").show();
+		$(elem).parents(".warp-frm").hide();
+	} 
 	  
-		 function saveCommentHandler(elem){
-			 var commentObj =  {content: CKEDITOR.instances['question-answer1'].getData()};
-				$.ajax({
-					url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/comment/api",
-					type:"post",
-					contentType: "application/json",
-					data: JSON.stringify(commentObj),
-					success: function(result){
-						console.log(result);
-						if(result =="OK"){
-							
-							detail_issue(issueNo1);
-						}
-					}
-				,error: function(result){
+	function saveCommentHandler(elem){
+		var commentObj =  {content: CKEDITOR.instances['question-answer1'].getData()};
+		$.ajax({
+			url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/comment/api",
+			type:"post",
+			contentType: "application/json",
+			data: JSON.stringify(commentObj),
+			success: function(result){
+				console.log(result);
+				if(result =="OK"){
 					
-					
+					detail_issue(issueNo1);
 				}
+			}
+			,error: function(result){
+			}
+		});
+		$(".comment").show();
+		$(elem).parents(".warp-frm").hide();
+	} 
+	function updateCommentHandler(elem, commentNo){
+		console.log("commentNo!!!!!!!! "+ commentNo);
+		var editorData =  {content: CKEDITOR.instances['editor1'].getData(), seq: commentNo};
+		$.ajax({
+			url:"<%=request.getContextPath()%>/work/"+projectNo+"/"+issueNo1+"/comment/api",
+			type:"patch",
+			contentType: "application/json",
+			data: JSON.stringify(editorData),
+			success: function(result){
+				console.log(result);
+				if(result =="OK"){
 					
-					
-				});
-				
-				
-				
-				$(".comment").show();
-				$(elem).parents(".warp-frm").hide();
-			} 
+					detail_issue(issueNo1);
+				}
+			}
+			,error: function(result){
+			}
+		});
+		$(".comment").show();
+		$(elem).parents(".warp-frm").hide();
+	} 
 	
-		</script>
-	
-</div>
+</script>
+
+		</div>
 	</div>
-
-
-
-
-
-
-

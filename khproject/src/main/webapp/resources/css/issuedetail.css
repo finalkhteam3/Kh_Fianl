@@ -125,3 +125,10 @@
 	font-size: 35px;
 	border: 1px solid black;
 }
+
+.comment *{
+	font-size: 1.25em ; 
+}
+.content *{
+	font-size: 1.25em ; 
+}

@@ -53,7 +53,7 @@ public class IssueRestController {
     }
 
     @GetMapping("/comment/api")
-    public ResponseEntity<List<Comment>> getComment(@PathVariable String projectNo,
+    public ResponseEntity<List<Comment>> getComments(@PathVariable String projectNo,
                                               @PathVariable int issueNo,
                                               Principal principal) {
     	List<Comment> comment = service.getComments(projectNo, issueNo, principal.getName());
