@@ -123,7 +123,7 @@
 .ap9{
 	margin: 0;
     padding: 0;
-	margin-top: 16px;
+	margin-top: 12px;
 	display: block;
 }
 .ap10{
@@ -168,6 +168,185 @@
     table-layout: fixed;
     border-bottom: 2px solid #DFE1E6;
     box-sizing: border-box;
+    display: table;
+    box-sizing: border-box;
+    text-indent: initial;
+}
+.star2{
+	display: inline-block;
+    flex-shrink: 0;
+    line-height: 1;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+}
+thead{
+	border-bottom: none;
+	display: table-header-group;
+	vertical-align: middle;
+    border-collapse: separate;
+    border-spacing: 0px;
+}
+tr{
+    display: table-row;
+    vertical-align: middle;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px;
+    table-layout: fixed;
+    border-bottom: 2px solid #DFE1E6;
+}
+tbody{
+	vertical-align: top;
+	border-top: 2px solid #DFE1E6;
+	border-collapse: separate;
+    border-spacing: 0px;
+}
+.ap15{
+	text-align: center;
+	padding: 4px 8px;
+	padding-left: 10px;
+    box-sizing: border-box;
+    position: relative;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-image: initial;
+    border-bottom: 2px solid var(--ds-border, #DFE1E6);
+    color: var(--ds-text-subtlest, var(--local-dynamic-table-text-color));
+    font-size: 12px;
+    font-weight: 600;
+    vertical-align: top;
+    width: var(--local-dynamic-table-width);
+    --local-dynamic-table-width: 2.85%;
+}
+.ap16{
+	text-align: left;
+	padding: 4px 8px;
+    box-sizing: border-box;
+    position: relative;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-image: initial;
+    border-bottom: 2px solid var(--ds-border, #DFE1E6);
+    color: var(--ds-text-subtlest, var(--local-dynamic-table-text-color));
+    font-size: 12px;
+    font-weight: 600;
+    vertical-align: top;
+    width: var(--local-dynamic-table-width);
+    --local-dynamic-table-width: 16%;
+}
+.ap17{
+	padding: 4px 8px;
+    box-sizing: border-box;
+    position: relative;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-image: initial;
+    border-bottom: 2px solid var(--ds-border, #DFE1E6);
+    color: var(--ds-text-subtlest, var(--local-dynamic-table-text-color));
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    vertical-align: top;
+    width: var(--local-dynamic-table-width);
+    --local-dynamic-table-width: 8%;
+}
+.ap18{
+	padding: 4px 8px;
+    box-sizing: border-box;
+    position: relative;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-image: initial;
+    border-bottom: 2px solid var(--ds-border, #DFE1E6);
+    color: var(--ds-text-subtlest, var(--local-dynamic-table-text-color));
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    vertical-align: top;
+    width: var(--local-dynamic-table-width);
+    --local-dynamic-table-width: 25%;
+}
+.ap19{
+	padding: 4px 8px;
+    box-sizing: border-box;
+    position: relative;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-image: initial;
+    border-bottom: 2px solid var(--ds-border, #DFE1E6);
+    color: var(--ds-text-subtlest, var(--local-dynamic-table-text-color));
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    vertical-align: top;
+    width: var(--local-dynamic-table-width);
+    --local-dynamic-table-width: 8%;
+}
+.ap20{
+	padding: 4px 8px;
+    box-sizing: border-box;
+    position: relative;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-image: initial;
+    border-bottom: 2px solid var(--ds-border, #DFE1E6);
+    color: var(--ds-text-subtlest, var(--local-dynamic-table-text-color));
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: top;
+    width: var(--local-dynamic-table-width);
+    --local-dynamic-table-width: 13%;
+}
+.ap21{
+	padding: 10px 8px 10px 10px;
+    overflow: hidden;
+    border: none;
+    text-align: center;
+    width: var(--local-dynamic-table-width);
+    --local-dynamic-table-width: 2.85%;
+}
+.ap22{
+	padding: 10px 8px;
+	overflow: hidden;
+	text-align: left;
+	width: var(--local-dynamic-table-width);
+    --local-dynamic-table-width: 16%;
+}
+.ap23{
+	padding: 10px 8px;
+	overflow: hidden;
+	text-align: left;
+	width: var(--local-dynamic-table-width);
+    --local-dynamic-table-width: 20%;
+}
+.ap24{
+	padding: 10px 8px;
+	overflow: hidden;
+	text-align: left;
+	width: var(--local-dynamic-table-width);
+    --local-dynamic-table-width: 20%;
+}
+.ap25{
+	padding: 10px 8px;
+	overflow: hidden;
+	text-align: left;
+	width: var(--local-dynamic-table-width);
+    --local-dynamic-table-width: 8%;
+}
+.ap26{
+	padding: 10px 10px 10px 8px;
+	overflow: hidden;
+	text-align: center;
+	width: var(--local-dynamic-table-width);
+    --local-dynamic-table-width: 13%;
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -179,33 +358,34 @@
 							success : function(data) {
 								console.log(data)
 								var projectList = data;
-								var tr = "<thead class=ap15><tr>" + '<td><img src="/resources/skydashTemp/images/star2.svg" class="icon_style"></td>'
-										+ "<td>이름</td>" + "<td>키</td>"
-										+ "<td>유형</td>" + "<td>리드</td>"
-										+ "<td>관리</td>" + "</tr>";
+								var tr = "<thead><tr>" 
+										+ '<th class="ap15"><img src="/resources/skydashTemp/images/star2.svg" class="star2"></th>'
+										+ "<th class='ap16'>이름</th>" + "<th class='ap17'>키</th>"
+										+ "<th class='ap18'>유형</th>" + "<th class='ap19'>리드</th>"
+										+ "<th class='ap20'><img src='/resources/skydashTemp/images/menu.png' class='icon_style'></th>" + "</tr>";
 								+"</thead>";
 								$
 										.each(
 												projectList,
 												function(i) {
-													tr += "<td>"
-															+ '<img src="/resources/skydashTemp/images/star.svg" class="icon_style">'
-															+ "</td><td>"
+													tr += "<tbody><tr><td class='ap21'>"
+															+ '<img src="/resources/skydashTemp/images/star.svg" class="star2">'
+															+ "</td><td class='ap22'>"
 															+ '<a href="/work/'+ projectList[i].no +'">'+'<img src="/resources/skydashTemp/images/icon_project1.svg" class="icon_style">'
 															+ projectList[i].name
-															+ "</a></td><td>"
+															+ "</a></td><td class='ap23'>"
 															+ projectList[i].no
-															+ "</td><td>"
+															+ "</td><td class='ap24'>"
 															+ projectList[i].info
-															+ "</td><td>"
+															+ "</td><td class='ap25'>"
 															+ projectList[i].adminName
-															+ "</td><td>"
+															+ "</td><td class='ap26'>"
 															+ '<a href="/jira/update.do?no='
 															+ projectList[i].no
-															+ '"><input type="button" value="프로젝트 설정" ></a><a href="/jira/delete.do?no='
+															+ '">'+'<input class="set" type="button" value="설정" ></a><a href="/jira/delete.do?no='
 															+ projectList[i].no
-															+ '"><input type="button" value="휴지통으로 이동" ></a>'
-															+ "</td></tr>";
+															+ '">'+'<input class="set" type="button" value="삭제" ></a>'
+															+ "</td></tr></tbody>";
 												});
 								$("#projectList").append(tr);
 							}
