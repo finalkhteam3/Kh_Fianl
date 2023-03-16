@@ -26,10 +26,10 @@
 				<th>설명</th>
 				<td><input type="text" name="info" id="info" placeholder="프로젝트를 소개해 주세요."></td>
 			</tr>
-			<tr style="display:none;">
+			<div style="display:none;"><tr>
 				<th>이미지</th>
-				<td><input type="text" name="iconPath" id="iconPath" placeholder="프로젝트 이미지"></td>
-			</tr>
+				<td><input type="text" name="iconPath" id="iconPath" placeholder="프로젝트 이미지" value="a"></td>
+			</tr></div>
 			<tr>
 				<td colspan="2" align="right"><input type="submit" value="프로젝트 만들기"> 
 				<input type="button" value="취소"  onclick="location.href='${pageContext.request.contextPath}/jira/projects'">

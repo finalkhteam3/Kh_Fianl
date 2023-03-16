@@ -59,9 +59,7 @@
 		, :var_result); -->
 	<update id="update"
 		parameterType="kh.java.project.projects.dto.param.Project">
-		update project
-		set name=#{name}, info=#{info},
-		icon_path=#{iconPath} where p.no=#{no}
+		update project p set name=#{name}, info=#{info} where p.no=#{no}
 	</update>
 	<delete id="delete"
 		parameterType="kh.java.project.projects.dto.param.Project">

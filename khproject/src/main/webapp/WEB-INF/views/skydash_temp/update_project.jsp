@@ -422,6 +422,10 @@
 													<div class="ap21"><td><input class="ap22" type="text" name="info" id="info"
 														placeholder="프로젝트를 소개해 주세요." value=${dto.info }></td></div>
 												</tr></div>
+												<div style="display:none;"><tr>
+												<th>이미지</th>
+												<td><input type="text" name="iconPath" id="iconPath" value=${dto.iconPath }></td>
+												</tr></div>
 												<div class="ap25"><tr>
 													<td colspan="2" align="center">
 													<input class="ap26" type="submit" value="완료"> 
