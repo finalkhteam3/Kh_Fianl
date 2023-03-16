@@ -8,6 +8,8 @@
 <title>프로젝트 - Jira</title>
 <link href="/resources/skydashTemp/images/logo_mini.png"
 	rel="shortcut icon" type="image/x-icon">
+<link href="/resources/skydashTemp/images/logo_mini.png"
+	rel="shortcut icon" type="image/x-icon">
 <!-- plugins:css -->
 <link rel="stylesheet" href="/vendors/feather/feather.css">
 <link rel="stylesheet" href="/vendors/ti-icons/css/themify-icons.css">
@@ -348,6 +350,33 @@ tbody{
 	width: var(--local-dynamic-table-width);
     --local-dynamic-table-width: 13%;
 }
+.set{
+	-webkit-box-align: baseline;
+    align-items: baseline;
+    box-sizing: border-box;
+    display: inline-flex;
+    font-style: normal;
+    font-weight: 500;
+    max-width: 100%;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    height: 2.0em;
+    line-height: 2.0em;
+    vertical-align: middle;
+    width: auto;
+    -webkit-box-pack: center;
+    justify-content: center;
+    color: var(--ds-text-inverse, #FFFFFF) !important;
+    border-width: 0px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.1s ease-out 0s, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38) 0s;
+    background: var(--ds-background-brand-bold, #0052CC);
+    padding: 0px 10px;
+    margin: 0 2px;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script>
@@ -377,7 +406,7 @@ tbody{
 															+ projectList[i].no
 															+ "</td><td class='ap24'>"
 															+ projectList[i].info
-															+ "</td><td class='ap25'>"
+															+ "</td><td class='ap25'>"+'<img class="icon_style" src="/resources/skydashTemp/images/faces/user_face.png" style="margin-right:1px;">'
 															+ projectList[i].adminName
 															+ "</td><td class='ap26'>"
 															+ '<a href="/jira/update.do?no='

@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Jira</title>
+<link href="/resources/skydashTemp/images/logo_mini.png" rel="shortcut icon" type="image/x-icon">
 </head>
 <style>
 .jira-frontend {

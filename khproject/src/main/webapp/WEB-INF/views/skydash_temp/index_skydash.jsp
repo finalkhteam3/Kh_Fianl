@@ -9,8 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>내 작업 - Jira</title>
-<link href="/resources/skydashTemp/images/logo_mini.png"
-	rel="shortcut icon" type="image/x-icon">
+<link href="/resources/skydashTemp/images/logo_mini.png" rel="shortcut icon" type="image/x-icon">
 <!-- plugins:css -->
 <!--<link rel="stylesheet" href="/vendors/feather/feather.css">
 <link rel="stylesheet" href="/vendors/ti-icons/css/themify-icons.css">
@@ -430,23 +429,17 @@ a:hover{
                         element.innerHTML +=
                             '<div class="rc3">' +
                             '<a class="icon_a" href="/work/'+delta.no+'"><span class="icon_span"><img class="icon" src="/resources/skydashTemp/images/icon_project1.svg" width="24px" height="24px"></span>' +
-                            /* '<div>' + delta.iconPath + '<br/></div>' + */
                             '<div class="p0"><p class="p1">' + delta.name + '</p>' +
                             '<p class="p2">' + delta.info + '</p></div></a>' +
                             '<div class="iss0"><div class="iss00"><p class="iss000">빠른 연결</p></div>' +
                             '<div class="iss1"><a class="iss2" href="#">내 미해결 이슈</a></div>' +
                             '<div class="iss1"><a class="iss2" href="#">완료된 이슈</a></div></div>' +
-                            /* '<a href="/work/'+delta.no+'">보드<br/></a>' + */
-                            /* '<div><button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">보드</button><div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2"><a class="dropdown-item" href="#">보드명1</a><a class="dropdown-item" href="#">보드명2</a></div></div>' + */
                             '</div>'
-
                     })
                 }
             }
         })
     })
-
-    
 </script>
 
 <body>
@@ -518,8 +511,7 @@ a:hover{
 			</div>
 		</div>
 	</div>
-	</div>
-	<script>
+<script>
 	function to_tab(num) {
 	    $.ajax({
 	        type: 'GET',
@@ -537,12 +529,7 @@ a:hover{
 	                    html +=
 	                        '<div style="width:100%; display:block;" class="'+tabName+'" >' + 
 	                        '<a class="yw00"><div class="yw0"><img class="yw1" src="/resources/skydashTemp/images/icon_issue1.svg"></div>' +
-	                        /* '<div>' + JSON.stringify(delta) + '<br/></div>' + */
 	                        '<span class="yw2"><span class="yw3">' + delta.name + '</span>' +
-	                        /* '<span>' + delta.no + '</span>' +
-	                        '<span>' + delta.value + '</span>' + */
-	                        /* '<span>' + delta.maker + '</span>' +
-	                        '<span>' + delta.pic + '</span>' + */
 	                        '<span class="yw4">' + delta.projectNo + '</span></span>' +
 	                        '<span class="yw5">Updated</span>'+
 	                        '<div class="yw6"><ul class="ul1"><li class="li1"><span class="yw7"><img class="yw8" src="/resources/skydashTemp/images/faces/user_face.png"></span></li><li class="li2"><span class="yw7"><img class="yw8" src="/resources/skydashTemp/images/faces/user_face.png"></span></li></ul></div></a></div>'
@@ -569,33 +556,8 @@ a:hover{
 		});
 	
 	}
-    /* function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-            if(i=0)
-            	to_ajax1(i);
-            if(i=1)
-            	to_ajax2(i);
-            if(i=2)
-            	to_ajax3(i);
-            if(i=3)
-            	to_ajax4(i);
-            if(i=4)
-            	to_ajax5(i);
-
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    } */
 
     $(document).ready(function () {
-        /* $("#tab_default").css("color","#0052cc"); */
         $("#tab_default").click();
     });
 </script>

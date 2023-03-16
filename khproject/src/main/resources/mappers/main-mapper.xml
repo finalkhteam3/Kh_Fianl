@@ -27,12 +27,11 @@
 	</select>
 	<select id="selectOne"
 		resultType="kh.java.project.projects.dto.param.Project">
-		select no, name, info, icon_path, (select (select name from users where id=ad.id)
-		from AUTHORITIES ad where PROJECT_NO = p.NO and AUTHORITY = 'ROLE_ADMIN')
-		admin_name
-		from project p
-		where no =
-		#{no}
+		select no, name, info, icon_path, 
+			(select 
+				(select name from users where id=ad.id)
+			from AUTHORITIES ad where PROJECT_NO = p.NO and AUTHORITY = 'ROLE_ADMIN') admin_name
+		from project p where no = #{no}
 	</select>
 	<insert id="insert"
 		parameterType="kh.java.project.projects.dto.param.Project">
@@ -41,19 +40,14 @@
 	</insert>
 	<insert id="insertProjectNAuth" statementType="CALLABLE"
 		parameterType="kh.java.project.projects.dto.param.ProjectAuthorities">
-		{ call PROC_INSERT_PROJECT_AUTH (
-		#{id ,
-		jdbcType=VARCHAR, mode=IN }
-		, #{no , jdbcType=VARCHAR, mode=IN }
-		,
-		#{name, jdbcType=VARCHAR, mode=IN }
-		, #{info, jdbcType=VARCHAR, mode=IN
-		}
-		, #{iconPath, jdbcType=VARCHAR, mode=IN }
-		, #{result ,
-		jdbcType=INTEGER, mode=OUT }
-		)
-		}
+		{call PROC_INSERT_PROJECT_AUTH (
+			#{id, jdbcType=VARCHAR, mode=IN}
+			, #{no , jdbcType=VARCHAR, mode=IN}
+			, #{name, jdbcType=VARCHAR, mode=IN}
+			, #{info, jdbcType=VARCHAR, mode=IN}
+			, #{iconPath, jdbcType=VARCHAR, mode=IN}
+			, #{result, jdbcType=INTEGER, mode=OUT}
+		)}
 	</insert>
 	<!-- exec PROC_INSERT_PROJECT_AUTH('bkchoi', 'khF6','KHF6','KHF4설명', 'aa' 
 		, :var_result); -->

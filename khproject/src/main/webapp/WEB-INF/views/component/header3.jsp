@@ -20,20 +20,81 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
+<style>
+#createGlobalItem{
+	-webkit-box-align: baseline;
+    align-items: baseline;
+    box-sizing: border-box;
+    display: inline-flex;
+    font-size: inherit;
+    font-style: normal;
+    font-family: inherit;
+    font-weight: 500;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    background-image: ;
+    background-position-x: ;
+    background-position-y: ;
+    background-size: ;
+    background-repeat-x: ;
+    background-repeat-y: ;
+    background-attachment: ;
+    background-origin: ;
+    background-clip: ;
+    color: var(--ds-text-inverse, #FFFFFF);
+    cursor: pointer;
+    height: 2.28571em;
+    line-height: 2.28571em;
+    vertical-align: middle;
+    width: auto;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background-color: var(--ds-background-brand-bold, #0052CC);
+    border-width: 0px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.1s ease-out 0s, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38) 0s;
+    padding: 0px 10px;
+    outline: none;
+    margin: 0px;
+}
+.css-178ag6o{
+	opacity: 1;
+    transition: opacity 0.3s ease 0s;
+    margin: 0px 2px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mr-2{
+	width: 134.25px;
+	height: 15px;
+}
+.hd1{
+	margin: 0 20px;
+}
+.navbar-nav{
+	margin-left:0;
+}
+#hd1{
+	margin: 0 20px;
+}
+</style>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
 <body>
 	<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo mr-5" href="/jira/your-work"><img src="/resources/skydashTemp/images/logo.png"
+            <a class="navbar-brand brand-logo mr-5" id="hd1" href="/jira/your-work"><img style="height: 16px;" src="/resources/skydashTemp/images/logo.png"
                                                                            class="mr-2" alt="logo"/></a>
             <a class="navbar-brand brand-logo-mini" href="/jira/your-work"><img
                     src="/resources/skydashTemp/images/logo_mini.png" alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-                <span class="icon-menu"></span>
-            </button>
             <button id="createGlobalItem" class="css-9gygbf" type="button" onclick="modalOn();">
 				<span class="css-178ag6o">만들기</span>
 			</button>
